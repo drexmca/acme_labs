@@ -1,0 +1,53 @@
+Day1
+Gaviner Algirdas from District 1 experienced ['Gnat Mutts'] and survived
+Eta Whishart from District 1 experienced ['Gnat Mutts'] and died
+Fawn Kincardine from District 2 experienced ['Traps'] and died
+Delphi Rosehearty from District 3 experienced ['Disease'] and died
+Soren Clackmannan from District 4 experienced ['Gnat Mutts'] and died
+Orchid Lickprivick from District 5 experienced ['Insects'] and survived
+Tiberius Rudolphin from District 6 experienced ['Spear'] and survived
+Merope Elphinstone from District 6 experienced ['Disease'] and survived
+Ivo Williford from District 7 experienced ['Jabberjays'] and survived
+Berenice Dunbryll from District 7 experienced ['Rat Mutts'] and died
+Silver Herriot from District 8 experienced ['Wolf Mutts'] and died
+Dorothea Perthshire from District 9 experienced ['Blood Rain'] and survived
+Hammil Odinshoot from District 10 experienced ['Dehydration'] and died
+Beaufort Dinwiddie from District 11 experienced ['Lizard Mutts'] and survived
+Katri Sterlingshire from District 11 experienced ['Candy Pink Birds'] and died
+Wren Ballyregan from District 12 experienced ['Jabberjays'] and died
+Day2
+Gaviner Algirdas from District 1 experienced ['Gnat Mutts'] and survived
+Garric Yule from District 2 experienced ['Spear'] and died
+Galahad Naysmith from District 4 experienced ['Candy Pink Birds'] and survived
+Eero Galloway from District 5 experienced ['Force field'] and died
+Tiberius Rudolphin from District 6 experienced ['Gnat Mutts'] and died
+Ivo Williford from District 7 experienced ['Monkey Mutts'] and survived
+Tenney Redpath from District 8 experienced ['Blood Rain'] and died
+Dorothea Perthshire from District 9 experienced ['Rat Mutts'] and died
+Beaufort Dinwiddie from District 11 experienced ['Blood Rain'] and survived
+Fir Lowenek from District 12 experienced ['False Start'] and survived
+Day3
+Gaviner Algirdas from District 1 experienced ['Drowning'] and survived
+Majoris Edenthaw from District 3 experienced ['Neck Break'] and survived
+Galahad Naysmith from District 4 experienced ['Monkey Mutts'] and survived
+Orchid Lickprivick from District 5 experienced ['Tracker Jackers'] and survived
+Merope Elphinstone from District 6 experienced ['Insects'] and died
+Griffin Honeyman from District 9 experienced ['Tracker Jackers'] and died
+Beaufort Dinwiddie from District 11 experienced ['Monkey Mutts'] and survived
+Fir Lowenek from District 12 experienced ['Gnat Mutts'] and survived
+Day4
+Gaviner Algirdas from District 1 experienced ['Lightning Storm'] and died
+Galahad Naysmith from District 4 experienced ['Wild Deer'] and survived
+Orchid Lickprivick from District 5 experienced ['Earthquake'] and died
+Alodia Rankine from District 10 experienced ['Earthquake'] and survived
+Beaufort Dinwiddie from District 11 experienced ['Earthquake'] and died
+Day5
+Majoris Edenthaw from District 3 experienced ['Wild Deer'] and survived
+Galahad Naysmith from District 4 experienced ['Spear'] and died
+Alodia Rankine from District 10 experienced ['Wombats'] and died
+Day6
+Majoris Edenthaw from District 3 experienced ['Falling Rock'] and died
+Fir Lowenek from District 12 experienced ['Infection'] and survived
+Day7
+Ivo Williford from District 7 experienced ['Dehydration'] and died
+Fir Lowenek from District 12 Won

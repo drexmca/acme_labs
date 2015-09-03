@@ -1,0 +1,33 @@
+import numpy as np
+cimport cython
+from numpy cimport int_t, float_t
+
+def computeseriesCY(int n):
+	x_np=np.empty(n,dtype=int)
+	U_np=np.random.uniform(0,1,size=n)
+
+	cdef int_t[:]x=x_np
+	cdef float_t[:] U=U_np
+
+	cdef float p=.1
+	cdef float q=.2
+	cdef int t
+	x[0]=1
+
+	for t in range(1,n):
+		current_x=x[t-1]
+		if current_x==0:
+			x[t]=U[t]<p
+		else:
+			x[t]=U[t]>p
+	return np.asarray(x)
+
+def pysqrt64(A,reps):
+	Ac=A.copy()
+	I=Ac.view(dtype=np.int64)
+	I >>=1
+	I += (1<<61)-(1<<51)
+	for i in xrange(reps):
+		Ac=.5*(Ac+A/Ac)
+
+	return Ac
