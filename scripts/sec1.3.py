@@ -59,21 +59,23 @@ print close_pt
 # Prints [1,6], [2,6] as expected
 
 ## Problem 1.17
+def Prob17():
+    for k in xrange(1,5):
+        print k
+        A = np.random.rand(10**k,10**k)
+        B = np.random.rand(10**k,10**k)
+        X = np.random.rand(10**k,1)
+        start = time.time()
+        np.dot(np.dot(A,B),X)
+        a = time.time()-start
+        print 'For (AB)X, and k = {}, time = {}'.format(k, a)
+        start = time.time()
+        np.dot(A, np.dot(B,X))
+        b = time.time()-start
+        print 'For A(BX), and k = {}, time = {}, ratio = {}'.format(k, b,
+                (a/b))
 
-for k in xrange(1,5):
-    print k
-    A = np.random.rand(10**k,10**k)
-    B = np.random.rand(10**k,10**k)
-    X = np.random.rand(10**k,1)
-    start = time.time()
-    np.dot(np.dot(A,B),X)
-    a = time.time()-start
-    print 'For (AB)X, and k = {}, time = {}'.format(k, a)
-    start = time.time()
-    np.dot(A, np.dot(B,X))
-    b = time.time()-start
-    print 'For A(BX), and k = {}, time = {}, ratio = {}'.format(k, b, (a/b))
-
+#Prob17()
 '''
 1
 For (AB)X, and k = 1, time = 4.91142272949e-05
@@ -88,4 +90,49 @@ For A(BX), and k = 3, time = 0.000968933105469, ratio = 18.7691929134
 For (AB)X, and k = 4, time = 14.3529160023
 For A(BX), and k = 4, time = 0.0754389762878, ratio = 190.258626357
 '''
+def Prob18():
+
+    for k in xrange(1,5):
+        I = np.eye(10**k)
+        u = np.random.rand(10**k)
+        v = np.random.rand(10**k)
+        x = np.random.rand(10**k)
+        start = time.time()
+        np.dot(I+np.dot(u,v.T),x)
+        a = time.time()-start
+        start = time.time()
+        x+np.dot(np.dot(v.T,x),u)
+        b = time.time() - start
+        print 'For Method 1, and k = {}, time = {}'.format(k, a)
+        print 'For Method 2, and k = {}, time = {}'.format(k, b)
+        print 'Difference = {}'.format(a-b)
+        print 'Ratio of Method 1 to Method 2 = {}'.format(a/b)
+Prob18()
+'''
+1
+For Method 1, and k = 1, time = 4.31537628174e-05
+For Method 2, and k = 1, time = 4.05311584473e-06
+Difference = 3.88622283936e-05
+Ratio of Method 1 to Method 2 = 10.6470588235
+
+2
+For Method 1, and k = 2, time = 3.69548797607e-05
+For Method 2, and k = 2, time = 3.09944152832e-06
+Difference = 3.38559224924e-05
+Ratio of Method 1 to Method 2 = 11.9230769231
+
+3
+For Method 1, and k = 3, time = 0.00465798377991
+For Method 2, and k = 3, time = 1.90734863281e-05
+Difference = 0.00457000732422
+Ratio of Method 1 to Method 2 = 244.2125
+
+4
+For Method 1, and k = 4, time = 0.530934095383
+For Method 2, and k = 4, time = 0.000128984451294
+Difference = 0.538677930832
+Ratio of Method 1 to Method 2 = 4116.26432532
+'''
+
+
 
