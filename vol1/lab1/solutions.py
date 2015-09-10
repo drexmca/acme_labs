@@ -15,7 +15,7 @@ print('Hello World')
 def sphere_volume(r):
     """Return the volume of the sphere of radius 'r'."""
     pi = 3.14159
-    return  pi*r**2
+    return  (4./3)*pi*r**3
 
 
 # Problem 3: Implement the first_half() and reverse() functions.
@@ -27,8 +27,8 @@ def first_half(my_string):
         'pyt'
     """
     length = len(my_string)
-    print my_string[:length/2]
-    pass
+    a =  my_string[:length/2]
+    return a
 first_half('Python')
 
 def reverse(my_string):
@@ -38,8 +38,8 @@ def reverse(my_string):
         >>> reverse("python")
         'nohtyp'
     """
-    print(my_string[::-1])
-    pass
+    a = my_string[::-1]
+    return a
 
 reverse('HELLLLLO')
     
@@ -66,9 +66,13 @@ def pig_latin(word):
         >>> pig_latin("banana")
         'ananabay'
     """
-    pig = str(word[1:])+str(word[0])+'ay'   
+    if word[0]=='a' or 'e' or 'i' or 'o'  or 'u' or 'y':
+        pig = str(word[1:]) + 'hay'
+    else:
+        pig = str(word[1:])+str(word[0])+'ay'   
     return pig 
         
+print pig_latin('university')
 # Problem 6: Implement this function.
 def int_to_string(my_list):
     """Use a dictionary to translate a list of numbers 1-26 to corresponding
@@ -128,10 +132,12 @@ def alt_harmonic(n):
     """Return the partial sum of the first n terms of the alternating
     harmonic series. Use this function to approximae ln(2).
     """
-    harmonic = []
-    for x in xrange(1, n):
-        harmonic.append(float((-1)**(x+1))/(x))
-    return sum(harmonic) 
+    x = xrange(1, n+1)
+    x = np.array([float(i) for i in x])
+    x = 1/x
+    ln = sum(x[::2])-sum(x[1::2])
+    return ln
 
-ln2 = alt_harmonic(500000) # put your approximation for ln(2) here
+ln2 = alt_harmonic(5000) # put your approximation for ln(2) here
 print ln2
+
