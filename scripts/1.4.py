@@ -26,6 +26,10 @@ def find_gcd(a,b):
 
 
 r,d = find_gcd(14562, 348)
+step1 =  d[-2]*d[-3]+1
+step2 = -(d[-2]+step1)
+
+print step1, step2
 
      
 
