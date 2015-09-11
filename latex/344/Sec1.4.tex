@@ -25,6 +25,7 @@
 \usepackage{amssymb}
 \hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
 \usepackage{bm}
+\usepackage{amssymb}
 
 
 \theoremstyle{definition}
@@ -98,12 +99,58 @@ Let $(\mathbf{x}+W) \in V/W$, $(\mathbf{y}+W) \in V/W$, $a,b \in \mathbb{F}$\\
 \end{align*}
 
 \exercise{1.22}\\
-Proof: By definition 1.4.1, $\mathbf{x} - \mathbf{y}$ is obviously in V because both $\mathbf{x}$, and $ \mathbf{y}$ are in V. Thus they are all in the same coset, and equivalent to eachother, and that coset is the only element of the quotient space V/V.
+Proof: By definition 1.4.1, $\mathbf{x} - \mathbf{y}$ is obviously in V because both 
+$\mathbf{x}$, and $ \mathbf{y}$ are in V. Thus they are all in the same coset, 
+and equivalent to eachother, and that coset is the only element of the quotient 
+space V/V. 
 
 \exercise{1.23}\\
-Let $\phi$:V/{$\mathbf{0}$} $\rightarrow$ V be defined such that for each $x \in V/\{\mathbf{0}\}$ $ \phi(\mathbf{x}) = \mathbf{x}$
+Let $\phi$:V/\{$\mathbf{0}$\} $\rightarrow$ V be defined such that for each 
+$(\mathbf{x}+V) \in V/\{\mathbf{0}\}$ $ \phi( (\mathbf{x} + V) ) = \mathbf{x}$.
+Note that 
+\begin{align*}
+    \phi( (\mathbf{x} + \{\mathbf{0}\})  \boxplus (\mathbf{y} + \{\mathbf{0}\})) & = \phi( (\mathbf{x} + \mathbf{y} ) + \{\mathbf{0}\}) \\
+    & = (\mathbf{x} + \mathbf{y})\\
+    & = \phi( (\mathbf{x} + \{\mathbf{0}\})  + \phi( (\mathbf{y} + \{\mathbf{0}\})  
+\end{align*}
+And for scaler multiplication,
+\begin{align*}
+    \phi(c \boxdot (\mathbf{x} + \{\mathbf{0}\}) & = \phi((c\mathbf{x})+\{\mathbf{0}\})\\
+    & = c\mathbf{x}\\
+    & = c \phi(\mathbf{x} + \{\mathbf{0}\})
+\end{align*}
 
-
+\exercise{1.24}\\
+Let $\psi:V/W \rightarrow \mathbb{F}[y]$ be defined such that \\
+\[ \psi(x^i+W) = 
+    \begin{cases}
+        0 & \text{if i is odd}\\
+        x^{i/2} & \text{if i is even}
+    \end{cases}
+\]
+Note, for $p,q \in \mathbb{F}[x]$, and $c \in \mathbb{F}$
+\begin{align*}
+    \psi(p+W \boxplus q + W) & = \psi( (p+q)+W)\\
+    & = p+q \\
+    & = \psi(p+W)+\psi(q+W)
+\end{align*}
+And,
+\begin{align*}
+    \psi(c\boxdot(p+W)) & = \psi( (c p) +W) \\
+    & = c p \\
+    & = c \psi(p+W)
+\end{align*}
+To show surjectivity, choose $f(x) \in \mathbb{F}[x]$. Note that 
+\[
+    \psi(f'(x^2)+W) = f(x)
+\]
+To show injectivity, choose $f(x)+W,~f'(x)+W \in V/W$ s.t. $\psi(f(x)+W) = \psi(f'(x)+W)$. Note,
+\begin{align*}
+    \psi(f(x)+W)-\psi(f'(x)+W) &= \psi(f(x)-f'(x)+W)) \\
+    & = 0 \\
+    & = \psi( 0 + W )
+\end{align*}
+Thus, $f(x),~f'(x) \in W$, which implies that the cosets are equal. 
 
 \end{document}
 
