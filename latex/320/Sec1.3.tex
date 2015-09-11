@@ -112,6 +112,41 @@ Also, since $d|c$, we know that $c = dm$ for some $m \in \mathbb{Z}$. Note,\\
 where $k = mn \implies k \in \mathbb{Z}$.
 
 \exercise{1.21}\\
+Note that $4^2 = 16 \equiv_{12} 4$.
+\[
+    34^{34} \equiv_{12} -2^{34} \equiv_{12} 4^{17} \equiv_{12} 4^2 4^2 4^2 4^2 4^2
+    4^2 4^2 4^2 4 \equiv_{12} 4^8 \equiv_{12} 4^2 4^2 4^2 \equiv_{12} 4^3 \equiv_{12} 4
+\]
+
+\exercise{1.22}\\
+(i): By Fermat's Little Theorem, \\
+\[
+    14^{127} 14 \equiv_{127} 14^2 \equiv_{127} 69
+\]
+(ii): By Fermat's Little Theorem, \\
+\[
+    (18^2)^{127} \equiv_{127} 18^2 \equiv_{127} 324 \equiv_{127} 197 \equiv_{127} 70
+\]
+(iii): By Fermat's Little Theorem, \\
+\[
+    (25^5)^{127} 25^5 \equiv_{127} 625^5 \equiv_{127} -5^5 \equiv_{127} -625*5 
+    \equiv_{127} -5*-5 \equiv_{127} 25
+\]
+
+\exercise{1.23}\\
+The necessary and sufficent conditions are that gcd$(x,c) = 1$.\\
+Proof: Suppose gcd$(x,c) = 1$, and $ax \equiv bx (\text{mod }c)$. Thus $c|(ax - bx)$,
+and $c|(a-b)x$. Because gcd$(x,c) = 1$, $c|(a-b)$ by Proposition 1.4.9, and 
+$a \equiv b (\text{mod }c)$.\\
+Now, suppose $ax \equiv bx (\text{mod } c) \rightarrow a \equiv b (\text{mod } c)$. Thus,
+$c|(a-b)x$ implies that $c|(a-b)$. This will only happen if c and x are relatively prime,
+which means that gcd$(c,x) = 1$.
+
+\exercise{1.24}\\
+See attached code.
+
+\exercise{1.25}\\
+Note that the Eucledian algorithm has at most a steps, because if $a = b$, it has one step, and the worst case scenario is it decreases by one each time, and the remainder drops by one each time. Since the temporal complexity of the division algorithm is $O(f(a))$, it follows that the Eucledian algorithim would have a temporal complexity of at the very omost $O(af(a))$.
 
 \end{document}
 
