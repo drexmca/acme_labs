@@ -61,60 +61,49 @@
 \begin{document}
 \maketitle
 \exercise{1.20}\\
-Proof: We must prove properties (v) through (viii)\n
-Let $(\mathbf{x}+W) \in V/W$, $(\mathbf{y}+W) \in V/W$, $a,b \in \mathbb{F}$
-(v):
-
-    a_{n-1}10^{n-1}$, Note that\\
-        \begin{align*}
-            a &= \sum{a_k10^k}\\
-            & = a_0+\dots+a_{n-1}10^{n-1}\\
-            & = (9a_1 + 99a_2 + \dots +(10^{n-1}-1)a_{n-1}) + (a_0 + a_1 + \dots
-                + a_{n-1}\\
-            & = 3(3a_1 + 33 a_2 + \dots +  (10^{n-1} -1)/3 a_{n-1}) + 
-            (a_0+\dots+a_{n-1})\\
-            & = 3(3a_1 + 33 a_2 + \dots +  (10^{n-1} -1)/3 a_{n-1}) + 
-            \sum^{n-1}_{k=0} a_k
-        \end{align*}
-    Note that $3|a$ if and only if $3|\sum^{n-1}_{k=0} a_k$, by definition of 
-    divisibility, because it is apparent that 3 divides the first term.\\
-(ii)
-Proof: Given an integer $a = \sum^{n-1}_{k=0} a_k10^k = a_010^0+\dots+
-    a_{n-1}10^{n-1}$, Note that\\
-        \begin{align*}
-            a &= \sum{a_k10^k}\\
-            & = a_0+\dots+a_{n-1}10^{n-1}\\
-            & = (9a_1 + 99a_2 + \dots +(10^{n-1}-1)a_{n-1}) + (a_0 + a_1 + \dots
-                + a_{n-1})\\
-            & = 9(1a_1 + 11 a_2 + \dots +  (10^{n-1} -1)/3 a_{n-1}) + 
-            (a_0+\dots+a_{n-1})\\
-            & = 9(1a_1 + 11 a_2 + \dots +  (10^{n-1} -1)/3 a_{n-1}) + 
-            \sum^{n-1}_{k=0} a_k
-        \end{align*}
-    Note that $9|a$ if and only if $9|\sum^{n-1}_{k=0} a_k$, by definition of 
-    divisibility, because it is apparent that 9 divides the first term.\\
-(iii)
-Proof: Given an integer $a = \sum^{n-1}_{k=0} a_k10^k = a_010^0+\dots+
-    a_{n-1}10^{n-1}$, Note that\\
+Proof: We must prove properties (v) through (viii)\\
+Let $(\mathbf{x}+W) \in V/W$, $(\mathbf{y}+W) \in V/W$, $a,b \in \mathbb{F}$\\
+(v): 
 \begin{align*}
-    a &= \sum^{n-1}_{k = 0} a_k 10^k \\
-    & = a_0 10^0 + a_1 + 10^1 + \dots + a_{n-1} 10^{n-1}\\
-    & = (11a_1 + 99a_2 + 1001a_3 + \dots + (10^{n-1}-1)+a_{n-1}) + (a_0 - a_1 + 
-        a_2 - \dots + (-1)^{n-1} a_{n-1})\\
-   &(\text{Where the coefficients of $a_i^{th}$ term given by $10^{i}-(-1)^{i-1}$})\\
-   & = 11(a_1 + 9a_2+91a_3+909a_4\dots+( (10^{n-1}-1)/11)a_{n-1})+(a_0-a_1+a_2\dots
-        +(-1)^{n-1}a_{n-1})
+    a \boxdot [(\mathbf{x} + W ) \boxplus ( \mathbf{y} +W)] 
+    & = a \boxdot [( \mathbf{x}+\mathbf{y})+W]\\
+    & = (a \mathbf{x} + a \mathbf{y} +W)\\
+    & = a \boxdot (\mathbf{x}+W) \boxplus a \boxdot (\mathbf{y}+W)
 \end{align*}
-Note that $a$ is divisible by 11 if and only if the second expression is divisible
-by 11, by definition of divisiblity, since the entire first part is divisible by 11.
-
-\exercise{1.20}\\
-Since $a \equiv b(\text{mod }c)$, we know that $a-b = cn$ for some $n \in \mathbb{Z}$.
-Also, since $d|c$, we know that $c = dm$ for some $m \in \mathbb{Z}$. Note,\\
-\[a-b = cn = dmn \implies d|(a-b) \implies a \equiv b(\text{mod }d)\]
-where $k = mn \implies k \in \mathbb{Z}$.
+(vi):
+\begin{align*}
+    (a+b) \boxplus ( \mathbf{x} + W) &= (a+b)\mathbf{x} + W\\
+    & = (a \mathbf{x} + b \mathbf{x} + W)\\
+    & = a \boxplus(\mathbf{x} + W) \boxplus b \boxdot (\mathbf{x}+W)
+\end{align*}
+(vii):
+\begin{align*}
+    1\boxdot (\mathbf{x} + W) & = (1 \mathbf{x}) + W\\
+    & = (\mathbf{x} + W)
+\end{align*}
+(viii):
+\begin{align*}
+    (ab) \boxdot (\mathbf{x} + W) & = a \boxdot(b \mathbf{x} + W)\\
+    & = (ab \mathbf{x}) + W \\
+    & = (ba \mathbf{x} + W)\\
+    & = b \boxdot (a \mathbf{x} + W)\\
+    & = (ba) \boxdot (\mathbf{x} + W)
+\end{align*}
 
 \exercise{1.21}\\
+\begin{align*}
+    (a \boxdot (\mathbf{x} + W)) \boxplus ( b \boxdot (\mathbf{y} +W)) & = (a \mathbf{x}+W)
+        \boxplus (b \mathbf{y} + W)\\
+        & = (a \mathbf{x} + b \mathbf{y}) +W
+\end{align*}
+
+\exercise{1.22}\\
+Proof: By definition 1.4.1, $\mathbf{x} - \mathbf{y}$ is obviously in V because both $\mathbf{x}$, and $ \mathbf{y}$ are in V. Thus they are all in the same coset, and equivalent to eachother, and that coset is the only element of the quotient space V/V.
+
+\exercise{1.23}\\
+Let $\phi$:V/{$\mathbf{0}$} $\rightarrow$ V be defined such that for each $x \in V/\{\mathbf{0}\}$ $ \phi(\mathbf{x}) = \mathbf{x}$
+
+
 
 \end{document}
 
