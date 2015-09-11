@@ -1,0 +1,156 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{mathrsfs}  
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins} \usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\usepackage{amssymb}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+\usepackage{amssymb}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{exercise}{Exercise} % Number exercises on their own
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+\title{Math Sec 1.4}
+\author{Rex McArthur}
+
+\begin{document}
+\maketitle
+\exercise{1.20}\\
+Proof: We must prove properties (v) through (viii)\\
+Let $(\mathbf{x}+W) \in V/W$, $(\mathbf{y}+W) \in V/W$, $a,b \in \mathbb{F}$\\
+(v): 
+\begin{align*}
+    a \boxdot [(\mathbf{x} + W ) \boxplus ( \mathbf{y} +W)] 
+    & = a \boxdot [( \mathbf{x}+\mathbf{y})+W]\\
+    & = (a \mathbf{x} + a \mathbf{y} +W)\\
+    & = a \boxdot (\mathbf{x}+W) \boxplus a \boxdot (\mathbf{y}+W)
+\end{align*}
+(vi):
+\begin{align*}
+    (a+b) \boxplus ( \mathbf{x} + W) &= (a+b)\mathbf{x} + W\\
+    & = (a \mathbf{x} + b \mathbf{x} + W)\\
+    & = a \boxplus(\mathbf{x} + W) \boxplus b \boxdot (\mathbf{x}+W)
+\end{align*}
+(vii):
+\begin{align*}
+    1\boxdot (\mathbf{x} + W) & = (1 \mathbf{x}) + W\\
+    & = (\mathbf{x} + W)
+\end{align*}
+(viii):
+\begin{align*}
+    (ab) \boxdot (\mathbf{x} + W) & = a \boxdot(b \mathbf{x} + W)\\
+    & = (ab \mathbf{x}) + W \\
+    & = (ba \mathbf{x} + W)\\
+    & = b \boxdot (a \mathbf{x} + W)\\
+    & = (ba) \boxdot (\mathbf{x} + W)
+\end{align*}
+
+\exercise{1.21}\\
+\begin{align*}
+    (a \boxdot (\mathbf{x} + W)) \boxplus ( b \boxdot (\mathbf{y} +W)) & = (a \mathbf{x}+W)
+        \boxplus (b \mathbf{y} + W)\\
+        & = (a \mathbf{x} + b \mathbf{y}) +W
+\end{align*}
+
+\exercise{1.22}\\
+Proof: By definition 1.4.1, $\mathbf{x} - \mathbf{y}$ is obviously in V because both 
+$\mathbf{x}$, and $ \mathbf{y}$ are in V. Thus they are all in the same coset, 
+and equivalent to eachother, and that coset is the only element of the quotient 
+space V/V. 
+
+\exercise{1.23}\\
+Let $\phi$:V/\{$\mathbf{0}$\} $\rightarrow$ V be defined such that for each 
+$(\mathbf{x}+V) \in V/\{\mathbf{0}\}$ $ \phi( (\mathbf{x} + V) ) = \mathbf{x}$.
+Note that 
+\begin{align*}
+    \phi( (\mathbf{x} + \{\mathbf{0}\})  \boxplus (\mathbf{y} + \{\mathbf{0}\})) & = \phi( (\mathbf{x} + \mathbf{y} ) + \{\mathbf{0}\}) \\
+    & = (\mathbf{x} + \mathbf{y})\\
+    & = \phi( (\mathbf{x} + \{\mathbf{0}\})  + \phi( (\mathbf{y} + \{\mathbf{0}\})  
+\end{align*}
+And for scaler multiplication,
+\begin{align*}
+    \phi(c \boxdot (\mathbf{x} + \{\mathbf{0}\}) & = \phi((c\mathbf{x})+\{\mathbf{0}\})\\
+    & = c\mathbf{x}\\
+    & = c \phi(\mathbf{x} + \{\mathbf{0}\})
+\end{align*}
+
+\exercise{1.24}\\
+Let $\psi:V/W \rightarrow \mathbb{F}[y]$ be defined such that \\
+\[ \psi(x^i+W) = 
+    \begin{cases}
+        0 & \text{if i is odd}\\
+        x^{i/2} & \text{if i is even}
+    \end{cases}
+\]
+Note, for $p,q \in \mathbb{F}[x]$, and $c \in \mathbb{F}$
+\begin{align*}
+    \psi(p+W \boxplus q + W) & = \psi( (p+q)+W)\\
+    & = p+q \\
+    & = \psi(p+W)+\psi(q+W)
+\end{align*}
+And,
+\begin{align*}
+    \psi(c\boxdot(p+W)) & = \psi( (c p) +W) \\
+    & = c p \\
+    & = c \psi(p+W)
+\end{align*}
+To show surjectivity, choose $f(x) \in \mathbb{F}[x]$. Note that 
+\[
+    \psi(f'(x^2)+W) = f(x)
+\]
+To show injectivity, choose $f(x)+W,~f'(x)+W \in V/W$ s.t. $\psi(f(x)+W) = \psi(f'(x)+W)$. Note,
+\begin{align*}
+    \psi(f(x)+W)-\psi(f'(x)+W) &= \psi(f(x)-f'(x)+W)) \\
+    & = 0 \\
+    & = \psi( 0 + W )
+\end{align*}
+Thus, $f(x),~f'(x) \in W$, which implies that the cosets are equal. 
+
+\end{document}
+
