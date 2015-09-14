@@ -34,7 +34,6 @@ class Jetpack(Backpack):
             color(str): color, defaults to silver
             name(str): name, defualts to jetback
             max_size(int): max number of elemetns, defaults to 2
-            contents(list): Contents of jetback
             Fuel(int): Defaults to 10. Amount of fuel left in jetpack
 
         Returns:
@@ -73,70 +72,70 @@ class ComplexNumber(object):
     __gt__: Checks if it is greater than, using distance from orgin
     __eq__: Checks for equality, using distance from origin
     """
-    def __init__ (self, r = 0., c = 0.):
-        self.r = float(r)
-        self.c = float(c)
+    def __init__ (self, real = 0., imag = 0.):
+        self.real = float(r)
+        self.imag = float(c)
     
     def __repr__(self):
-        if self.r != 0.0 and self.c > 0.0:
-            return str(self.r) + "+" + str(self.c) + "j"
-        if self.r != 0.0 and self.c < 0.0:
-            return str(self.r) +  str(self.c) + "j"
-        if self.r == 0.0 and self.c != 0.0:
+        if self.real != 0.0 and self.imag > 0.0:
+            return str(self.real) + "+" + str(self.imag) + "j"
+        if self.real != 0.0 and self.imag < 0.0:
+            return str(self.real) +  str(self.imag) + "j"
+        if self.real == 0.0 and self.imag != 0.0:
             return str(self.c) + "j"
-        if self.r != 0.0 and self.c == 0.0:
-            return str(self.r)
+        if self.real != 0.0 and self.imag == 0.0:
+            return str(self.real)
     
     def __sub__(self, other):
-        a = self.r
-        b = self.c
-        c = other.r
-        d = other.c
+        a = self.real
+        b = self.imag
+        c = other.real
+        d = other.imag
         
         null = ComplexNumber()
-        null.r = a-b
-        null.c = b-d
+        null.real = a-b
+        null.imag = b-d
         
         return null
 
     def __add__(self, other):
-        a = self.r
-        b = self.c
-        c = other.r
-        d = other.c
+        a = self.real
+        b = self.imag
+        c = other.real
+        d = other.imag
         
         null = ComplexNumber()
-        null.c = b + d
-        null.r = a + c
+        null.imag = b + d
+        null.real = a + c
         return null
     
     def __mul__(self, other):
-        a = self.r
-        b = self.c
-        c = other.r
-        d = other.c
+        a = self.real
+        b = self.imag
+        c = other.real
+        d = other.imag
         
         null = ComplexNumber()
-        null.r = (a*c - b*d)
-        null.c = (a*d + b*c)
+        null.real = (a*c - b*d)
+        null.imag = (a*d + b*c)
         return null
     
     def __div__(self, other):
-        a = self.r
-        b = self.c
-        c = other.r
-        d = other.c
+        a = self.real
+        b = self.imag
+        c = other.real
+        d = other.imag
         
         null = ComplexNumber()
-        null.r = (a*c + b*d)/((c**2)+(d**2))
-        null.c = (b*c - a*d)/((c**2)+(d**2))
+        null.real = (a*c + b*d)/((c**2)+(d**2))
+        null.imag = (b*c - a*d)/((c**2)+(d**2))
         return null
     
     def __eq__(self, other):
-        a = self.r
-        b = self.c
-        c = other.r
-        d = other.c
+        a = self.real
+        b = self.imag
+        c = other.real
+        d = other.imag
         
         self_norm = np.sqrt(a**2 + b**2)
         other_norm = np.sqrt(c**2 + d**2)
@@ -144,10 +143,10 @@ class ComplexNumber(object):
         return self_norm == other_norm
         
     def __lt__(self, other):
-        a = self.r
-        b = self.c
-        c = other.r
-        d = other.c
+        a = self.real
+        b = self.imag
+        c = other.real
+        d = other.imag
         
         self_norm = np.sqrt(a**2 + b**2)
         other_norm = np.sqrt(c**2 + d**2)
@@ -155,10 +154,10 @@ class ComplexNumber(object):
         return self_norm < other_norm
     
     def __gt__(self, other):
-        a = self.r
-        b = self.c
-        c = other.r
-        d = other.c
+        a = self.real
+        b = self.imag
+        c = other.real
+        d = other.imag
         
         self_norm = np.sqrt(a**2 + b**2)
         other_norm = np.sqrt(c**2 + d**2)
@@ -167,11 +166,11 @@ class ComplexNumber(object):
     
     def conjugate(self):
         null = copy.copy(a)
-        null.c = (-1*self.c)
+        null.imag = (-1*self.imag)
         return null
     
     def norm(self):
-        norm = ((self.r)**2 + (self.c)**2)**0.5
+        norm = ((self.real)**2 + (self.imag)**2)**0.5
         return norm
     pass
 
