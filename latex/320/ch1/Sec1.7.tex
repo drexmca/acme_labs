@@ -98,19 +98,43 @@ the probability is $\frac{14,310}{175,223,510} \approx .000081667$
     & =  \sum^n _{k=1} \binom n {(n-k)} (n-k) \text{    
         By symmetry of Binomial Thm.}\\
     & =  n\sum^n _{k=1} \binom n {(n-k)} - \sum^n _{k=1} \binom n {(n-k)} k \\
-    & =  n\sum^n _{k=1} \binom n {n} - \sum^n _{k=1} \binom n {n} k \\
+    & =  n\sum^n _{k=0} \binom n {k+1} - \sum^n _{k=1} \binom n {k} k \\
     S_n & = n2^n - S_n \\
     ~2 S_n & = n2^n \\
     S_n & = n2^{n-1}
 \end{align*}
 (ii):
-%TODO Finsish this piece here
+\begin{align*}
+    S_n & = \sum^n _{k=1} \binom nk k^2 \\
+    & = \sum^n _{k=1} \frac{n!k^2}{k!(n-k)!} \\
+    & = \sum^n _{k=1} \frac{n!k}{(k-1)!(n-k)!} \\
+    & = \sum^n _{k=1} \frac{n!}{(k-1)!(n-k)!}k \\
+    & = \sum^n _{k=1} \binom {n-1}{k-1} k \\
+    & = \sum^n _{k=1} \binom {n}{k} - \binom {n-1}{k} k \\
+    & = \sum^n _{k=1} \binom {n}{k}k - \sum ^n _{k=1} \binom {n-1}{k} k \\
+    & = n2^{n-1} - \sum ^n _{k=1} \frac{(n-1)!}{k!(n-1-k)!} k \frac{n}{
+        (n-k)} \cdot \frac{(n-k)}{n} \\
+\end{align*}
+\begin{align*}
+    2S_n & =  n2^{n-1} + n^2\sum^n _{k=1} \binom {n}{k}k \\
+    2 S_n& =  n2^{n-1} +  n^2 2^{n-1} \\
+    S_n & = \frac{n2^{n-1}(n+1)}{2} \\
+    & = n(n+1)2^{n-1}
+\end{align*}
 
 \exercise{1.42}\\
-
-
-
-
+Note, we cean re-index using $r=k+j$ and $j=r-k$, in order to preserve powers.
+\begin{align*}
+    (1+x)^n(1+x)^m & = \sum^n _{k=0} \binom nk x^k \cdot 
+        \sum^m _{j=0} \binom mj x^j \\
+    (1+x)^{n+m} & = \sum_{k=0}^n \binom nk \sum_{j=0}^m \binom mj x^{j+k}
+    = \sum ^{n+m} _{r=0} \binom {m+n}{r} x^r
+    & \rightarrow \sum^{m+n}_{r=0} \sum^r_{k=0} \binom nk \binom m{r-k} x^r \\
+\end{align*}
+Because monomials are linearly independent, it is sufficent for 
+    coefficents to be equal.\\
+\begin{align*}
+    \rightarrow \sum^r_{k=0} \binom nk \binom m{r-k} = \binom{m+n}r
+\end{align*} 
 
 \end{document}
-
