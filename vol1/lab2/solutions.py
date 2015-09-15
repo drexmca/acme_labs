@@ -143,7 +143,7 @@ def laplace_plot():
 def blue_shift():
     A = np.random.randint(0,255,(100,100,3))
     tone_change = [.5, .5, 1.]
-    changed = A * tone_change
+    changed = np.round(A * tone_change)
     return A, changed
 
 def blue_shift_plot():
