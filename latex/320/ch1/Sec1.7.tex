@@ -69,6 +69,46 @@ spot to put the last $(n^{th})$ element. Thus there are $n(n-1)! = n!$
 permutations.
 
 \exercise{1.38}\\
+\begin{enumerate}
+    \item $6!$
+    \item $5!\cdot2$
+    \item $4!\cdot3!$
+    \item $2(3!)^2$ because you have two groups, with three people with 
+        three places to sit.
+\end{enumerate}
+
+\exercise{1.39}\\
+$C(4,2)^2 = 6^2$ 6 ways, for each pair. \\
+$C(13,2) = 78$ Ways to pick the different ranks of pairs\\
+$4 \cdot C(11,1) = 44$ Picking the rank of the last card, and the suit\\
+Thus, $6^2\cdot 11\cdot 4 = 123,552$
+
+\exercise{1.40}\\
+Given they chose 5 balls, and you have to pick the right 'powerball', 
+the number of ways to match 3 of the 5 are $C(5,3) = 10$, 
+and the other two have to come from the other 54, so $C(54,2) = 1,431$. 
+Thus, 14,310 total combanations win \$100. \\
+We were given that the total number of combanations was 175,223,510. Thus,
+the probability is $\frac{14,310}{175,223,510} \approx .000081667$
+
+\exercise{1.41}\\
+(i):
+\begin{align*}
+    S_n & = \sum^n _{k=1} \binom nk k \\
+    & =  \sum^n _{k=1} \binom n {(n-k)} (n-k) \text{    
+        By symmetry of Binomial Thm.}\\
+    & =  n\sum^n _{k=1} \binom n {(n-k)} - \sum^n _{k=1} \binom n {(n-k)} k \\
+    & =  n\sum^n _{k=1} \binom n {n} - \sum^n _{k=1} \binom n {n} k \\
+    S_n & = n2^n - S_n \\
+    ~2 S_n & = n2^n \\
+    S_n & = n2^{n-1}
+\end{align*}
+(ii):
+%TODO Finsish this piece here
+
+\exercise{1.42}\\
+
+
 
 
 
