@@ -24,12 +24,19 @@ def find_gcd(a,b):
     print d_list
     return r_list, d_list
 
+def Advanced_Eucledian(a,b):
+    if a%b == 0:
+        return b,0,1
+    else:
+        c, d, e = Advanced_Eucledian(b, a%b)
+        return c,e, d - e*(a//b)
 
-r,d = find_gcd(14562, 348)
-step1 =  d[-2]*d[-3]+1
-step2 = -(d[-2]+step1)
+print Advanced_Eucledian(14562, 348)
+print Advanced_Eucledian(348, 14562)
 
-print step1, step2
+
+
+
 
      
 

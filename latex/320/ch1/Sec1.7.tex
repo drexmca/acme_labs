@@ -1,0 +1,116 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{mathrsfs}  
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins} \usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+\usepackage{amssymb}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{exercise}{Exercise} % Number exercises on their own
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+
+\title{Math Sec 1.7}
+\author{Rex McArthur\\Math 320}
+
+
+\begin{document}
+\maketitle
+\exercise{1.37}\\
+Proof: We proceed by induction. For n=1, there are 1 permutations possible, 
+obviously. 1 element can only be arranged in 1 unique way.\\
+Assume for n-1 elements, there are $(n-1)!$ permutations. If you add one
+element to the set, you have n times as many permutations, one for each 
+spot to put the last $(n^{th})$ element. Thus there are $n(n-1)! = n!$ 
+permutations.
+
+\exercise{1.38}\\
+\begin{enumerate}
+    \item $6!$
+    \item $5!\cdot2$
+    \item $4!\cdot3!$
+    \item $2(3!)^2$ because you have two groups, with three people with 
+        three places to sit.
+\end{enumerate}
+
+\exercise{1.39}\\
+$C(4,2)^2 = 6^2$ 6 ways, for each pair. \\
+$C(13,2) = 78$ Ways to pick the different ranks of pairs\\
+$4 \cdot C(11,1) = 44$ Picking the rank of the last card, and the suit\\
+Thus, $6^2\cdot 11\cdot 4 = 123,552$
+
+\exercise{1.40}\\
+Given they chose 5 balls, and you have to pick the right 'powerball', 
+the number of ways to match 3 of the 5 are $C(5,3) = 10$, 
+and the other two have to come from the other 54, so $C(54,2) = 1,431$. 
+Thus, 14,310 total combanations win \$100. \\
+We were given that the total number of combanations was 175,223,510. Thus,
+the probability is $\frac{14,310}{175,223,510} \approx .000081667$
+
+\exercise{1.41}\\
+(i):
+\begin{align*}
+    S_n & = \sum^n _{k=1} \binom nk k \\
+    & =  \sum^n _{k=1} \binom n {(n-k)} (n-k) \text{    
+        By symmetry of Binomial Thm.}\\
+    & =  n\sum^n _{k=1} \binom n {(n-k)} - \sum^n _{k=1} \binom n {(n-k)} k \\
+    & =  n\sum^n _{k=1} \binom n {n} - \sum^n _{k=1} \binom n {n} k \\
+    S_n & = n2^n - S_n \\
+    ~2 S_n & = n2^n \\
+    S_n & = n2^{n-1}
+\end{align*}
+(ii):
+%TODO Finsish this piece here
+
+\exercise{1.42}\\
+
+
+
+
+
+\end{document}
+

@@ -1,0 +1,206 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{mathrsfs}  
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins} \usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+\usepackage{amssymb}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{exercise}{Exercise} % Number exercises on their own
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+
+\title{Math Sec 1.4}
+\author{Rex McArthur\\Math 344}
+
+
+\begin{document}
+\maketitle
+\exercise{1.26}\\
+Proof: Use substiution $j = k-5$\\
+\[
+    \sum^n_{k=5}(k-5)^2 = \sum^{n-5}_{j-1}j^2 = \frac{(2n+1)(n+1)n}{6}
+\]
+
+\exercise{1.27}\\
+
+Use substitution $i = k-4$, $k = i+4$\\
+\[
+\sum^n_{i=0} \sum ^{k-8}_{j=-3} (k-4) = \sum^n_{i=0}\sum ^{i-4}_{j=-3}i 
+\]
+Note that the second sum has $i-4-(-3)+1 = i$ iterations. Thus, \\
+\[
+    = \sum_{i=0}^n (i^2) = \frac{n(n+1)(n+2)}{6}
+\]
+
+\exercise{1.28}\\
+
+
+
+Using the substitution $i = k-3$ and $k = i+3$, we have 
+
+\begin{align*}
+    \sum^{n-3}_{j=-3}\sum^{n+3}_{k=j+3}k-3 & = \sum^{n-3}_{j=-3}\sum^{n}_{k=j}i \\
+    & = \sum^{n-3}_{j=-3} \Big( \sum^{n}_{i=0}i - \sum^{j-1}_{i=0}i \Big) \\
+    & = \sum^{n-3}_{j=-3} \Big( \frac{n(n+1}{2} - \frac{j(j-1)}{2} \Big) \\
+    & \text{By FTOFC} \\
+    & = \frac{1}{2} \sum^{n-3}_{j=-3} (n)(n+1) - \sum^{n-3}_{j=0} j^2 - \sum^{n-3}_{j=0} j
+        - ( (-3)^2 + (-2)^2 + (-1)^2 ) + ( -3 + -2 + -1 ) \\
+    & \text{By subtracting the finite part, below 0}\\
+    & = \frac{1}{2} \Big[ n(n+1)^2 - \frac{(n-3)(n-2)(2n-5)}{6} + \frac{(n-3)(n-2)}{2}-20\Big]
+\end{align*}
+
+
+\exercise{1.29}\\
+
+If $f(x) = k^4 $, Then $(\Delta f)(x) = (k+1)^4 - k^4$
+\begin{align*}
+    = (k^2 +2k +1)^2 - k^4 \\
+    (\Delta f)(k) = 4k^3 + 6x^2 + 4x +1
+\end{align*}
+It follows that, 
+\begin{align*}
+    &\sum_{k=1}^{b-1}(4k^3 + 6x^2+4x+1)  = \sum_{k=1}^{b-1}(f\Delta) \\
+    & = f(b) - f(a) = b^4 - a^4\\
+    & b^4 - a^4  = \sum_{k=1}^{b-1}(4k^3 + 6k^2 +4k +1) = 4\sum_{k=1}^{b-1}(k^3) + 6\sum_{k=1}^{b-1}(k^2) + 4\sum_{k=1}^{b-1}(k) + (b-a)\\
+\end{align*}
+Note, that $ (b^4-a^4) - (b-a) = b^4 - b - (a^4-a) = b(b^3 -1) - a(a^3-1)$. Thus, 
+\[
+    b(b^3-1) - a(a^3 -1) = 4\sum_{k=1}^{b-1}(k^3) + 6\sum_{k=1}^{b-1}(k^2) + 4\sum_{k=1}^{b-1}(k)
+\]
+Use $a =1,~b=n+1$
+\begin{align*}
+    (n+1)( (n+1)^3-1) &= 4\sum_{k=1}^{b-1}(k^3) + 6\sum_{k=1}^{b-1}(k^2) + 4\sum_{k=1}^{b-1}(k) \\
+    n^4 + 4n^3 + 6n^2 + 3n & = 4\sum_{k=1}^{b-1}(k^3) + (2n+1)(n+1)(n) + 2n(n+1) \\
+    & = 4\sum_{k=1}^{b-1}(k^3) + 2n^3 + 5n^2 + 3n
+\end{align*}
+Thus, 
+\[
+    4\sum_{k=1}^{b-1}(k^3) = n^4 + 2n^3 + n^2 = (n^2 + n)^2 = (n(n+1))^2
+\]
+\[
+    \sum_{k=1}^{b-1}(k^3) = \frac{1}{4}(n(n+1))^2 = \Big(\frac{n(n+1)}{2}\Big)^2
+\]
+
+\exercise{1.30}\\
+If $f(i) = \frac{-1}{i}$, 
+\begin{align*}
+    (\Delta f)(i) & = \Big(\frac{-1}{(i+1)}\Big) + \frac{1}{i} \\
+    & = \frac{-i}{i(i+1)} + \frac{i+1}{i(i+1)} \\
+    & = \frac{1}{i(i+1)}
+\end{align*}
+Thus, by the Fundamental Theorem of Finite Calculus, 
+\begin{align*}
+    \sum^n_{i=1} \frac{1}{i(i+1)} & = \sum^n_{i=1} (\Delta f) = \frac{-1}{n+1} - \frac{-1}{1} \\
+    & = 1 - \frac{1}{n+1}
+\end{align*}
+
+\exercise{1.31}\\
+Proof:\\
+
+(i)\\
+$\rightarrow \sum^n_{k=0}\sum^n_{j=k}j$
+\begin{align*}
+    \sum^n_{k=0}\sum^n_{j=k}j& = \sum^n_{k=0}\Big(\sum^{n}_{j=0}j-\sum^{k-1}_{j=0}j\Big) \\
+    & = \sum^n_{k=0}\Big(\frac{n(n+1)}{2}-\frac{(k-1)k}{2}\Big) \\
+    & = \frac{1}{2} - \sum^n_{k=0}k^2 + \sum^n_{k=0}k \\
+    & = \frac{1}{2} \Big( n(n+1)^2 - \frac{n (n+1)(2n+1)}{6} + \frac{n(n+1)}{2} \Big) \\
+    & = \frac{1}{2} \Big( n^3 + 2n^2 +n -(\frac{n^3}{3} + \frac{n^2}{2} + \frac{n}{6}) + 
+        \frac{n^2}{2} + \frac{n}{2} \Big) \\
+    & = \frac{n^3}{3} + \frac{3n^2}{2} + \frac{2n}{3}
+\end{align*}
+$\leftarrow \sum^n_{j=k}\sum^n_{k=0}j$
+\begin{align*}
+    \sum^n_{j=k}\sum^n_{k=0}j & = \sum^n_{j=0}\sum^n_{k=0}j \\
+    & \text{Because there are $j+1$ steps in the second sum, }\\
+    & = \sum^n_{j=0} j^2 + \sum^n_{j=0}j \\
+    & = \sum^n_{j=1} j^2 + \sum^n_{j=1}j \\
+    & = \frac{n(n+1)(2n+1)}{6} + \frac{n(n+1)}{2} \\
+    & = \frac{n^3}{3} + \frac{n^2}{2} + \frac{n}{6} + \frac{n^2}{2} + \frac{n}{2} \\
+    & = \frac{n^3}{3} + \frac{3n^2}{2} + \frac{2n}{3}
+\end{align*}
+Thus, they are equivalent.
+
+(ii): \\
+$\rightarrow \sum_{k=0}^n \sum_{j=0}^k j$
+\begin{align*}
+    \sum_{k=0}^n \sum_{j=0}^k j & = \sum_{k=0}^n \frac{(k+1)k}{2} \\
+    & = \frac{1}{2} \big( \sum_{k=0}^n k^2 + \sum_{k=0}^n k \big) \\
+    & = \frac{1}{2} \big( \frac{n(n+1)(2n+1)}{6} + \frac{n(n+1)}{2} \big)\\
+    & = \frac{n(n+1)(n+2)}{6}
+\end{align*}
+
+$\leftarrow \sum_{j=0}^k\sum_{k=0}^n j$
+\begin{align*}
+    \sum_{j=0}^k\sum_{k=0}^n j = \sum_{j=0}^n\sum_{k=j}^n j \\
+    & = \sum_{j=0}^n j(n-j+1) \\
+    & = \sum_{j=0}^n jn-j^2 + j \\
+    & = \frac{n^2(n+1)}{2} - \frac{(2n+1)(n+1)(n)}{6} \frac{n(n+1)}{2} \\
+    & = n(n+1)(\frac{n}{2} - \frac{(2n+1)}{6} + \frac{1}{2}) \\
+    & = n(n+1) \Big(\frac{(n+2)}{6} \frac{n+2}{6}\Big)\\
+    & = \frac{n(n+1)(n+2)}{6}
+\end{align*}
+
+\exercise{1.32}\\
+By taking the derivative of both sides, we get
+\[
+    \sum^n _{t=0} \beta^{t-1} = \frac{(\beta-1)(N+1)\beta^N - (\beta^{N+1} -1)}{(\beta -1 )^2}
+\]
+Now taking the limit as N approaches infinity, All $\beta^N$ terms will go to zero.
+\[
+    lim_{N \to \infty} \sum^N_{t=0} t\beta^{t-1} = \frac{1}{(\beta -1)^2}
+\]
+This implies that,
+\[
+    \sum^N_{t=0} (t\beta^{t-1})/\beta = \frac{1}{(\beta -1)^2}
+\]
+Which implies,
+\[
+    \sum^N_{t=0} t\beta^{t-1} = \frac{\beta}{(1 - \beta)^2}
+\]
+
+\end{document}
