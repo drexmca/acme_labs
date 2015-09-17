@@ -12,6 +12,8 @@ def EA(a,b):
     Consise recursive function that returns the gcd, and the two elements
     for the eucledian algorithm
     '''
+    a = long(a)
+    b = long(b)
     if a%b == 0:
         return b,0,1
     else:
@@ -80,10 +82,19 @@ class myRSA(object):
                  Defaults to 'None', in which case 'public_key' is used.
         """
         if key == None:
-            key = self.public_key[0]
+            key = long(self.public_key[0])
+        key = long(key)
         #print key
-        c = message**key % self.public_key[1]
-        return c
+        n = long(self.public_key[1])
+        m_int = []
+        for x in message:
+            x = rsa.string_to_int(x)
+            m_int.append(x)
+        encrypt = []
+        for i in m_int:
+            c = pow(long(i),long(key),long(n))
+            encrypt.append(c)
+        return encrypt
     
     def decrypt(self, ciphertext):
         """Decrypt 'ciphertext' with the private key and return its decryption
@@ -91,19 +102,17 @@ class myRSA(object):
         the same as the output of the encrypt() function. Remember to strip off
         the fill value used in rsa_tools.partition().
         """
-        m_prime = ciphertext**self._private_key[0] % self._private_key[1]
-        return m_prime
-
-r = myRSA()
-#r.generate_keys(1000003,608609,1234567891)
-r.generate_keys(443, 449, 457)
-#print rsa.string_size(r.n)
-m_int = rsa.string_to_int('A')
-print m_int
-#print r.public_key
-m_enc = r.encrypt(m_int)
-m_dec = r.decrypt(m_enc)
-print m_dec
+        m_dec = []
+        for i in ciphertext:
+            m_prime = long(i)**long(self._private_key[0]) % long(self._private_key[1])
+            m_dec.append(m_prime)
+        m_str = []
+        string = str()
+        for x in m_dec:
+            a = rsa.int_to_string(x)
+            string += a
+        string = string.rstrip('~')
+        return string
 
 
 
@@ -130,11 +139,22 @@ def test_myRSA(message, p, q, e):
     Returns:
         True if no exception is raised.
     """
-    # A NotImplementedError usually indicates that a class method will be
-    #   overwritten by children classes, or that the method or function is
-    #   still under construction.
-    raise NotImplementedError("Problem 2 incomplete.")
+    if type(message) != str:
+        raise TypeError("Your message must be a string")
+    if type(p)!=int or type(q) !=int or type(e) != int:
+        raise TypeError("p,q,e must be a int")
+    r = myRSA()
+    r.generate_keys(p,q,e)
+    m_split = rsa.partition(message, rsa.string_size(r.public_key[1]),'~')
+    m_enc = r.encrypt(m_split)
+    string = r.decrypt(m_enc)
+    print string
+    if string != message:
+        raise ValueError("decrypt(encrypt(message)) failed.")
+    return True
 
+test_myRSA('HELLLO', 443, 449, 457)
+#test_myRSA('A', 1000003,608609,1234567891)
 
 # Problem 3: Fermat's test for primality.
 def is_prime(n):
