@@ -66,7 +66,7 @@ class myRSA(object):
         n = p*q
         phi_n = (p-1)*(q-1) 
         gcd, d_prime, temp = EA(e,phi_n)
-        d = d_prime % phi_n
+        d = long(d_prime) % long(phi_n)
         self.public_key = (e,n)
         self._private_key = (d,n)
         pass
@@ -104,7 +104,7 @@ class myRSA(object):
         """
         m_dec = []
         for i in ciphertext:
-            m_prime = long(i)**long(self._private_key[0]) % long(self._private_key[1])
+            m_prime = pow(long(i),long(self._private_key[0]), long(self._private_key[1]))
             m_dec.append(m_prime)
         m_str = []
         string = str()
@@ -154,7 +154,7 @@ def test_myRSA(message, p, q, e):
     return True
 
 test_myRSA('HELLLO', 443, 449, 457)
-#test_myRSA('A', 1000003,608609,1234567891)
+test_myRSA('ABCDEFGHIJKLMNOPqrstuvwxy', 1000003,608609,1234567891)
 
 # Problem 3: Fermat's test for primality.
 def is_prime(n):
