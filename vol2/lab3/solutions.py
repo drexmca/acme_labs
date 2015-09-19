@@ -5,6 +5,8 @@ Sept. 17, 2015
 Math 320
 """
 import rsa_tools as rsa
+import numpy as np
+from PyCrpyto.PublicKey import RSA
 
 # Problem 1: Implement the following RSA system.
 def EA(a,b):
@@ -153,8 +155,8 @@ def test_myRSA(message, p, q, e):
         raise ValueError("decrypt(encrypt(message)) failed.")
     return True
 
-test_myRSA('HELLLO', 443, 449, 457)
-test_myRSA('ABCDEFGHIJKLMNOPqrstuvwxy', 1000003,608609,1234567891)
+#test_myRSA('HELLLO', 443, 449, 457)
+#test_myRSA('ABCDEFGHIJKLMNOPqrstuvwxy', 1000003,608609,1234567891)
 
 # Problem 3: Fermat's test for primality.
 def is_prime(n):
@@ -172,8 +174,17 @@ def is_prime(n):
         (or 0 if no witnesses were found).
     
     """
-    raise NotImplementedError("Problem 3 incomplete.")
+    A = np.random.randint(2,n-1,5)
+    i = 0
+    for a in A:
+        i += 1
+        b = long(a)**(long(n)-1)%long(n)
+        print i
+        if b !=1:
+            return i
+    return 0
 
+#a = is_prime(449)
 
 # Problem 4: Implement the following RSA system using PyCrypto.
 class PyCrypto(object):
