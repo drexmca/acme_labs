@@ -6,8 +6,7 @@ Math 320
 """
 import rsa_tools as rsa
 import numpy as np
-from PyCrpyto.PublicKey import RSA
-
+from Crypto.PublicKey import RSA
 # Problem 1: Implement the following RSA system.
 def EA(a,b):
     '''
@@ -155,8 +154,9 @@ def test_myRSA(message, p, q, e):
         raise ValueError("decrypt(encrypt(message)) failed.")
     return True
 
-#test_myRSA('HELLLO', 443, 449, 457)
-#test_myRSA('ABCDEFGHIJKLMNOPqrstuvwxy', 1000003,608609,1234567891)
+
+test_myRSA('HELLLO', 443, 449, 457)
+test_myRSA('ABCDEFGHIJKLMNOPqrstuvwxy', 1000003,608609,1234567891)
 
 # Problem 3: Fermat's test for primality.
 def is_prime(n):
@@ -179,12 +179,9 @@ def is_prime(n):
     for a in A:
         i += 1
         b = long(a)**(long(n)-1)%long(n)
-        print i
         if b !=1:
             return i
     return 0
-
-#a = is_prime(449)
 
 # Problem 4: Implement the following RSA system using PyCrypto.
 class PyCrypto(object):
@@ -216,7 +213,9 @@ class PyCrypto(object):
     """
     def __init__(self):
         """Initialize the _keypair and public_key attributes."""
-        raise NotImplementedError("Problem 4 incomplete.")
+        self._keypair = RSA.generate(2048)
+        public_key = self._keypair.publickey()
+        self.public_key = public_key.exportKey()
     
     def encrypt(self, message, key=None):
         """Encrypt 'message' with a public key and return its encryption. If
@@ -228,10 +227,14 @@ class PyCrypto(object):
                 used in the encryption. Defaults to 'None', in which case
                 '_keypair' is used to encrypt the message.
         """
-        raise NotImplementedError("Problem 4 incomplete.")
+        if key == None:
+            key = self.public_key
+        encrypt_text = self._keypair.encrypt(message, key)
+        return encrypt_text
     
     def decrypt(self, ciphertext):
         """Decrypt 'ciphertext' with '_keypair' and return the decryption."""
-        raise NotImplementedError("Problem 4 incomplete.")
+        decrypt = self._keypair.decrypt(ciphertext)
+        return decrypt
 
 # ============================== END OF FILE ============================== #
