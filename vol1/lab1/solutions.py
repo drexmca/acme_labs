@@ -67,7 +67,7 @@ def pig_latin(word):
         'ananabay'
     """
     if word[0]=='a' or 'e' or 'i' or 'o'  or 'u' or 'y':
-        pig = str(word[1:]) + 'hay'
+        pig = word + 'hay'
     else:
         pig = str(word[1:])+str(word[0])+'ay'   
     return pig 

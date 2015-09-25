@@ -61,36 +61,36 @@
 \begin{document}
 \maketitle
 \exercise{1.19}\\
-(i)
-Proof: Given an integer $a = \sum^{n-1}_{k=0} a_k10^k = a_010^0+\dots+
-    a_{n-1}10^{n-1}$, Note that\\
-        \begin{align*}
-            a &= \sum{a_k10^k}\\
-            & = a_0+\dots+a_{n-1}10^{n-1}\\
-            & = (9a_1 + 99a_2 + \dots +(10^{n-1}-1)a_{n-1}) + (a_0 + a_1 + \dots
-                + a_{n-1}\\
-            & = 3(3a_1 + 33 a_2 + \dots +  (10^{n-1} -1)/3 a_{n-1}) + 
-            (a_0+\dots+a_{n-1})\\
-            & = 3(3a_1 + 33 a_2 + \dots +  (10^{n-1} -1)/3 a_{n-1}) + 
-            \sum^{n-1}_{k=0} a_k
-        \end{align*}
-    Note that $3|a$ if and only if $3|\sum^{n-1}_{k=0} a_k$, by definition of 
-    divisibility, because it is apparent that 3 divides the first term.\\
+(i)\\
+
+\[A =
+\begin{bmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0 \\
+\end{bmatrix}
+\]
+\[ \mathscr{N} (A) = span 
+\begin{bmatrix}
+    1 \\
+    0\\
+    0
+\end{bmatrix}
+\]
+
+Thus, 
+\[
+\mathbf{x} = \begin{bmatrix}
+    1\\1\\0
+\end{bmatrix}
++
+x_1
+\begin{bmatrix}
+    1\\0\\0
+\end{bmatrix}
+\]
+
 (ii)
-Proof: Given an integer $a = \sum^{n-1}_{k=0} a_k10^k = a_010^0+\dots+
-    a_{n-1}10^{n-1}$, Note that\\
-        \begin{align*}
-            a &= \sum{a_k10^k}\\
-            & = a_0+\dots+a_{n-1}10^{n-1}\\
-            & = (9a_1 + 99a_2 + \dots +(10^{n-1}-1)a_{n-1}) + (a_0 + a_1 + \dots
-                + a_{n-1})\\
-            & = 9(1a_1 + 11 a_2 + \dots +  (10^{n-1} -1)/3 a_{n-1}) + 
-            (a_0+\dots+a_{n-1})\\
-            & = 9(1a_1 + 11 a_2 + \dots +  (10^{n-1} -1)/3 a_{n-1}) + 
-            \sum^{n-1}_{k=0} a_k
-        \end{align*}
-    Note that $9|a$ if and only if $9|\sum^{n-1}_{k=0} a_k$, by definition of 
-    divisibility, because it is apparent that 9 divides the first term.\\
 (iii)
 Proof: Given an integer $a = \sum^{n-1}_{k=0} a_k10^k = a_010^0+\dots+
     a_{n-1}10^{n-1}$, Note that\\
