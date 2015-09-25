@@ -1,0 +1,137 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{mathrsfs}  
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins} \usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{listings}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{exercise}{Exercise} % Number exercises on their own
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+
+\title{Math Sec 2.2}
+\author{Rex McArthur\\Math 320}
+
+
+\begin{document}
+\maketitle
+\exercise{2.8}\\
+\begin{lstlisting}
+import time
+start = time.time()
+A = []
+for i in xrange(10000):
+    A.append(i)
+print time.time() - start
+#Returns .0012832
+start = time.time()
+B = []
+for i in xrange(10000):
+    B.insert(0,i)
+print time.time() - start
+#Returns .02349239 
+\end{lstlisting}
+Thus, as we would expect, appending at the end is quicker, because one does not have to copy the list
+over when you hit the predetermined maximum allowed.
+\exercise{2.9}
+\begin{lstlisting}
+Given the maximum size is n,
+Class stack():
+    Intialize an empty array of length n
+    and a an element value  = 0
+def push(data):
+    if element value = n, Return error, array full
+    else: put data at the element value index of array
+    element value += 1
+def pull():
+    return the element value index element, and -1 from element value
+\end{lstlisting}
+Both of these have best case scenario of O(1), and worst case O(1)\\
+If you don't know the max length of the list, you would need to copy over the
+whole array everysingle time you reached a certain length to a larger lengthed array.
+This canges the best case of push to still O(n), and worst case is 
+O(n). On the other hand, pull will always pull at O(1).
+
+\exercise{2.9}
+\begin{lstlisting}
+Given the maximum size is n,
+Class stack():
+    Intialize an empty array of size n
+    and length = 0 attribute
+def enque(data):
+    Put data at length index
+    length += 1
+def deque():
+    Take element at the 1st element,
+    Push everythin up 1 index
+    length -= 1
+    return taken first element
+\end{lstlisting}
+Enque and has best and worse case scenario of O(1)\\
+If you don't know what the max of the list will be, you will have to add elements at the end of the list
+once you hit the max. This only affects the deque function, making the worst case scenario O(n).\\
+\exercise{2.11}\\
+You would want to use a deque, because you can pull from the front and back.
+\begin{lstlisting}
+def Palindrome_finder(word):
+    i = 0
+    while len(word)<2:
+        if word[i] != word [-i]
+            return False
+        else:
+            delete(word(end)) 
+            delete(word(begining))
+    return True
+\end{lstlisting}
+This gives it a temporal complexity of O(.5n). If you used a stack, it would make the temporal complexity O(2n), because you would have to make a copy of the stack, invert it one element at a time, then compare each element as you went along, until one didn't match, or the end was reached.
+Linked Lists would be dreadful to do this. Deque is the best option.
+
+
+\end{document}
+
