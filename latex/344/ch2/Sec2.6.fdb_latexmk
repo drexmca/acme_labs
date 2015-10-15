@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1443213791 "Sec2.6.tex" "Sec2.6.pdf" "Sec2.6" 1443213856
+["pdflatex"] 1443213791 "Sec2.6.tex" "Sec2.6.pdf" "Sec2.6" 1443475887
   "./Sec2.6.out" 1443213792 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -114,8 +114,8 @@
   "Sec2.6.out" 1443213792 0 d41d8cd98f00b204e9800998ecf8427e ""
   "Sec2.6.tex" 1443213854 11213 8a92b4fe32f9a85f2898368accd99411 ""
   (generated)
-  "Sec2.6.pdf"
-  "Sec2.6.pdfsync"
   "Sec2.6.log"
-  "Sec2.6.aux"
   "Sec2.6.out"
+  "Sec2.6.pdfsync"
+  "Sec2.6.aux"
+  "Sec2.6.pdf"

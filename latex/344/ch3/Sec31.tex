@@ -80,7 +80,93 @@
 \exercise{3.2}\\
 \begin{align*}
     \langle \mathbf{x},\mathbf{y} \rangle & = \frac{1}{2}(\langle \mathbf{x},\mathbf{y} \rangle + \langle \mathbf{y},\mathbf{x} \rangle - \langle \mathbf{y},\mathbf{x} \rangle + \langle \mathbf{x},\mathbf{y} \rangle ) \\
-    & = 
+    & = \frac{1}{2}(\langle \mathbf{x}, \mathbf{y} \rangle  + \langle \mathbf{x}, \mathbf{y} \rangle -i^2 \langle \mathbf{x}, \mathbf{y} \rangle  + i^2 \langle \mathbf{y}, \mathbf{x} \rangle ) \\
+    & = \frac{1}{2}(\frac{1}{2}(\| x+y \| ^2 - \| x-y\|^2) + \frac{1}{2}(i \langle \mathbf{x}, \mathbf{iy} \rangle - i \langle \mathbf{x}, \mathbf{iy} \rangle \\
+    & = \frac{1}{4} (\|x+y\|^2 - \|x-y \| + i\|x-iy\| - i \|x+iy\|^2)
+\end{align*}
+
+\exercise{3.3}\\
+
+\begin{align*}
+cos(\theta)& = \frac{\langle x,x^{5}\rangle }{\|x\|\|x^{5}\|} \\
+\langle x,x^{5}\rangle  &= \int^{1}_{0} x^{6} dx = \frac{1}{7}x^{7} |_{0}^{1} = \frac{1}{7} \\
+\|x\| &= \sqrt{\langle x,x\rangle } = \int^{1}_{0} x^{2} dx = \frac{1}{3}x^{3} |_{0}^{1} = \frac{1}{\sqrt{3}} \\ 
+\|x^{5}\| &= \sqrt{\langle x,x\rangle } = \int^{1}_{0} x^{10} dx = \frac{1}{11}x^{11} |_{0}^{1} = \frac{1}{\sqrt{11}} \\ 
+\theta &= cos^{-1}(\frac{\sqrt{33}}{7}) \approx .60824
+\end{align*}
+ii)
+\begin{align*}
+cos(\theta)& = \frac{\langle x^{2},x^{4}\rangle }{\|x^{2}\|\|x^{4}\|} \\
+\langle x,x^{4}\rangle  &= \int^{1}_{0} x^{5} dx = \frac{1}{7}x^{7} |_{0}^{1} = \frac{1}{7} \\
+\|x^{2}\| &= \sqrt{\langle x,x\rangle } = \int^{1}_{0} x^{4} dx = \frac{1}{5}x^{5} |_{0}^{1} = \frac{1}{\sqrt{5}} \\ 
+\|x^{4}\| &= \sqrt{\langle x,x\rangle } = \int^{1}_{0} x^{8} dx = \frac{1}{9}x^{9} |_{0}^{1} = \frac{1}{\sqrt{9}} \\ 
+\theta &= cos^{-1}(\frac{\sqrt{45}}{7}) \approx .289
+\end{align*}
+
+
+\exercise{3.4}\\
+Suppose $\|T \mathbf{x}\| = a\|\mathbf{x}\|$, Thus,
+\begin{align*}
+    \frac{\langle \mathbf{Tx}, \mathbf{Ty} \rangle  }{\|x\|\|y\|} & =
+    \frac{\frac{1}{4} (||Tx + Ty||)^2 - (||Tx-Ty||^2)}{\|Tx\|\|Ty\|} \\
+    & = \frac{\frac{1}{4} a^2 \|x+y\| ^2 - \|x-y\|^2}{a^2 \|x\|\|y\|} \\
+    & = \frac{\langle \mathbf{x}, \mathbf{y} \rangle }{ \|x\| \|y\|}
+\end{align*}
+Now suppose, $\frac{\langle \mathbf{Tx}, \mathbf{Ty} \rangle }{\|Tx\|\|Ty\|} = \frac{\langle \mathbf{x}, \mathbf{y} \rangle }{\|x\|\|y\|} $. Thus, $\langle \mathbf{Tx}, \mathbf{Ty} \rangle = \langle \mathbf{x}, \mathbf{y} \rangle  = 0 $ iff $\mathbf{x},\mathbf{y}$ are orthogonal, thus it preserves angle.
+Note that $\mathbf{y} = \text{proj}_x \mathbf{y} + \mathbf{r}$, 
+\begin{align*}
+    \frac{\langle \mathbf{Tx}, \mathbf{Ty} \rangle 
+}{\|T \mathbf{x} \| \| T \mathbf{y}\|} 
+& = \frac{\langle \mathbf{Tx}, \mathbf{T(\alpha \mathbf{x} + \mathbf{r})} \rangle }{\|Tx\|\|Ty\|} \\
+\end{align*}
+Thus, 
+\begin{align*}
+\frac{\langle \mathbf{Tx}, \mathbf{T(\alpha \mathbf{x} + \mathbf{r})} \rangle }{\|Tx\|\|Ty\|} & = \frac{\langle \mathbf{x}, \mathbf{\alpha \mathbf{x} + \mathbf{r}} \rangle }{\|x\|\|y\|}\\
+\frac{\alpha \|Tx\|^2}{\|Tx\|\|Ty\|} & = \frac{\alpha \|x\|^2}{\|x\|\|y\|} \\
+\frac{\alpha \|Tx\|}{\|Ty\|} & = \frac{\alpha \|x\|}{\|y\|} \\
+\frac{\alpha \|Tx\|}{\|x\|} & = \frac{\alpha \|Ty\|}{\|y\|} \\
+\end{align*}
+Which is equal to some constant for both, and thus, 
+\begin{equation*}
+    (\|T \mathbf{x} \| = a \|\mathbf{x}\|)
+\end{equation*}
+and,
+\begin{equation*}
+    (\|T \mathbf{y} \| = a \|\mathbf{y}\|)
+\end{equation*}
+
+\exercise{3.5}\\
+\[f = e^{x} ~~~~~~~~~ g = x-1 \] \\
+\begin{align*}
+    \text{proj}_{u}(f) &= \frac{\langle g,f\rangle }{\langle g,g\rangle } \cdot g \\
+\langle g,f\rangle  &= \langle e^{x}, x-1\rangle  = \int_{0}^{1}xe^{x} - e^{x} dx = xe^{x} - 2e^{x} |_{0}^{1} = (e-2e) + (2) = -e +2 \\ 
+\langle g,g\rangle  &= \int_{0}^{1}(x-1)^{2} = \int_{0}^{1} x^{2} - 2x + 1 dx = \frac{1}{3}x^{3} - x^{2} + x |_{0}^{1} = \frac{1}{3} \\
+\end{align*}
+Thus, we have that projection $e^x$ onto $(x-1)$ is
+\begin{align*}
+\frac{-e+2}{\frac{1}{3}} &\cdot(x-1) = (-3e+6)(x-1)
+\end{align*}
+
+\exercise{3.6}\\
+Note,  $0\leq\|x-\lambda y\|^{2}$ and let $\lambda = \frac{\langle x,y\rangle }{\langle y,y\rangle }$.
+\[\|x-\lambda y\|^{2} = \langle x-\lambda y, x-\lambda y\rangle \]
+
+Note that $x-\lambda y$ is orthogonal to $y$ and $\lambda y$, because
+\begin{equation*}
+    \langle \mathbf{x} - \frac{\langle \mathbf{x}, \mathbf{y} \rangle}{\|y\|^2} ,\frac{ -\langle \mathbf{x}, \mathbf{y} \rangle y}{\|y\|^2}  \rangle = \langle \mathbf{x} -\text{proj}_y \mathbf{x} , -\text{proj}_y \mathbf{x} \rangle
+\end{equation*}
+Which leads to y being orthogonal to both, because it is a projection onto it.
+Thus, $\langle x-\lambda y,-\lambda y\rangle  = 0$ and $\langle -\lambda y, x-\lambda y\rangle  = 0$. 
+and by Bessel's inequality we get
+ \begin{align*}
+0 \leq \|x-\lambda y\|^{2} &= \langle x-\lambda y, x-\lambda y\rangle  \\
+&= \langle x,x\rangle  - \langle \lambda y, x\rangle  \\
+&= \| x^{2} \| - \frac{\langle x,y\rangle ^{2}}{\langle y,y\rangle ^{2}} \\
+&= \| x^{2} \| - \frac{\langle x,y\rangle ^{2}}{\|y\|^{2}} \\
+0 \leq \| x^{2} \| &- \frac{\langle x,y\rangle ^{2}}{\|y\|^{2}} \\
+&\Rightarrow \frac{\langle x,y\rangle ^{2}}{\|y\|^{2}} \leq \| x^{2} \| \\
+&\Rightarrow \frac{\langle x,y\rangle }{\|y\|} \leq \| x \| \\
+&\Rightarrow \langle x,y\rangle  \leq \| x \| ~\| y \| \\
 \end{align*}
 
 \end{document}

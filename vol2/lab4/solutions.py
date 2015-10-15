@@ -1,4 +1,4 @@
-# name this file 'solutions.py'
+#name this file 'solutions.py'
 """Volume II Lab 4: Data Structures 1 (Linked Lists)
 Donald Rex McArthur
 Math 
@@ -33,6 +33,12 @@ def sort_words(filename = "English.txt"):
     Returns:
         A SortedLinkedList object containing the sorted list of words.
     """
-    raise NotImplementedError("Problem 6 incomplete.")
+    words = create_word_list(filename)
+    A = SortedLinkedList()
+    for word in words:
+        A.add(word)
+    print A
+    return A
+sort_words()
 
 # =========================== END OF File =========================== #

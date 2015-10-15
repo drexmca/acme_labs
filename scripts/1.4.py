@@ -2,10 +2,15 @@
 Sept. 9, 2015
 Rex McArthur
 Math 320
-This is a python implmentation of teh Eucledian algorithm.
+This is a python implmentation of the Eucledian algorithm.
 """
 
 def find_gcd(a,b):
+    '''
+    This just returns lists of the remainders, divisors and gcd for 
+    any two numbers. Not actually used in the final AE algorithm, but 
+    a good exercise, and shows how we got where we got.
+    '''
     r_list = []
     d_list = []
     if b > a:
@@ -25,6 +30,11 @@ def find_gcd(a,b):
     return r_list, d_list
 
 def Advanced_Eucledian(a,b):
+    '''
+    This is an incredibly consise recursive function that works perfectly.
+    Collabrative credit to Devon Morris. He got it first, and helped me
+    work it out.
+    '''
     if a%b == 0:
         return b,0,1
     else:
@@ -32,7 +42,9 @@ def Advanced_Eucledian(a,b):
         return c,e, d - e*(a//b)
 
 print Advanced_Eucledian(14562, 348)
+# returns (6, -13, 544)
 print Advanced_Eucledian(348, 14562)
+# returns (6, 544, -13)
 
 
 
