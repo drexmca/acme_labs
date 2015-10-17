@@ -1,0 +1,222 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{mathrsfs}  
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins} \usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+\usepackage{amssymb}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{exercise}{Exercise} % Number exercises on their own
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+
+\title{Sec 3.5}
+\author{Rex McArthur\\Math 344}
+
+
+\begin{document}
+\maketitle
+\exercise{3.24}\\
+We need to prove postivity, preservation of scaler multiplication, and preservation of the triangle inequality.\\
+\textbf{(i)} \\ \\
+$\int_{a}^{b}|f(t)| dt = \int_{a}^{b}|-f(t)| dt$ showing it is always positive. \\
+$\int_{a}^{b}|af(t)| dt = \int_{a}^{b}|a||f(t)| dt$ preserving scalar multiplication. \\
+$\int_{a}^{b}|f(t) \cdot g(t)| dt = \int_{a}^{b}|f(t)| + |g(t)| dt$ preserving the triangle inequality. \\ \\
+\textbf{(ii)} \\ \\ 
+$(\int_{a}^{b}|f(t)|^{2} dt))^{\frac{1}{2}} = (\int_{a}^{b}|-f(t)|^{2} dt))^{\frac{1}{2}}$ showing it is always positive. \\
+$(\int_{a}^{b}|af(t)|^{2} dt))^{\frac{1}{2}} = (\int_{a}^{b}|a|^{2}|-f(t)|^{2} dt))^{\frac{1}{2}} = |a|(\int_{a}^{b}|-f(t)|^{2} dt))^{\frac{1}{2}}$ preserving scalar multiplication. \\
+$(\int_{a}^{b}|f(t)+g(t)|^{2} dt))^{\frac{1}{2}} \leq (\int_{a}^{b}|f(t)|^{2}|g(t)|^{2} dt))^{\frac{1}{2}} \leq (\int_{a}^{b}|f(t)|^{2} dt))^{\frac{1}{2}} + (\int_{a}^{b}|g(t)|^{2} dt))^{\frac{1}{2}}$ preserving the triangle inequality. \\ \\
+\textbf{(iii)} \\ \\ 
+$sup_{x \in [a,b]} |-f(x)| = sup_{x \in [a,b]} |f(x)|$ showing it is always positive.\\
+$ sup_{x \in [a,b]} |af(x)| = |a| (sup_{x \in [a,b]} |f(x)|)$ preserving scalar multiplication.\\
+$sup_{x \in [a,b]} |f(x) + g(x)| \leq sup_{x \in [a,b]} |f(x)| + |g(x)| \leq sup_{x \in [a,b]} |f(x)|+ sup_{x \in [a,b]} |g(x)|$ preserving the triangle inequality.\\
+
+\exercise{3.25}\\
+To show that the set $L^{\infty}(X,Y)$ with the $L^{\infty}$ norm is a normed vector space. By using part iii of the previous problem, we only need to show that the set is a vector space.
+\\
+Let addition be pointwise, and multiplication also be defined pointwise. Our additive identity will be the zero function, and the multiplicitive identity is the constant function of one. These satisfy the chartheristics of $L^{\infty}(X,Y)$. The additive inverse is the function pointwise multiplied by -1.
+
+To show that this space is closed under vector addition and scalar multiplication, consider $h = \alpha f + \beta g$ where $\alpha,\beta \in \mathbb{F} \quad f,g \in L^\infty(X,Y)$. It should be clear that $h$ is in $L^\infty(X,Y)$ since $f,g$ are bounded above by two constants $M,N \in \mathbb{\mathbb{F}}$, so $h$ will be bounded above by $\alpha M + \beta N < \infty \implies h \in  L^\infty(X,Y)$.\\\\\
+
+Thus,  $L^{\infty}(X,Y)$ is a vector space follow and is therefore a normed vector space. 
+
+
+\exercise{3.26}\\
+
+We divide it into two pieces
+\[ \|x\| - \|y\| \leq \|x-y\|  \]
+And
+\[ \|y\| - \|x\| \leq \|x-y\|  \]
+By the triangle inequality, we have
+\begin{align*}
+    \|(x-y) + y\| &\leq \|x-y\| + \|y\| \\
+    \|x\| &\leq \|x-y\| + \|y\| \\
+    \|x\| - \|y\| &\leq \|x-y\|  \\
+\end{align*}
+For the second, by the triangle inequality
+\begin{align*}
+    \|(y-x) + x\| &\leq \|y-x\| + \|x\| \\
+    \|y\| &\leq \|y-x\| + \|x\| \\
+    \|y\| - \|x\|  &\leq \|y-x\|\\
+\end{align*}
+But we should also not that:
+\[ \|y-x\| = \|(-1)(x-y)\| = |-1|\cdot \|x-y\| = \|x-y\|  \]
+Thus showing that:
+\[ \|y\| - \|x\|  \leq \|x-y\| \]
+And thus
+\[ | \|x\| - \|y\|| \leq \|x-y\|  \]
+
+\exercise{3.27}\\
+First we want to show that $a\equiv a$:\\
+If we define $0<m<1$ and $1<M$ then surely $m\|x\|_a \leq \|x\|_a \leq M \|x\| _a$.\\
+\\ 
+Next we want to prove that if $a \equiv b$ then $ b \equiv a$:\\
+Since we already know that $a\equiv b$ then $\exists m_1,M_1$ such that $m_1\|x\|_a \leq \|x\|_b \leq M_1\|x\|_a$.
+If we let $m_2 = \frac{1}{m_1}$ and $ M_2 = \frac{1}{M_1}$ then $m_2\|x\|_b \leq \|x\|_a \leq M_2\|x\|_b$. Proving that $b\equiv a$.\\
+\\
+Finally we want to show transitivity:\\
+Since we know that $a\equiv b$ and $b\equiv c$ then $\exists m_1,m_2,M_1,M_2$ such that \\
+\[m_1\|x\|_a \leq \|x\|_b \leq M_1 \|x\|_a\]
+And
+\[m_2\|x\|_b \leq \|x\|_c \leq M_2 \|x\|_b \] 
+If we define $M_3 = M_1 M_2$ and $m_3 = m_1 m_2$ then:\\
+\[m_3 \|x \|_a = m_1m_2\|x\|_a \leq m_2 \|x\|_b\]
+And 
+\[M_2 \|x\|_b \leq M_1M_2 \|x\|_a = M_3 \|x\|_a\]
+Showing that 
+\[ m_3 \|x \|_a \leq \|x\|_c \leq M_3 \|x\|_a \]
+And consequentially $a\equiv c$, showing transitivity.\\
+\\
+Thus we have proved that topological equivalence is an equivalence relation.\\
+\\
+(i)\\
+We want to show $\|\mathbf{x}\|_2 \leq \|\mathbf{x}\|_1 \leq \sqrt{n} \|\mathbf{x}\|_2$\\
+$\|\mathbf{x}\|_2 = (\|\mathbf{x}\|^2 + \dots + \|\mathbf{x}\|^2)^{\frac{1}{2}} $ will hold by Jensen's inequality, which is all convex functions sums squared are less than sums of the elements.
+
+For the second part
+\begin{align*}
+    (\|\mathbf{x_1} + \dots + \mathbf{x_n} \|) & = \sum_{i=1}^n \mathbf{x_i} \cdot 1 \\
+    & \leq \langle \mathbf{x}, (1,1,\dots,1) \rangle  \\
+    & = (\sum_{i=1}^n \mathbf{x_i}^2)^{\frac{1}{2}} (\sum_{i=1}^n \mathbf{1}^2)^{\frac{1}{2}} \quad \text{ and by Cauchey-Shwartz} \\
+    & = \sqrt{n} \|\mathbf{x}\|_2
+\end{align*}
+
+(ii)
+We want to show $\|\mathbf{x}\|_{\infty} \leq \|\mathbf{x}\|_2 \leq \sqrt{n} \|\mathbf{x}\|_{\infty}$
+sup$\{\|x\|\}^2 \leq \sum \|x_i\|^2 $ is obviously true, because the sup element is an element of the vector, and all others are non-nonegative, or, in the infinite case, there
+are an infinite number of elements with an epsilon of the sup.
+
+For the second part, suppose sup{$\|\mathbf{x}\|$} = $x_i$. Thus,
+\begin{align*}
+    (\mathbf{x_i}^2 + \dots + \mathbf{x}_n ^2)^{\frac{1}{2}} & \leq (\mathbf{x_i}^2+ \dots + \mathbf{x_i}^2)^{\frac{1}{2}}\\
+    & = (n x_i^2)^{\frac{1}{2}}\\
+    & = \sqrt{n} (x_i) \\
+    & = \sqrt{n} \|x\|_{\infty}
+\end{align*}
+\begin{align*}
+    (\|\mathbf{x_1} + \dots + \mathbf{x_n} \|) & = \sum_{i=1}^n \mathbf{x_i} \cdot 1 \\
+    & \leq \langle \mathbf{x}, (1,1,\dots,1) \rangle  \\
+    & = (\sum_{i=1}^n \mathbf{x_i}^2)^{\frac{1}{2}} (\sum_{i=1}^n \mathbf{1}^2)^{\frac{1}{2}} \quad \text{ and by Cauchey-Shwartz} \\
+    & = \sqrt{n} \|\mathbf{x}\|_2
+\end{align*}
+
+\exercise{3.28}\\
+Note that 
+\begin{align*}
+        ||Ax||_1 &= \sum^{m}_{i=1} | \sum^{n}_{j=1} a_{ij} x_j| \\
+            &\leq \sum^{m}_{i=1} \sum^{n}_{j=1} |a_{ij} x_j| \\
+                &= \sum^{m}_{i=1}|a_{ij}| \sum^{n}_{j=1}  |x_j| \\
+                    &= A_j \sum^{n}_{j=1}  |x_j| \\
+                \end{align*}
+                where $A_j = \sum^{m}_{i=1} |a_{ij}$. Now, if $J = \text{argmax}_j ~ A_j$, i.e. $A_J$ is a max among all $A_j$'s, then 
+                \[||Ax||_1 \leq A_J \sum^{n}_{j=1} |x_j| = A_J ||x||_1\]
+                If we let $x_i = 0$ for $i \neq J$, and $x_J =  \pm 1$, then we will have that $||A||_1 = A_J$ which is the desired result.
+
+\exercise{3.29}\\
+(i)\\
+To show 
+$\frac{1}{\sqrt{n}}\|A\|_2 \leq \|A\|_1 \leq \sqrt{n} \|A\|_2$: \\
+\begin{align*}
+    \frac{1}{\sqrt{n}}\|A\|_2 & = \frac{1}{\sqrt{n}} \text{sup}_{x \neq 0} \frac{\|A \mathbf{x}\|_2 }{\|\mathbf{x}\|_2} \\
+    & \leq  \text{sup}_{x \neq 0} \frac{\|A \mathbf{x}\|_1 }{\|\mathbf{x}\|_1} \quad \text{By Exercise 27}\\
+    & = \|A\|_1
+\end{align*}
+To show the other part of the inequality, 
+\begin{align*}
+    \|A\|_1 &= \text{sup}_{x \neq 0} \frac{\|A \mathbf{x}\|_1 }{\|\mathbf{x}\|_1} \\
+    & \leq \text{sup}_{x \neq 0} \frac{\sqrt{n} \|A \mathbf{x}\|_2 }{\|\mathbf{x}\|_2}  = \sqrt{n} \|A\|_2
+\end{align*}
+(ii)\\
+To show $\frac{1}{\sqrt{n}} \|A\|_{\infty} \leq \|A\|_2 \leq \sqrt{n} \|A\|_{\infty}$:\\
+\begin{align*}
+    \frac{1}{\sqrt{n}}\|A\|_{\infty} & = \frac{1}{\sqrt{n}} \text{sup}_{x \neq 0} \frac{\|A \mathbf{x}\|_{\infty} }{\|\mathbf{x}\|_{\infty}} \\
+    & \leq  \text{sup}_{x \neq 0} \frac{\|A \mathbf{x}\|_2 }{\|\mathbf{x}\|_2} \quad \text{By Exercise 27}\\
+    & = \|A\|_2
+\end{align*}
+To show the other part of the inequality, 
+\begin{align*}
+    \|A\|_2 &= \text{sup}_{x \neq 0} \frac{\|A \mathbf{x}\|_2 }{\|\mathbf{x}\|_2} \\
+    & \leq \text{sup}_{x \neq 0} \frac{\sqrt{n} \|A \mathbf{x}\|_{\infty} }{\|\mathbf{x}\|_{\infty}}\\
+    & = \sqrt{n} \|A\|_{\infty}
+\end{align*}
+
+
+\exercise{3.30}\\
+Let $S,A,B \in M_n(\mathbb{F})$, where S is invertible, and $\|A\|_s = \|SAS^{-1}\|$. It is sufficent to show, by Def 3.5.15 that $\|\cdot\|_s$ satisfies the submultiplicitive property.
+\begin{align*}
+    \|AB\|_s & = \|SABS^{-1}\| = \|SASS^{-1}BS^{-1}\| \\
+    & = sup_{x \neq 0} \frac{\|SAS^{-1}SBS^{-1}\mathbf{x}\|}{\|\mathbf{x}\|} \\
+    & \leq sup_{x \neq 0} \frac{\|SAS^{-1}\mathbf{x}\|}{\|\mathbf{x}\|} \cdot sup_{x \neq 0} \frac{\|SBS^{-1}\mathbf{x}\|}{\|\mathbf{x}\|} \\
+    & = \|SAS^{-1}\| \cdot \|SBS^{-1}\|\\
+    & = \|A\|_S \|B\|_S
+\end{align*}
+Thus, $\|AB\|_S \leq \|A\|_S\|B\|_S$ and $\|\cdot\|_S$ is a matrix norm.
+
+
+
+\end{document}
+

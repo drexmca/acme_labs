@@ -1,0 +1,104 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+
+
+\title{Math 344\\ Sec. 2.6}
+\author{Rex McArthur}
+\maketitle
+
+\subsection*{2.34 (i)}
+Given these two elements $e_j = {e_{j,1}, e_{j,2}, \cdots, e_{j,n}} \quad e_i = {e_{i,1}, e_{i,2}, \cdots, e_{i,n}}$ of the standard basis for $\mathbb{R} ^n$, which are both $n \times 1$, we have that this operation $e_ie_j^T$ will yield an $n \times n$ matrix $E$, where $E_{1,1} = e_{j,1}e_{i,1}, E_{1,2} = e_{j,2}e_{i,1}, \cdots, E_{m,k} = e_{j,k}e_{i,m}$. Now, since the only nonzero entry of $e_j$ is 1 at entry $j$ and the only nonzero entry of $e_i$ is 1 at entry $i$, it follows that every entry will be either the product of zero and zero or zero and 1, which are both zero, except for one, in which both $e_{j,j} = 1 \quad e_{i,i} = 1 \implies E_{i,j} = 1$.
+
+\subsection*{2.35}
+Suppose that $A$ doesn't fulfill the conditions of RREF. This entails that anywhere from one to all of the following conditions do not apply
+\\$i$. The leading coefficient of each row is always strictly to the right of the leading coefficient of the row above it.
+\\$ii$. All nonzero rows are above any zero rows.
+\\$iii$. The leading coefficient of every row is equal to one.
+\\$iv$. The leading coefficient of every row is the only nonzero entry in its column. 
+Now, \\$i$ and $ii$ can be corrected by left-multiplying $A$ by a Type I elementary matrix. \\$iii$ can be corrected by multiplying a leading coefficient not equal to one by an $\alpha$, namely its inverse, by left-multiplying $A$ by a Type II elementary matrix. And \\$iv$ can be corrected by left-multiplying $A$ by a Type III elementary matrix in order to turn every other entry of a column to a zero excepting the column's leading coefficient.
+\\At this point, we have left-multiplied $A$ by an arbitrary number of elementary matrices to attain a new RREF matrix \[B = E_kE_{k-1}\cdots E_1A\]which according to the definition of row equivalence, is row equivalent to $A$. 
+
+
+
+
+
+\subsection*{2.36}
+We know by Proposition 2.6.2 that all elementary matrices are invertible. Note that for a matrix $A$ that is row equivalent to a matrix $B$, by the definition of row equivalence we have the following:
+\[A  = E_1E_2\dots E_kB \implies  B = E_k^{-1}E_{k-1}^{-1}\dots E_1^{-1}A \]
+where $E_i \quad i = 0,1,\dots,k$ is a sequence of elementary matrices.\\
+It follows that the inverse of each elementary matrix simply undoes the operation performed on $A$ in order to yield $B$ and vice-versa. Therefore, if $E$ is an elementary matrix, then $E^{-1}$ is an elementary matrix as well.
+Now we need to show, for row equivalence:
+\\\\Reflexivity:\\\\
+\[A = IA\]
+where $I$ is the identity matrix (an elementary matrix) and therefore row equivalent to itself, implying reflexivity.
+\\\\Symmetry:\\\\
+Suppose a matrix $A$ is row equivalent to a matrix $B$, then since elementary matrices are invertible, we have that
+\[A  = E_1E_2\dots E_kB \]
+\[\implies B = E_k^{-1}E_{k-1}^{-1}\dots E_1^{-1}A \]
+where $E_i \quad i = 0,1,\dots,k$ is a sequence of elementary matrices, implying that $B$ is row equivalent to $A$, implying symmetry.
+\\\\Transitivity:\\\\
+Suppose a matrix $A$ is row-equivalent to a matrix $B$, and $B$ is row equivalent to a matrix $C$
+\[A  = E_1E_2\dots E_nB \]
+\[B  = E'_1E'_2\dots E'_mC \]
+where $E_i \quad i = 0,1,\dots,n \quad E'_j \quad j = 0,1,\dots,m$ are two sequences of elementary matrices.
+Then we have 
+\[A = E_1E_2\dots E_nE'_1E'_2\dots E'_mC\]
+Which implies that $A$ is row equivalent to $C$, implying transitivity.
+\end{document}

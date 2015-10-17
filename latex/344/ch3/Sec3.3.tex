@@ -1,0 +1,96 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{mathrsfs}  
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins} \usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+\usepackage{amssymb}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{exercise}{Exercise} % Number exercises on their own
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+
+\title{Math Sec 3.3}
+\author{Rex McArthur\\Math 344}
+
+
+\begin{document}
+\maketitle
+\exercise{3.12}\\
+The Gram Schmidt would yield zero vectors, because they are linearly dependent, and are just linear combinations of one another.
+
+\exercise{3.13}\\
+Let $x_1 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$, and $x_2 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$\\
+Thus, the normalized $x_1$ is $v_1 = \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} 
+\end{bmatrix}$ Now applying the Gram-Schmidt, we find that \\
+\begin{align}
+    \mathbf{p}_1 = \text{proj}_{v_1}(x_2) = \langle \mathbf{v_1}, \mathbf{x_2} \rangle \mathbf{v_1} =  \begin{bmatrix} \frac{1}{2} \\ \frac{1}{2} \end{bmatrix}
+\end{align}
+Thus, 
+\[
+q_2 = \frac{\mathbf{x_2} - \mathbf{p_1}}{\|\mathbf{x_2} - \mathbf{p_1}\|} = \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{-1}{\sqrt{2}} \end{bmatrix}
+\]
+The set of orothonomral vectors are $\big\{ \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}\end{bmatrix}, \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{-1}{\sqrt{2}} \end{bmatrix} \big\}$
+
+\exercise{3.14}\\
+consider the set $\{1,x,x^2,x^3\}$. Using the Chebyshev inner product, we have that \\
+$u_1 = \frac{1}{\sqrt{\pi}}$. Note, $1, x$ are orthoganal to eachoter, because their inner product is zero, thus we can just normalize $x$ to find\\
+$u_2 = \frac{x}{\sqrt{\pi/2}}$
+By applying the Gram-Shmidt process on $u_2$ and $x^2$ we find that \\
+$v_3 = x^2 - \frac{1}{2}$, and we can normalize that to get
+$u_3 = \frac{x^2-\frac{1}{2}}{\sqrt{\frac{\pi}{8}}}$
+By applying the Gram-Shmidt process on $u_3$ and $x^3$ we find that,
+$v_4 = x^3 - \frac{3}{4}x$, and by normalizing we obtain\\
+$u_4 = \frac{x^3 - \frac{3}{4}x}{\sqrt{\frac{7\pi}{8}}}$.\\
+Thus, the set of orthonormal basis vectors for this set is \\
+$( \frac{1}{\sqrt{\pi}},
+\frac{x}{\sqrt{\pi/2}},
+\frac{x^2-\frac{1}{2}}{\sqrt{\pi/8}},
+\frac{x^3 - \frac{3}{4}x}{\sqrt{\frac{7\pi}{8}}} )$
+
+\end{document}
+

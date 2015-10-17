@@ -24,7 +24,7 @@ class Node(object):
         return self.data > self.data
 
     def __eq__(self, other):
-        if self.data is not None and other.data is not None:
+        if self is not None and other is not None:
             return self.data == other.data
         else: 
             return False
@@ -90,16 +90,15 @@ class LinkedList(object):
             >>> str(my_list) == str([1,2,3])
             True
         """
-        A = '['
         current_node = self.head
-        while current_node is not None:
-            if current_node.next is not None:
-                A += str(current_node) + ', '
-            else:
-                A += str(current_node)
+        if current_node is None:
+            return str([])
+        datalist = []
+        datalist.append(current_node.data)
+        while current_node.next is not None:
             current_node = current_node.next
-        A += ']'
-        return A
+            datalist.append(current_node.data)
+        return str(datalist)
 
     # Problem 3: Finish implementing LinkedList.remove() so that if the node
     #   is not found, an exception is raised.
@@ -119,17 +118,18 @@ class LinkedList(object):
             >>> print(my_list)
             [1, 3]
         """
+        if self.head is None:
+            raise ValueError('{} is not in the list'.format(data))
         if self.head.data == data:
             self.head = self.head.next
         else:
             current_node = self.head
             while current_node.next.data != data:
+                if current_node.next.next is None:
+                    raise ValueError('{} is not in the list'.format(data))
                 current_node = current_node.next
-                if current_node.next is None:
-                    raise ValueError(str(data) + " is not in the list")
             new_next_node = current_node.next.next
             current_node.next = new_next_node
-
 
     # Problem 4: Implement LinkedList.insert().
     def insert(self, data, place):
@@ -147,29 +147,28 @@ class LinkedList(object):
             >>> my_list.insert(2,4)
             4 is not in the list.
         """
-        if self.head.data == data:
-            newnode = LinkedListNode(place)
-            newnode.next = self.head.next
-            self.head.next = newnode
+        new_node = LinkedListNode(data)
+        if self.head is None:
+            raise ValueError('{} is not in the list'.format(place))
+        if self.head.data == place:
+            new_node.next = self.head    
+            self.head = new_node
         else:
-            newnode = LinkedListNode(place)
             current_node = self.head
-            while current_node.data != data:
+            while current_node.next.data != place:
+                if current_node.next.next is None:
+                    raise ValueError('{} is not in the list'.format(place))
                 current_node = current_node.next
-                if current_node is None:
-                    raise ValueError(str(data) + " is not in the list")
-            newnode.next = current_node.next
-            current_node.next = newnode
-
+            new_node.next = current_node.next
+            current_node.next = new_node
+        
 A = LinkedList()
 A.add(5)
 A.add(8)
 A.add(4)
 print A
-A.insert(5,1)
+A.insert(1,8)
 print A
-
-
 
 class DoublyLinkedListNode(LinkedListNode):
     """A Node class for doubly-linked lists. Inherits from the 'Node' class.
@@ -195,45 +194,72 @@ class DoublyLinkedList(LinkedList):
         if self.head is None:
             self.head = new_node
             self.tail = new_node
-        else: 
-            new_node.prev = self.tail
-            self.tail.next = new_node
-            self.tail = self.tail.next
-
-    def remove(self, data):
-        if self.head.data == data:
-            self.head.next.prev = None
-            self.head = self.head.next
-        else: 
+        else:
             current_node = self.head
-            while current_node.next != data:
-                if current_node.next.next is None:
-                    raise ValueError(str(data) + 'is not in the list')
-                else:
-                    current_node = current_node.next
-                if current_node.next == self.tail:
-                    self.tail = self.tail.prev
-                    self.tail.next = None 
-                else:
-                    current_node.next.next.prev = current_node
-                    current_node.next = current_node.next.next
+            while current_node.next is not None:
+                current_node.next.prev = current_node
                 current_node = current_node.next
+            current_node.next = new_node
+            current_node.next.prev = current_node
+            self.tail = current_node.next
+            
+    def remove(self, data):
+        if self.head is None:
+            raise ValueError('{} is not in the list'.format(data))
+        if self.head.data == data:
+            self.head = self.head.next
+        else:
+            current_node = self.head
+            while current_node.next.data != data:
+                if current_node.next.next is None:
+                    raise ValueError('{} is not in the list'.format(data))
+                current_node = current_node.next
+            if current_node.next == self.tail:
+                self.tail = current_node
+                current_node.next = None
+            else:
+                new_next_node = current_node.next.next
+                current_node.next = new_next_node
+                
+
+    def insert(self, place, data):
+        new_node = DoublyLinkedListNode(data)
+        if self.head is None:
+            raise ValueError('{} is not in the list'.format(place))
+        if self.head.data == place:
+            new_node.next = self.head    
+            new_node.next.prev = new_node
+            self.head = new_node
+        else:
+            current_node = self.head
+            while current_node.next.data != place:
+                if current_node.next.next is None:
+                    raise ValueError('{} is not in the list'.format(place))
+                current_node = current_node.next
+            new_node.next = current_node.next
+            new_node.next.prev = new_node
+            new_node.prev = current_node
+            current_node.next = new_node
 
 B = DoublyLinkedList()
 B.add(5)
 B.add(8)
 B.add(4)
+B.add(6)
+B.add(5)
+B.add(1)
+B.add(2)
+B.add(9)
+B.insert(1,5)
 print B
-B.remove(4)
-print B
-            
 
 # Problem 6: Implement this class. Use an instance of your object to implement
 # the sort_words() function in solutions.py.
 class SortedLinkedList(DoublyLinkedList):
     """Sorted doubly-linked list data structure class."""
+    def insert(self, *args):
+        raise ValueError("insert() has been disabled for this class.")
 
-    # Overload add() and insert().
     def add(self, data):
         """Create a new Node containing 'data' and insert it at the
         appropriate location to preserve list sorting.
@@ -247,6 +273,27 @@ class SortedLinkedList(DoublyLinkedList):
             >>> print(my_list)
             [2, 3, 4, 5, 6]
         """
-        raise NotImplementedError("Problem 6 incomplete")
+        new_node = DoublyLinkedListNode(data)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        elif new_node.data < self.head.data:
+            new_node.next = self.head
+            new_node.next.prev = new_node 
+            self.head = new_node
+        elif new_node.data > self.tail.data:
+            new_node.prev = self.tail
+            new_node.prev.next = new_node
+            self.tail = new_node
+        else:
+            current_node = self.head 
+            while current_node.next.data < new_node.data:
+                current_node = current_node.next
+            new_node.next = current_node.next
+            new_node.next.prev = new_node
+            current_node.next = new_node 
+            current_node.next.prev = current_node
 
+
+C = SortedLinkedList()
 # =============================== END OF FILE =============================== #

@@ -22,6 +22,7 @@ def prob1(l):
     minimum, maximum, and average of the contents of 'l'.
     """
     data = np.zeros(3)
+
     data[0] = min(l)
     data[1] = max(l)
     data[2] = float(sum(l))/len(l)

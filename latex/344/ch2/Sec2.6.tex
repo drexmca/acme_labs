@@ -1,0 +1,441 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{mathrsfs}  
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins} \usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+\usepackage{amssymb}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{exercise}{Exercise} % Number exercises on their own
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+\newenvironment{amatrix}[1]{%
+\left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+    \end{array}\right)
+    }
+
+
+\title{Math Sec 2.6}
+\author{Rex McArthur\\Math 344}
+
+
+\begin{document}
+\maketitle
+\exercise{2.32}\\
+Note,
+\[
+E1 = 
+\begin{bmatrix}
+     1 & 0 & 0 \\
+    -2 & 1 & 0 \\
+     0 & 0 & 1 \\
+\end{bmatrix} \quad
+E2 = 
+\begin{bmatrix}
+     1 & 0 & 0 \\
+     0 & 1 & 0 \\
+    -3.5 & 0 & 1 \\
+\end{bmatrix} \quad
+E3 = 
+\begin{bmatrix}
+     1 & 0 & 0 \\
+     0 & 1 & 0 \\
+     0 & -2 & 1 \\
+\end{bmatrix} \\
+\]
+\[ U = E_3E_2E_1A =
+\begin{bmatrix}
+     1 & 0 & 0 \\
+     -2 & 1 & 0 \\
+     0.5 & -2 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+     2 & 4 & 6 \\
+     4 & 5 & 6 \\
+     7 & 8 & 0 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+     2 & 4 & 6 \\
+     0 & -3 & 6 \\
+     0 & 0 & -9 \\
+\end{bmatrix}
+\]
+By multiplying, we find
+\[
+A=(E_3E_2E_1)^{-1}U = 
+\begin{bmatrix}
+     1 & 0 & 0 \\
+     2 & -1 & 0 \\
+     3.5 & 2 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+     2 & 4 & 6 \\
+     0 & -3 & 6 \\
+     0 & 0 & -9 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+     2 & 4 & 6 \\
+     4 & 5 & 6 \\
+     7 & 8 & 0 \\
+\end{bmatrix}
+\]
+\exercise{2.33}\\
+(i)\\
+
+\[A =
+\begin{bmatrix}
+    0 & 0 & 1 \\
+    0 & 1 & 0 \\
+    0 & 0 & 0 \\
+\end{bmatrix}\] 
+
+\[U =
+\begin{amatrix}{3}
+    0 & 1 & 0 & 1\\
+    0 & 0 & 1 & 1\\
+    0 & 0 & 0 & 0\\
+\end{amatrix}
+\]
+\[ \mathscr{N} (A) = span 
+\begin{bmatrix}
+    1 \\
+    0\\
+    0
+\end{bmatrix}
+\]
+
+Thus, 
+\[
+\mathbf{x} = \begin{bmatrix}
+    0\\1\\1
+\end{bmatrix}
++
+x_1
+\begin{bmatrix}
+    1\\0\\0
+\end{bmatrix}
+\]
+
+(ii)
+\[A =
+\begin{amatrix}{3}
+    0 & 0 & 1 & 1\\
+    0 & 1 & 0 & 1\\
+    1 & 0 & 1 & 1\\
+\end{amatrix}
+\]
+
+Null space is obviously empty, and we have
+\[
+\mathbf{x} = \begin{bmatrix}
+    -1\\1\\1
+\end{bmatrix}
+\]
+(iii)
+
+\[A =
+\begin{amatrix}{3}
+    1 & 2 & 1 & 1\\
+    4 & 5 & 4 & 1\\
+    7 & 7 & 7 & 0\\
+\end{amatrix}
+\]
+\[U =
+\begin{amatrix}{3}
+    1 & 0 & 1 & -1\\
+    0 & 1 & 0 & 1\\
+    0 & 0 & 0 & 0\\
+\end{amatrix}
+\]
+\[ \mathscr{N} (A) = span 
+\begin{bmatrix}
+    -1 \\
+    0\\
+    1
+\end{bmatrix}
+\]
+
+Thus,
+\[
+\mathbf{x} = \begin{bmatrix}
+    -1\\1\\0
+\end{bmatrix}
++
+x_3
+\begin{bmatrix}
+    -1\\0\\1
+\end{bmatrix}
+\]
+
+(iv)
+\[A =
+\begin{amatrix}{3}
+    1 & 2 & 3 & 1\\
+    1 & 2 & 3 & 1\\
+    0 & 0 & 0 & 0\\
+\end{amatrix}
+\]
+\[U =
+\begin{amatrix}{3}
+    1 & 2 & 3 & 1\\
+    0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0\\
+\end{amatrix}
+\]
+\[ \mathscr{N} (A) = x_2
+\begin{bmatrix}
+    -2 \\
+    1\\
+    0
+\end{bmatrix}
++x_3
+\begin{bmatrix}
+    -3 \\
+    0\\
+    1
+\end{bmatrix}
+\]
+
+Thus,
+\[
+\mathbf{x} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} + x_2
+\begin{bmatrix}
+    -2 \\
+    1\\
+    0
+\end{bmatrix}
++x_3
+\begin{bmatrix}
+    -3 \\
+    0\\
+    1
+\end{bmatrix}
+\]
+
+(v)
+
+\[A =
+\begin{amatrix}{3}
+    1 & 2 & 3 & 1\\
+    4 & 25 & 6 & 1\\
+    7 & 8 & 9 & 0\\
+\end{amatrix}
+\]
+\[U =
+\begin{amatrix}{3}
+    1 & 0 & 0 & -.765\\
+    0 & 1 & 0 & .025\\
+    0 & 0 & 1 & .5708333\\
+\end{amatrix}
+\]
+Null space empty and solution is
+\[\mathbf{x} =
+\begin{bmatrix}
+    -.7625\\
+    .025\\
+    .57083
+\end{bmatrix}\]
+
+\exercise{2.34}
+\textbf{(i)} \\
+Given that \\\\
+$\mathbf{e_j} = \begin{bmatrix} e_{j1} \\ e_{j2} \\ \vdots \\ e_{jn}\end{bmatrix}
+\mathbf{e_i} = \begin{bmatrix} e_{i1} \\ e_{i2} \\ \vdots \\ e_{in}\end{bmatrix}$\\
+are elements of the standard basis, we know that the
+product $\textbf{e}_i\textbf{e}_j^T$ will yield an nxn matrix, $E$, where $E_{1,1} = \mathbf{e_{j1}}\mathbf{e_{i1}}$, 
+$E_{1,2} = \mathbf{e_{j2}}\mathbf{e_{i1}}$, and $E_{m,k} = \mathbf{e_{jk}}\mathbf{e_{im}}$. Note every element of $\mathbf{e}$ is 
+zero, except for $\mathbf{e_{jj}}$, and $\mathbf{e_{ii}}$, where they equal 1. Thus, the only element of $E$ That is not zero, is
+$E_{ij} = 1$.
+\\
+\\
+\\
+\textbf{(ii)} \\
+\begin{align*}
+    (I-a\textbf{u}\textbf{v}^T)^{-1} &= \left( I - \frac{a\textbf{u}\textbf{v}^T}{a\textbf{v}^T\textbf{u}-1} \right)\\
+    (I-a\textbf{u}\textbf{v}^T)^{-1}(I-a\textbf{u}\textbf{v}^T) &= \left( I - \frac{a\textbf{u}\textbf{v}^T}{a\textbf{v}^T\textbf{u}-1} \right)(I-a\textbf{u}\textbf{v}^T) \\
+    I &= II  - a\textbf{u}\textbf{v}^T - I\frac{a\textbf{u}\textbf{v}^T}{a\textbf{v}^T\textbf{u}-1} + \frac{a\textbf{u}\textbf{v}^T}{a\textbf{v}^T\textbf{u}-1}(a\textbf{u}\textbf{v}^T) \\
+    I &= I  - a\textbf{u}\textbf{v}^T - \frac{a\textbf{u}\textbf{v}^T}{a\textbf{v}^T\textbf{u}-1} + \frac{a\textbf{u}\textbf{v}^Ta\textbf{u}\textbf{v}^T}{a\textbf{v}^T\textbf{u}-1} \\
+    0 &= \frac{- a\textbf{u}\textbf{v}^T(a\textbf{v}^T\textbf{u}-1) - a\textbf{u}\textbf{v}^T + a\textbf{u}\textbf{v}^Ta\textbf{u}\textbf{v}^T}{a\textbf{v}^T\textbf{u}-1} \\
+    0 &= \frac{ a\textbf{u}\textbf{v}^T-a\textbf{u}\textbf{v}^Ta\textbf{v}^T\textbf{u} - a\textbf{u}\textbf{v}^T + a\textbf{u}\textbf{v}^Ta\textbf{u}\textbf{v}^T}{a\textbf{v}^T\textbf{u}-1} \\
+    0 &= \frac{  a\textbf{u}\textbf{v}^Ta\textbf{u}\textbf{v}^T-a\textbf{u}\textbf{v}^Ta\textbf{v}^T\textbf{u}}{a\textbf{v}^T\textbf{u}-1} \\
+    0 &= \frac{  a^2(\textbf{u}\textbf{v}^T\textbf{u}\textbf{v}^T-\textbf{u}\textbf{v}^T\textbf{v}^T\textbf{u})}{a\textbf{v}^T\textbf{u}-1} \\
+    0 &= \frac{  a^2(\textbf{v}^T\textbf{u})(\textbf{u}\textbf{v}^T-\textbf{u}\textbf{v}^T)}{a\textbf{v}^T\textbf{u}-1} \\
+    0 &= \frac{  a^2(\textbf{v}^T\textbf{u})(0)}{a\textbf{v}^T\textbf{u}-1} \\
+    0 &= \frac{0}{a\textbf{v}^T\textbf{u}-1} \\
+\end{align*}
+
+\exercise{2.35}\\
+Suppose A is a matrix not in RREF. Then one of the following is not true:\\
+\begin{itemize}
+    \item It is in REF\\
+    \item Leading Coefficent of every row is equal to one
+    \item Leading Coefficent of each row is only non-zero entry in the column
+\end{itemize}
+Suppose (i) is not true, we can use elementary matrix III to get zeros in each column as needed.
+If there are any zero rows, use matrix I to switch the rows accordingly. Thus A can be made sure to
+be in REF.\\
+Suppose (ii) is not true, to get leading coefficents of every row equal to 1, use matrix II
+to take a scaler combonation of the inverse of the leading coefficent of the row in question.
+Thus A can be made sure to have ones in each leading coefficent.\\
+To finish, suppose (iii) is not true. We can use any number of matrix III's to cancel all previous
+elements above the leading coefficents (which are all equal to 1). Thus A can be assured to be in REF, with ones
+as leading coefficents, and no elements above the leading coefficents, therefore in RREF.
+
+\exercise{2.36}\\
+
+By definition of row equivalence between $A$ and $B$, we know that for elementary matrices
+$(E_1,E_2,\dots,E_k)$ it is true that $A  = E_1E_2\dots E_kB$ and then also that 
+$B = E_k^{-1}E_{k-1}^{-1}\dots E_1^{-1}A$. We know that every elementary matrix is invertible by 
+proposition 2.6.2.  Showing that the inverse elementary matrices perform changes on 
+$A$ that create $B$ and since $A$ and $B$ are row equivalent all of the inverse elemntary matrices
+are also elemetary matrices. \\
+\\
+To show Reflexive: \\
+$A$ is row equivalent to $IA$ and thus $A \equiv A$ since $I$  is an elementary matrix. \\
+\\
+To show symmetric:\\
+Suppose $A \equiv B$. Thus there exists some $L = E_kE_{k-1}\dots E_1$, such that $A = LB$, and note that
+$L^{-1} = E_1^{-1}\dots E_{k-1}^{-1} E_1^{-1}$ and $L^{-1}A = B$. Thus, $B \equiv A$
+\\
+To show Transativity: \\
+Suppose $A \equiv B$ and $B \equiv C$. Thus, there exists an $L_1, L_2$ such that $L_1, L_2$ are combinations of Elementary matracies similar to above.
+$A = L_1B$ and $B= L_2C$. Thus $L_1^{-1}A = L_2 C$, and $A = L_1 L_2 C$ and $A \equiv C$
+Thus it is an equivalence relation
+
+\exercise{2.37}\\
+
+The matrix representing the transformation from problem 2.17 is:
+\[L = 
+    \begin{bmatrix}
+        \alpha & 1 & 0 \\
+        0 & \alpha & 2 \\
+        0 & 0 & \alpha 
+    \end{bmatrix}
+\]
+In this case $\alpha=1$ giving the derivitive operator as:
+\[L = 
+    \begin{bmatrix}
+        1 & 1 & 0 \\
+        0 & 1 & 2 \\
+        0 & 0 & 1 
+    \end{bmatrix}
+\]
+So we see that $L^{-1}$ is given by:
+\[L = 
+    \begin{bmatrix}
+        1 & -1 & 0 \\
+        0 & 1 & -2\\
+        0 & 0 & 1 
+    \end{bmatrix}
+\]
+These are unique because $\mathscr{N}(L) = \textbf{0}$ and $\mathscr{N}(L^{-1}) = \textbf{0}$.
+
+\exercise{2.38}\\
+We can express the basis for this space as:
+\[
+\begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & x & 0 & 0 \\
+    0 & 0 & x^2 & 0 \\
+    0 & 0 & 0 & x^3 
+\end{bmatrix}
+=
+\begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 
+\end{bmatrix}
+\]
+We express the transformation of each of the elements of the basis as:
+\begin{align*}
+(x-1)0 &= 0 \\
+(x-1)1 &= x-1 \\
+(x-1)2x &= 2x^2-2x \\
+(x-1)3x^2 &= 3x^3-3x^2 \\
+\end{align*}
+Giving the transformation matrix:
+\[
+A = 
+\begin{bmatrix}
+    0 & -1 & 0 & 0 \\
+    0 & 1 & -2 & 0 \\
+    0 & 0 & 2 & -3 \\
+    0 & 0 & 0 & 3 
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 0 & 0 
+\end{bmatrix}
+\]
+From this matrix we can determine that the bases for the kernel and range:
+\[
+\mathscr{N}(A) = 
+\left\{ \begin{bmatrix} -1 \\ 0 \\ 0 \\ 0 \\ \end{bmatrix} \right\}
+\quad
+\mathscr{R}(A) = 
+\left\{ 
+\begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \\ \end{bmatrix}
+\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \\ \end{bmatrix}
+\begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \\ \end{bmatrix}
+\right\}
+\]
+
+
+
+
+
+
+
+\end{document}
+
