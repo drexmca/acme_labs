@@ -1,10 +1,10 @@
 # name this file solutions.py
 """Volume II Lab 6: Nearest Neighbor Search
-<Name>
-<Class>
-<Date>
+Donald Rex McArthur
+Math
+October 17th
 """
-
+from sklearn import neighbors
 from Trees import BST
 from Trees import BSTNode
 import numpy as np
@@ -258,6 +258,22 @@ def postal_problem():
     n_neighbors = 1, weights = 'distance':  0.903
     n_neighbors = 1, weights =  'uniform':  0.903       (...and so on.)
     """
-    raise NotImplementedError("Problem 6 Incomplete")
+    labels, points, testlabels, testpoints = np.load("PostalData.npz").items()
+    def calcpoints(n,dist):
+        nbrs = neighbors.KNeighborsClassifier(n_neighbors=n, weights=dist, p=2)
+        nbrs.fit(points[1], labels[1])
+        prediction = nbrs.predict(testpoints[1])
+        average = np.average(prediction/testlabels[1])
+        print 'n_neighbors = ' + str(n) +', weights = ' + dist + str(average)
+    calcpoints(1, 'uniform')
+    calcpoints(1, 'distance')
+    calcpoints(4, 'distance')
+    calcpoints(4, 'uniform')
+    calcpoints(10, 'distance')
+    calcpoints(10, 'uniform')
+
+postal_problem()
+
+
 
 # =============================== END OF FILE =============================== #
