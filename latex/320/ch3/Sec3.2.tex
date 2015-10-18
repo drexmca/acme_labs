@@ -1,0 +1,114 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+
+\title{Math 320\\Sec 3.2}
+\author{Rex McArthur}
+\maketitle
+
+\exercise{3.7}\\
+
+To prove that the probability space has a probability of 1, we note that $p'$ is the probability metric on $\mathscr{F}'$ such that $p'(F) =1$, since $\mathscr{F}'$ is the power set of $F$.\\
+In order to prove additivity, we note  $\Omega$ fulfilled this when it was our sample space. Since $E' \subset E$, we know that the same condition will apply when $F$ is our new sample space. 
+
+\exercise{3.8}\\
+
+By DeMorgan's Law and definition 3.2.3:
+\[P \Big( \cup^{n}_{k=1} E_k \Big) = 1 - P \Big(  \Big( \cup^{n}_{k=1} E_k \Big)^c \Big)  = 1 - P  \Big( \cap^{n}_{k=1} E_k^c \Big)  = 1 - \Pi_{k=1}^nP(E_k^c) = 1 - \Pi_{i=1}^n (1-P(E_k))\]
+
+\exercise{3.9}\\
+Using Bayes formula, we have that for .004 prevelance, .95 sensitivity, and .95 specificity, probability is .070896\\
+Using Bayes formula, we have that for .004 prevelance, .95 sensitivity, and .90 specificity, probability is .03675\\
+Using Bayes formula, we have that for .004 prevelance, .95 sensitivity, and .999 specificity, probability is .79233\\
+Using Bayes formula, we have that for .004 prevelance, .90 sensitivity, and .95 specificity, probability is .07116\\
+Using Bayes formula, we have that for .004 prevelance, .999 sensitivity, and .95 specificity, probability is .07063\\
+Using Bayes formula, we have that for .001 prevelance, .95 sensitivity, and .95 specificity, probability is .01866\\
+Using Bayes formula, we have that for .05 prevelance, .95 sensitivity, and .95 specificity, probability is .5\\
+
+\exercise{3.10}\\
+Let R be the probability the witness was correct, and W the probability the witness was wrong, we find that:
+\begin{align*}
+    P(Blue) &= P(R|Blue) - P(W|Red)\\
+    &= \frac{P(Blue|R)P(R)}{P(Blue|W)P(W) + P(Blue|R)P(R)} - \frac{P(Red|W)P(W)}{P(Red|W)P(W) + P(Red|R)P(R)}\\
+    &= \frac{(.1)(.8)}{(.1)(.2) + (.1)(.8)} -  \frac{(.9)(.2)}{(.9)(.2) + (.9)(.1)} = .1333333
+\end{align*}
+
+\exercise{3.11}\\
+We want to find the probability that the DNA is his, given that he tested positive. So we uses Bayes rule.\\
+Note,\\
+P(Test positive$|$DNA his): 1\\
+P(Test Positive$|$DNA NOT his): $\frac{1}{3~\text{ million}}$\\
+P(DNA his): $\frac{1}{250~\text{ million}}$\\
+P(DNA not his): $1 - \frac{1}{250~\text{ million}}$\\
+
+
+\exercise{3.12}\\
+
+For three doors 1, 2, and 3 the probability that the car is behind one of them in particular is obviously $.333$, 
+and the probability that goat is behind one is $.667$. Without Loss of Generality, suppose we pick door number 1. 
+Thus, there is $.333$ chance that the door picked has the car, and a $.667$ chance that the other doors have the car.
+Now, Monty opens a door with a goat, and you know that the other remaining door still has a $.667$ chance of having the car.
+Thus, if you switch to that door, your probability increases from $.333$, to $.667$.\\
+
+Similarly, if you have 10 doors, and you pick door number one, your chance of getting the car is $.100$, 
+The chances that the car is behind any of the other doors is obviousy $.900$. Now, if Monty kindly opens up 8 of the doors with it, there are only two left. Your door, and the door that you didn't pick, wich now has a $.900$ chance of having the car. I think you should switch.
+
+
+
+\end{document}
