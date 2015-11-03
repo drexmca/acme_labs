@@ -109,6 +109,16 @@ Thus,
             & = \int^\infty_{-\infty} f(t-u)g(u) du
         \end{align*}
     \item
+        We want to show $f*(g*h) = (f*g)*h$
+        \begin{align*}
+            f*(g*h) & = \int_{-\infty}^\infty f(t-\tau_1) \int_{-\infty}^\infty g(\tau-\nu)h(\nu)d\nu d\tau \\
+            & = \int_{-\infty}^\infty \int_{-\infty}^\infty f(t-\tau)g(\tau - \nu)h(\nu)d\nu d\tau \\
+            & \text{Let }~\tau - \nu = \tau_0 \\
+            & = \int_{-\infty}^\infty \int_{-\infty}^\infty f(t-\tau_0 - \nu)g(\tau_0)h(\nu) d\tau d\nu \\
+            & = \int_{-\infty}^\infty h(\nu) \int_{-\infty}^\infty f(t-\nu - \tau_0)g(\tau_0) d\tau d\nu \\
+            & = h * (f*g) \\
+            & = (f * g) * h
+        \end{align*}
     \item
     \begin{align*}
     f*(\alpha g + \beta h) &= \int^{\infty}_{-\infty} f(t - \tau) (\alpha g(\tau) + \beta h(\tau)) d\tau \\
@@ -118,7 +128,31 @@ Thus,
 \end{enumerate}
 
 \exercise{4.14}\\
+\begin{enumerate}
+    \item 
+        We want to show $\mathscr{F}(f) \cdot \mathscr{F}(g) = \mathscr{F}(f*g)$
+        \begin{align*}
+            \mathscr{F}(f*g) &= \int_{-\infty}^\infty  e^{-i \xi t} (f*g)(t) dt \\
+            & =   \int_{-\infty}^\infty e^{-i \xi t} \int_{-\infty}^\infty f(\tau) g(t-\tau)d\tau dt \\
+            & = \int_{-\infty}^\infty \int_{-\infty}^\infty e^{-i \xi t} f(\tau) g(t-\tau) d\tau dt \\
+            & \text{ Let }s = t - \tau\quad t = s+\tau \quad dt = ds \\
+            & = \int_{-\infty}^\infty \int_{-\infty}^\infty e^{-i \xi (s+\tau)} f(\tau) g(s) d\tau ds \\
+            & = \int_{-\infty}^\infty \int_{-\infty}^\infty e^{-i \xi \tau}f(\tau) \cdot e^{-i \xi s} g(s) d\tau ds \\
+            & = \int_{-\infty}^\infty e^{-i \xi \tau} f(\tau) d\tau \cdot \int_{-\infty}^\infty  e^{-i\xi s } g(s)ds \\
+            & = \mathscr{F}(f) \cdot \mathscr{F}(g)
+        \end{align*}
 
+    \item
+        \begin{align*}
+            \mathscr{F}(g)* \mathscr{F}(f) & = \int_{-\infty}^\infty \int_{-\infty}^\infty f(x)e^{-i\tau x} dx \int_{-\infty}^\infty g(y) e^{-i(t-\xi)y}dyd\tau \\
+            & = \int_{-\infty}^\infty \int_{-\infty}^\infty \int_{-\infty}^\infty f(x)g(y)e^{-i \tau x}e^{-i t y}e^{i \tau y} dx dy d\tau \\
+            & =2\pi  \int_{-\infty}^\infty g(y) \frac{1}{2\pi} \int_{-\infty}^\infty   \int_{-\infty}^\infty
+            f(x)e^{-i \tau x} e^{i\tau y} d\tau dx e^{-i t y }dy \\
+            & \text{ But this is the inverse of the inverse,  } \\
+            & = 2 \pi \int_{-\infty}^\infty g(y)f(y)e^{-it y} dy \\
+            & = \mathscr{F}(fg)
+        \end{align*}
+\end{enumerate}
 
 \end{document}
 
