@@ -115,11 +115,11 @@ def laplacian(A):
     D = np.diag(np.sum(A, axis = 0))
     return D-A
 
-A_1 = np.array([[0,1,0,0,1,1],[1,0,1,0,1,0],[0,1,0,1,0,0],[0,0,1,0,1,1],[1,1,0,1,0,0],[1,0,0,1,0,0]])
-A_2 = np.array([[0,3,0,0,0,0],[3,0,0,0,0,0],[0,0,0,1,0,0],[0,0,1,0,2,.5],[0,0,0,2,0,-1],[0,0,0,.5,-1,0]])
-L1 = laplacian(A_1)
-L2 = laplacian(A_2)
-
+#A_1 = np.array([[0,1,0,0,1,1],[1,0,1,0,1,0],[0,1,0,1,0,0],[0,0,1,0,1,1],[1,1,0,1,0,0],[1,0,0,1,0,0]])
+#A_2 = np.array([[0,3,0,0,0,0],[3,0,0,0,0,0],[0,0,0,1,0,0],[0,0,1,0,2,.5],[0,0,0,2,0,-1],[0,0,0,.5,-1,0]])
+#L1 = laplacian(A_1)
+#L2 = laplacian(A_2)
+#
 
 # Problem 2: Implement this function.
 def secondEigenvalue(A):
@@ -136,8 +136,6 @@ def secondEigenvalue(A):
     eigs = sorted(np.real(eigs))
     return eigs[1]
 
-secondEigenvalue(L1)
-secondEigenvalue(L2)
     
 # Problem 3: Implement this function.
 def adjacency(img_brightness, radius = 5.0, sigma_I = .15, sigma_d = 1.7):
@@ -208,8 +206,4 @@ def segment(img_brightness):
     seg2 = np.multiply(img_brightness,mask2)
     return seg1, seg2
 
-
-color, brightness = getImage()
-seg1, seg2 = segment(brightness)
-displayPosNeg(color, seg1, seg2)
 
