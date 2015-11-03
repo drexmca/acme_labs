@@ -162,7 +162,7 @@ def adjacency(img_brightness, radius = 5.0, sigma_I = .15, sigma_d = 1.7):
     for pixel in xrange(len(flat_bright)):
         index, distance = getNeighbors(pixel, radius, n,m)
         for j in xrange(len(index)):
-            W[pixel,index[j]] = np.e**(-abs(flat_bright[pixel]-flat_bright[j])/sigma_I**2 - (distance[j]/sigma_d**2))
+            W[pixel,index[j]] = np.e**(-np.absolute(flat_bright[pixel]-flat_bright[index[j]])/sigma_I**2 - (distance[j]/sigma_d**2))
     W = W.tocsc()
     D = W.sum(axis=0)
     return W, D
@@ -189,7 +189,7 @@ def segment(img_brightness):
                 segment.
     '''
     m,n = img_brightness.shape
-    W,D_vals = adjacency(img_brightness)
+    W,D_vals = adjacency(img_brightness, radius=6.0)
     temp_D = np.diagflat(D_vals)
     L = temp_D-W
     L = csc_matrix(L)
@@ -204,8 +204,8 @@ def segment(img_brightness):
     mask2 = e_vec <= 0
     mask1 = np.reshape(mask1, (m,n))
     mask2 = np.reshape(mask2, (m,n))
-    seg1 = img_brightness*mask1
-    seg2 = img_brightness*mask2
+    seg1 = np.multiply(img_brightness,mask1)
+    seg2 = np.multiply(img_brightness,mask2)
     return seg1, seg2
 
 
