@@ -1,0 +1,124 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{mathrsfs}  
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins} \usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+\usepackage{amssymb}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{exercise}{Exercise} % Number exercises on their own
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+
+\title{Sec 4.3 \\Math 320}
+\author{Rex McArthur}
+
+\begin{document}
+\maketitle
+\exercise{4.8}\\
+By definition of the Fourier Transform,
+\begin{align*}
+    \mathscr{F}(f(t)) & = \int^b_a e^{i \xi t} dt - \int _b ^c e^{i \xi t}dt \\
+    & = \frac{e^{i \xi t}}{i \xi} \big| ^b _a  \frac{e^{i \xi t}}{i \xi}\big| ^c _b  \\
+    & = \frac{2e^{i\xi b} - e^{i\xi a} - e^{i\xi c}}{i \xi}
+\end{align*}
+
+\exercise{4.9}\\
+By making a u substitution
+\begin{align*}
+    f(at) & = \int^\infty _{-\infty} e^{i \xi t} f(at) dt \\
+    & = \frac{1}{a}\int^\infty _{-\infty} e^{i \xi \frac{u}{a}} f(u) du \\
+    & = \frac{1}{a} \hat f(\frac{\xi}{a})
+\end{align*}
+
+\exercise{4.10}\\
+\begin{align*}
+    \frac{1}{2\pi} \hat f(-\xi) & = \frac{1}{2 \pi} \int ^\infty_{-\infty} e^{-i(-\xi )t}f(t)dt \\
+    & =  \frac{1}{2 \pi} \int ^\infty_{-\infty} e^{i\xi t}f(t)dt \\
+    & = \mathscr{F}^{-1}(f)\\
+\end{align*}
+
+\exercise{4.11}\\
+\begin{align*}
+    \hat f(\xi -a) & = \int ^\infty_{-\infty} e^{-i(\xi-a) t}f(t)dt \\
+    & = e^{iat} \int ^\infty_{-\infty} e^{-i\xi t}f(t)dt \\
+    & = e^{iat} \hat f(\xi) \\
+    & = \mathscr{F}(e^{iat}f(t))
+\end{align*}
+
+\exercise{4.12}\\
+Suppose $\hat f(\xi) = \mathscr{F}(f(t)) = \int^\infty_{-\infty} e^{-i\xi t} f(t)dt$.
+Thus,
+\begin{align*}
+    \mathscr{F}(\overline{f(t)})&  = \int^\infty_{-\infty} e^{-i\xi t} \overline{f(t)}dt \\
+    & = \overline{\int^\infty_{-\infty} e^{-i(-\xi) t} f(t)dt} \\
+    & = \overline{\hat f(-\xi)}
+\end{align*}
+
+\exercise{4.13}\\
+\begin{enumerate}
+    \item 
+        Make a u substitution, where $u = t - \tau$
+        \begin{align*}
+            &\int^\infty_{-\infty} f(\tau)g(t-\tau)d\tau \\
+            & = -\int^{-\infty}_\infty f(t-u)g(u) du \\
+            & = \int^\infty_{-\infty} f(t-u)g(u) du
+        \end{align*}
+    \item
+    \item
+    \begin{align*}
+    f*(\alpha g + \beta h) &= \int^{\infty}_{-\infty} f(t - \tau) (\alpha g(\tau) + \beta h(\tau)) d\tau \\
+    &= \int^{\infty}_{-\infty} \alpha f(t - \tau) g(\tau) d\tau + \int^{\infty}_{-\infty} \beta f(t - \tau) h(\tau) d\tau \\
+    &= (\alpha f * g) + (\beta f * h)    
+    \end{align*}
+\end{enumerate}
+
+\exercise{4.14}\\
+
+
+\end{document}
+
