@@ -1,0 +1,132 @@
+\documentclass[8pt]{extarticle}
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,paperwidth =5in, paperheight = 3in,tmargin=0in,bmargin=0in,lmargin=0.1in,rmargin=0.1in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+{\small
+$DEF \mathbf{innerproduct}$ on $V$,a scalar-valued map $\langle \cdot,\cdot \rangle: V\times V \to \mathbb{F}$ that satisfies, for $\mathbf{x,y,z} \in V$, $a,b \in \mathbb{F}: (i) \langle x,x \rangle \geq 0, eq. iff \mathbf{x} =0 $
+(ii) $\langle x,a \mathbf{y} + b \mathbf{z}  \rangle = a \langle x,y \rangle + b \langle x,z \rangle$
+(iii)$ \langle x,y \rangle = \overline { \langle y,x \rangle }$
+$DEF$ A vector space together with an inner product is called an \textbf{inner product space} ($V, \langle \cdot,\cdot \rangle$)PROP:(i)
+$\langle \mathbf{x + y}, \mathbf{z} \rangle = \langle \mathbf{x}, \mathbf{z} \rangle + \langle \mathbf{y}, \mathbf{z} \rangle 
+$(ii)$ \langle a\mathbf{x}, \mathbf{y} \rangle = \bar a \langle \mathbf{x}, \mathbf{y} \rangle $
+Frobenius inner product: $\langle A, B \rangle = \text{tr}(A^T,B)$
+Orthogonal if $\langle \mathbf{y}, \mathbf{x} \rangle = 0$.
+Cauchy-Schwarz: $|\langle \mathbf{x}, \mathbf{y} \rangle | \leq \|\mathbf{x}\| \|\mathbf{y}\|$PROOF:suppose $\mathbf{u}, \mathbf{v} \neq 0$, choose
+$\lambda = \frac{|\langle \mathbf{v}, \mathbf{u} \rangle |}{\langle \mathbf{v}, \mathbf{u} \rangle }$, and $|\lambda| = 1$,
+Thus, $0 \leq \| \frac{\lambda \mathbf{u}}{\|u\|} - \frac{\mathbf{v}}{\|\mathbf{v}\|}\|^2 = $
+$|\lambda|^2 -2 \Re(\langle \mathbf{\frac{\lambda \mathbf{v}}{\mathbf{v}}},
+\frac{\mathbf{u}}{\|\mathbf{u}\|} \rangle ) + 1 = 2 - 2 \frac{\lambda \langle \mathbf{v}, \mathbf{u} \rangle }{\|\mathbf{v}\mathbf{u}\|} \implies |\langle \mathbf{u}, \mathbf{v} \rangle 
+= \lambda \| \langle \mathbf{v}, \mathbf{u} \rangle \| \leq \|\mathbf{u}\| \| \mathbf{v}\|$ 
+Angle: $ \text{cos}(\theta) = \frac{\langle \mathbf{x}, \mathbf{y} \rangle }{\| \mathbf{x}\| \|\mathbf{y}\|}$ 
+Pyth: $\|\mathbf{x}+ \mathbf{y}\|^2 = \|\mathbf{x}\|^2 + \|\mathbf{y}\|^2$
+Proj onto unit: $\text{proj}_\mathbf{u}(\mathbf{x}) = \langle \mathbf{u}, \mathbf{x} \rangle \mathbf{u}$
+THM: $Q$, $Q_1$ orthonormal: (i) $\|Q \mathbf{x}\| = \|\mathbf{x}\| 
+(ii) QQ_1 is orthonormal
+(iii) Q^{-1} = Q^H is orthonormal
+(iv) Q^HA = QQ^H = I
+(v) columns are orthonormal
+(vi) |det(Q)| = 1$
+Gram-Schmidt: Given $(x_1\dots x_n)$ to get orthonormal basis $(q_1 \dots q_n)$ 1) $q_1 = \frac{x}{\|x\|}$ 
+2) $p_1 = \text{proj}_{q_1}(x_2) = \langle \mathbf{q_1}, \mathbf{x_2} \rangle q_1$,
+and $q_2 = \frac{x_2 - p_1}{\|x_2 - p_1\|}$
+Repeat, $p_{n-1} = \langle \mathbf{q_1}, \mathbf{x_n} \rangle q_1 \dots + \langle \mathbf{q_{n-1}}, \mathbf{x_n} \rangle q_{n-1}$, and $ q_n = \frac{x_n - p_{n-1}}{\|x_n - p_{n-1}}$
+QR: $A=QR$ where $Q$ is orthonormal columns of $A$, calculated through Gram-Schmidt.
+Note, $A=QR \implies Q^HA=R$. So calculate $R$.
+HyperPlane: Defined as perpendicular to a particular $v$, thus $proj_Y(x) = x - \langle \mathbf{v}, \mathbf{x} \rangle \mathbf{v}$ and the transformation is given by $I - 2 \frac{vv^H}{v^Hv}$
+NORMS: (i) Positivity $\|x\| \geq 0$ with equality if and only if $x=0$
+(ii) Scale preservation $\|ax\| = |a| \|x\|$
+(iii) Triangle inequality (Follows from Cauchy Schwarz) $\|x+y\| \leq \|x\|+\|y\|$ Every innerproduct has norm $\|x\| = sqrt{\langle \mathbf{x}, \mathbf{x} \rangle }$
+Norms: $\|x\|_p = (\sum |x|^p)^{1/p}$  $\|A\|_F = \sqrt{\text{tr}(A^HA)}$
+Induced Norm on Linear Transformations: $\|T\|_{V,W} = sup_{\|x\|_V=1} \|Tx\|_W$
+THM:If $T \in \mathscr{B}(X,Y), S\in \mathscr{B}(Y,Z)$ then $ ST \in \mathscr{B}(X,Z)$ and $ \|ST\|_{X,Z} \leq \|S\|_{Y,Z}\|T\|_{X,Y}$
+Remark: for $n \geq 1$ we have $\|T^n\| \leq \|T\|^n$. If $\|T\| \leq 1$ then $\|T\|^n$.
+EX: $\|A\|_p = sup_{x \neq 0} \frac{\|Ax\|_p}{\|x\|_p}, 1 \leq p \leq \infty$
+Young's: $ab \leq \frac{a^p}{p} + \frac{b^q}{q}$ if $\frac{1}{p}+ \frac{1}{q} = 1$
+Arithmatic Geotmetric mean: $a^\theta b^{1-\theta} \leq \theta a +(1-\theta)b$ for $0\leq \theta \leq 1$.
+Holder's: if $\frac{1}{p} + \frac{1}{q} = 1$ where $1\leq p \leq \infty$ then, $\sum |xy| \leq (\sum|x|^p)^{1/p}(\sum|y|^q)^{1/q} = \|x\|_p\|y\|_q$
+(Note, $p=q=2$ implies Cauchy Swarz)
+Minkowski: $\|x+y\|_p \leq \|x\|_p + \|y\|_p$
+Finite Dimensional Riesz Thm: Let $L:V \rightarrow \mathbb{F}$, $\exists! y \in V s.t. L(x) = \langle \mathbf{y}, \mathbf{x} \rangle \forall x \in V$, and $\|L\| = \|y\| = \sqrt{\langle \mathbf{y}, \mathbf{y} \rangle}$
+Adjoint: Adjoint of L is a linear transformation s.t. $\langle \mathbf{w}$,$ \mathbf{Lv} \rangle_W = \langle \mathbf{L^*w}, \mathbf{v} \rangle _v$ $ \forall v \in V, w \in W$. 
+THM: Let $L:V\rightarrow W$ be finite, adjoint $L^*$ exists and is unique.
+Proof: Let $L_w:V\rightarrow \mathbb{F}$ be defined by $L_w(v) = \langle \mathbf{w}, \mathbf{L(v)} \rangle _W$. By Riesz, $\exists! u \in V s.t. L_w(v) = \langle \mathbf{u}, \mathbf{v} \rangle_V \forall V$. Let $L^*:W \rightarrow V$ be $L^*(w) = u$. Thus, $\langle \mathbf{w}, \mathbf{L(v)} \rangle_W = \langle \mathbf{L^*(w)}, \mathbf{v} \rangle_V \forall v \in V, w \in W$. Show linearity and uniqueness.
+OrthComplement of $ S \subset V$ is the set $S^\bot = \{y \in V|\langle \mathbf{x}, \mathbf{y} \rangle = 0, \forall x \in S\}$, 
+Note $S^\bot$ is a subset of V. If W is finite dim. subspace of V, then $V = W \oplus W^\bot$. 
+Fund. Subspaces: $\mathscr{R}(L)^\bot = \mathscr{N}(L^*)$ and $\mathscr{N}(L)^\bot = \mathscr{R}(L^*)$
+COR: Let V,W be finite, $L:V \rightarrow W$ $V = \mathscr{N}(L) \oplus \mathscr{R}(L^*)$ and $W = \mathscr{R}(L) \oplus \mathscr{N}(L^*)$.
+Least squares: $\hat{ \mathbf{x}} = (A^HA)^{-1}A^H \mathbf{b}$ is unique minimizer.
+ExcerCh3: For reals, $\langle \mathbf{x}, \mathbf{y} \rangle = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2)$ and $\|x\|^2 +\|y\|^2 = \frac{1}{2}(\|x+y\|^2 + \|x-y\|^2)$
+CH4: Eigenvalues and eigenvectors depend only on the linear transformation and not the choice of basis of it. Let $C_{TS}$ be the transition matrix, $A \in S, B \in T$ s.t. $[x]_T = C[x]_S$ and $B = CAC^{-1}$. Thus, 
+$B[x]_T = C A C^{-1} C[x]_S = C\lambda[x]_S = \lambda C[X]_S = \lambda[X]_T$
+THM: Following are equivalent, (i) $\lambda$ is an eigenvalue (ii) There is a nonzero x such that $(\lambda I -A)x = 0$ (iii) $\Sigma_\lambda(A) \neq \{\mathbf{0}\}$ (iv) $\lambda I -A$ is is singular, thus det = 0.
+Prop: If A, B are similar, that is $A = PBP^{-1}$. They are the same operator, and 
+(i) have the same charcatistic poly, eigenvalues, the eigenbases are isomorphic.
+Invariant: A subspace is invariant if for $L:V \rightarrow V$, $L(W) \subset W$. 
+
+
+
+
+
+
+
+
+
+
+
+}
+
+\end{document}
