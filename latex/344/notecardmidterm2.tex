@@ -1,7 +1,7 @@
 \documentclass[8pt]{extarticle}
 \usepackage{threeparttable}
 \usepackage{geometry}
-\geometry{letterpaper,paperwidth =5in, paperheight = 3in,tmargin=0in,bmargin=0in,lmargin=0.1in,rmargin=0.1in}
+\geometry{letterpaper,paperwidth =5.5in, paperheight = 3.5in,tmargin=0in,bmargin=0in,lmargin=0.0in,rmargin=0.0in}
 \usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
 \usepackage{amsmath}
 \usepackage{mathrsfs}
@@ -56,7 +56,7 @@
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
 
 \begin{document}
-{\small
+{
 $DEF \mathbf{innerproduct}$ on $V$,a scalar-valued map $\langle \cdot,\cdot \rangle: V\times V \to \mathbb{F}$ that satisfies, for $\mathbf{x,y,z} \in V$, $a,b \in \mathbb{F}: (i) \langle x,x \rangle \geq 0, eq. iff \mathbf{x} =0 $
 (ii) $\langle x,a \mathbf{y} + b \mathbf{z}  \rangle = a \langle x,y \rangle + b \langle x,z \rangle$
 (iii)$ \langle x,y \rangle = \overline { \langle y,x \rangle }$
@@ -116,17 +116,33 @@ THM: Following are equivalent, (i) $\lambda$ is an eigenvalue (ii) There is a no
 Prop: If A, B are similar, that is $A = PBP^{-1}$. They are the same operator, and 
 (i) have the same charcatistic poly, eigenvalues, the eigenbases are isomorphic.
 Invariant: A subspace is invariant if for $L:V \rightarrow V$, $L(W) \subset W$. 
-
-
-
-
-
-
-
-
-
-
-
+A is simple if eigenvalues are distinct, semi-simple if eigenbasis spans A. Diagonalizable iff semisimple. $A=PDP^{-1}$. P is eigenvectors, D is eigenvalues. 
+Fibonnaci Numbers, Make the matrix, calculate eigens, note 300th number is
+$v_{301} = Av_{300} = A^{300}v_0 = P^{-1}D^{300}Pv_0$ where $v_0$ is starting vector of sequence, of course, round to nearest integer.
+Power Method: pick vector, muliply by A, normalize, iterate. Implies dominant eigenvector and value if semi-simple.
+Rayleigh quotient does the same thing, but faster. Implies $\lambda$ and eigenvector, which converge to $^*$some$^*$ eigenvalue and vector.
+Orthonormally similar if $B=U^HAU$, U is an orthonormal iff $\\langle \mathbf{Ux}, \mathbf{Uy} \rangle = \langle \mathbf{x}, \mathbf{y} \rangle = x^Hy$.
+Hermitian matricies are linear operators that preserve length and angle on different bases.
+Lem: If A is Hermitian, ortho similar to B, then B is Hermitian.
+Schur's Lemma: Every $nxn$ matrix, A, is orthonormally similar to an upper triangular matrix. Proved by induction.
+A matrix A is semisimple iff $m_\lambda = dim\Sigma_\lambda(A)$ for each $\lambda$.
+Spct Thm I: Every Hermitian matrix A is orthonormally similar to a real diagonal matrix. 
+Proof: By Schur's, A is ortho to an upper triangular, T. Since A is hermitian, so is T, and $T^H = T$ thus all eigenvalues(diagonals) are real.
+Normal Matrix: Spct Thm holds for all Normals. Normal when $A^H = AA^H$. ex. Skew Hermitian, orthonormal, matricies orthonoramally similar to a diagnoal.
+Spct Thm II: A matrix A is normal iff it is orthonormally similar to a diagnoal matrix, equivalently, if it has an orthonormal eigenbasis. Proof: by Shur's T is uppertriangular, U is ortho, $T=U^HAU$. $T^HT$ simplifies to $TT^H$
+Other direction, just multiply out. 
+Positive Definite: Has positive eigen values, Associated Sesquilinear form is an innperproduct. Leading Principle minor are all positive. The matrix M is positive definite iff there exists a unique lower triangular matrix L, with real and strictly positive diagonal elements such that $M = LL^*$, that's cholesky decomp.
+It is invertible, and it's inverse is positive definite. Sum and product of semi definites are semi definite. $Q^TMQ$ is positive semi definite.
+Determinant is bounded by product of diagonal elements.
+$A = S^HS$, and if A is definite, S is nonsingular.
+SVD: if A is of rank r, $\exists \text{orthonormal} U, V$ and real valued $\Sigma = diag(\sigma_1,\dots,\sigma_r, \dots,0,0,)$ s.t. $A = U\Sigma V^H$ where $\sigma_i$ is positive real valued. $\Sigma$ is unique. To calculate, $\Sigma = \sqrt{\lambda_i} $ of $A^HA$. V is construction of eigenvectors of $A^HA$, with unfilled spots filled by gramschmidt (if eigenbasis doesn't exist). U is determined by $u_i = \frac{1}{\sigma}Av_i$ where $u_i, v_i$ are columns of $U,V$ respectively. Compact form is where we drop all zeros of sigma, and fit U, V accordingly.
+Moore-Penrose: $A^\dagger = V_1 \Sigma^{-1}_1 U_1^H$ of compact, or $V\Sigma^\dagger U^*$ where $\Sigma^\dagger$ is recipricol of non-zeros on diagonal, transpose. 
+Schmidt-Eckart-Young: for A of rank r, and each s<r, $\sigma_{s+1} = inf_{rank(B) =s}\|A-B\|_2$ 
+with minimizer $ B^\diamond = \sum_{i=1}^s \sigma_iu_iv_i^H$ where each $\sigma$ is the singular value of A, with corresponding u,v columns of U,V in the compact form of SVD.
+Scmidt-Eckart-Young-Mirsky: $(\sum_{j=s+1}^r)^{1/2} = inf_{rank(B)=s)}\|A-B\|_F $
+Cor: $A = U\Sigma V^H$ is the SVD where A has rank r >s then for any $mxn \Delta$ such that $A+\Delta$ has rank s we have: $\|\Delta\|_2 \geq \sigma_{s+1}$ and $\|\Delta\|_F \geq (\sum^r_{k=s+1}\sigma_k)^{1/2}$ and equality holds if $\Delta = -\sum^r_{i=s+1} \sigma_i u_iv_i^H$.
+The infimum of $\|\Delta\|$ rank$(I-A\Delta) < m $is $i/\sigma_1$ with minimizer $\Delta^* = \frac{1}{\sigma_1}v_1u_1^H$
+Small gains: if $A \in M_n$, then $I-A\Delta$ is nonsingular, provided that $\|A\|_2\|\Delta\|_2 <1$
+For $A \in M_{mxn}(\mathbb{F})$: (i) $\|A\|_2 = \sigma_1$(largest signular value) (ii) if A is invertible, then $\|A^{-1}\|_2 = \frac{1}{\sigma_n}$ (iii) $\|A^H\|^2_2 = \|A^T\|^2_2 = \|A^HA\|_2 = \|A\|^2_2 $ (iv) if U, V are orthonormal then $\|UAV\|$ (v) $\|UAV\|_2 = \|A\|_F$ (vi) $\|A\|_F = (\sigma_1^2+\dots+\sigma_r^2)^{1/2}$. (vii) $|det(A)| = \Pi \sigma_i$. Modulus of det is prduct of sing vals. 
 }
-
 \end{document}
