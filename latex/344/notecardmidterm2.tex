@@ -1,9 +1,10 @@
 \documentclass[8pt]{extarticle}
 \usepackage{threeparttable}
 \usepackage{geometry}
-\geometry{letterpaper,paperwidth =5.5in, paperheight = 3.5in,tmargin=0in,bmargin=0in,lmargin=0.0in,rmargin=0.0in}
+\geometry{letterpaper,paperwidth =5in, paperheight = 3in,tmargin=0in,bmargin=0in,lmargin=0.0in,rmargin=0.0in}
 \usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
 \usepackage{amsmath}
+\usepackage{anyfontsize}
 \usepackage{mathrsfs}
 \usepackage{multirow}
 \usepackage{array}
@@ -56,13 +57,13 @@
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
 
 \begin{document}
-{
-$DEF \mathbf{innerproduct}$ on $V$,a scalar-valued map $\langle \cdot,\cdot \rangle: V\times V \to \mathbb{F}$ that satisfies, for $\mathbf{x,y,z} \in V$, $a,b \in \mathbb{F}: (i) \langle x,x \rangle \geq 0, eq. iff \mathbf{x} =0 $
+{\fontsize{4.5}{5} \selectfont $DEF \mathbf{innerproduct}$ on $V$ for $\mathbf{x,y,z} \in V$, $a,b \in \mathbb{F}: (i) \langle x,x \rangle \geq 0, eq. iff \mathbf{x} =0 $
 (ii) $\langle x,a \mathbf{y} + b \mathbf{z}  \rangle = a \langle x,y \rangle + b \langle x,z \rangle$
-(iii)$ \langle x,y \rangle = \overline { \langle y,x \rangle }$
-$DEF$ A vector space together with an inner product is called an \textbf{inner product space} ($V, \langle \cdot,\cdot \rangle$)PROP:(i)
+(iii)$ \langle x,y \rangle = \overline { \langle y,x \rangle }$PROP:(i)
 $\langle \mathbf{x + y}, \mathbf{z} \rangle = \langle \mathbf{x}, \mathbf{z} \rangle + \langle \mathbf{y}, \mathbf{z} \rangle 
 $(ii)$ \langle a\mathbf{x}, \mathbf{y} \rangle = \bar a \langle \mathbf{x}, \mathbf{y} \rangle $
+FunFact: $0 \leq \langle x - \lambda y, x - \lambda y \rangle = \langle x,x\rangle - \langle \lambda y, x \rangle - \langle x, \lambda y \rangle + \langle \lambda y, \lambda y \rangle = \langle x,x \rangle - \bar \lambda \langle y,x\rangle - \lambda \langle x,y\rangle + \lambda \bar \lambda \langle y,y\rangle$
+
 Frobenius inner product: $\langle A, B \rangle = \text{tr}(A^T,B)$
 Orthogonal if $\langle \mathbf{y}, \mathbf{x} \rangle = 0$.
 Cauchy-Schwarz: $|\langle \mathbf{x}, \mathbf{y} \rangle | \leq \|\mathbf{x}\| \|\mathbf{y}\|$PROOF:suppose $\mathbf{u}, \mathbf{v} \neq 0$, choose
@@ -125,13 +126,12 @@ Orthonormally similar if $B=U^HAU$, U is an orthonormal iff $\\langle \mathbf{Ux
 Hermitian matricies are linear operators that preserve length and angle on different bases.
 Lem: If A is Hermitian, ortho similar to B, then B is Hermitian.
 Schur's Lemma: Every $nxn$ matrix, A, is orthonormally similar to an upper triangular matrix. Proved by induction.
-A matrix A is semisimple iff $m_\lambda = dim\Sigma_\lambda(A)$ for each $\lambda$.
 Spct Thm I: Every Hermitian matrix A is orthonormally similar to a real diagonal matrix. 
 Proof: By Schur's, A is ortho to an upper triangular, T. Since A is hermitian, so is T, and $T^H = T$ thus all eigenvalues(diagonals) are real.
-Normal Matrix: Spct Thm holds for all Normals. Normal when $A^H = AA^H$. ex. Skew Hermitian, orthonormal, matricies orthonoramally similar to a diagnoal.
-Spct Thm II: A matrix A is normal iff it is orthonormally similar to a diagnoal matrix, equivalently, if it has an orthonormal eigenbasis. Proof: by Shur's T is uppertriangular, U is ortho, $T=U^HAU$. $T^HT$ simplifies to $TT^H$
+Normal Matrix: Spct Thm holds for all Normals. Normal when $A^H = AA^H$.
+Spct Thm II: A matrix A is normal iff it is orthonormally similar to a diagnoal matrix, equivalently, if it has an orthonormal eigenbasis. Proof: by Shur's T is uppertriangular
 Other direction, just multiply out. 
-Positive Definite: Has positive eigen values, Associated Sesquilinear form is an innperproduct. Leading Principle minor are all positive. The matrix M is positive definite iff there exists a unique lower triangular matrix L, with real and strictly positive diagonal elements such that $M = LL^*$, that's cholesky decomp.
+Positive Definite: Has positive eigen values,there exists a unique lower triangular matrix L, with real and strictly positive diagonal elements such that $M = LL^*$, that's cholesky decomp.
 It is invertible, and it's inverse is positive definite. Sum and product of semi definites are semi definite. $Q^TMQ$ is positive semi definite.
 Determinant is bounded by product of diagonal elements.
 $A = S^HS$, and if A is definite, S is nonsingular.
@@ -143,6 +143,9 @@ Scmidt-Eckart-Young-Mirsky: $(\sum_{j=s+1}^r)^{1/2} = inf_{rank(B)=s)}\|A-B\|_F 
 Cor: $A = U\Sigma V^H$ is the SVD where A has rank r >s then for any $mxn \Delta$ such that $A+\Delta$ has rank s we have: $\|\Delta\|_2 \geq \sigma_{s+1}$ and $\|\Delta\|_F \geq (\sum^r_{k=s+1}\sigma_k)^{1/2}$ and equality holds if $\Delta = -\sum^r_{i=s+1} \sigma_i u_iv_i^H$.
 The infimum of $\|\Delta\|$ rank$(I-A\Delta) < m $is $i/\sigma_1$ with minimizer $\Delta^* = \frac{1}{\sigma_1}v_1u_1^H$
 Small gains: if $A \in M_n$, then $I-A\Delta$ is nonsingular, provided that $\|A\|_2\|\Delta\|_2 <1$
-For $A \in M_{mxn}(\mathbb{F})$: (i) $\|A\|_2 = \sigma_1$(largest signular value) (ii) if A is invertible, then $\|A^{-1}\|_2 = \frac{1}{\sigma_n}$ (iii) $\|A^H\|^2_2 = \|A^T\|^2_2 = \|A^HA\|_2 = \|A\|^2_2 $ (iv) if U, V are orthonormal then $\|UAV\|$ (v) $\|UAV\|_2 = \|A\|_F$ (vi) $\|A\|_F = (\sigma_1^2+\dots+\sigma_r^2)^{1/2}$. (vii) $|det(A)| = \Pi \sigma_i$. Modulus of det is prduct of sing vals. 
+For $A \in M_{mxn}(\mathbb{F})$: (i) $\|A\|_2 = \sigma_1$(largest signular value) (ii) if A is invertible, then $\|A^{-1}\|_2 = \frac{1}{\sigma_n}$ (iii) $\|A^H\|^2_2 = \|A^T\|^2_2 = \|A^HA\|_2 = \|A\|^2_2 $ (iv) if U, V are orthonormal then $\|UAV\|$ (v) $\|UAV\|_2 = \|A\|_F$ (vi) $\|A\|_F = (\sigma_1^2+\dots+\sigma_r^2)^{1/2}$. (vii) $|det(A)| = \Pi \sigma_i$. 
+The SVD gives an orthonormal basis of four fundamental subspaces. first r columns of V are basis of $\mathscr{R}(A^H)$, the last n-r columns of V span $\mathscr{N}(A$, first r columns of U span $\mathscr{R}(A)$ last m-r span $\mathscr{N}(A^H)$. 
+Remark: Let V,W be normed linear spaces, if $L \in \mathscr{B}$ then the induced norm on L satisfies $\|Lx\|_W \leq \|L\|_{V,W}\|x\|_V$.
+
 }
 \end{document}
