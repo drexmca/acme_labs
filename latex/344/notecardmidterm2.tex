@@ -1,0 +1,151 @@
+\documentclass[8pt]{extarticle}
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,paperwidth =5in, paperheight = 3in,tmargin=0in,bmargin=0in,lmargin=0.0in,rmargin=0.0in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{anyfontsize}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+{\fontsize{4.5}{5} \selectfont $DEF \mathbf{innerproduct}$ on $V$ for $\mathbf{x,y,z} \in V$, $a,b \in \mathbb{F}: (i) \langle x,x \rangle \geq 0, eq. iff \mathbf{x} =0 $
+(ii) $\langle x,a \mathbf{y} + b \mathbf{z}  \rangle = a \langle x,y \rangle + b \langle x,z \rangle$
+(iii)$ \langle x,y \rangle = \overline { \langle y,x \rangle }$PROP:(i)
+$\langle \mathbf{x + y}, \mathbf{z} \rangle = \langle \mathbf{x}, \mathbf{z} \rangle + \langle \mathbf{y}, \mathbf{z} \rangle 
+$(ii)$ \langle a\mathbf{x}, \mathbf{y} \rangle = \bar a \langle \mathbf{x}, \mathbf{y} \rangle $
+FunFact: $0 \leq \langle x - \lambda y, x - \lambda y \rangle = \langle x,x\rangle - \langle \lambda y, x \rangle - \langle x, \lambda y \rangle + \langle \lambda y, \lambda y \rangle = \langle x,x \rangle - \bar \lambda \langle y,x\rangle - \lambda \langle x,y\rangle + \lambda \bar \lambda \langle y,y\rangle$
+
+Frobenius inner product: $\langle A, B \rangle = \text{tr}(A^T,B)$
+Orthogonal if $\langle \mathbf{y}, \mathbf{x} \rangle = 0$.
+Cauchy-Schwarz: $|\langle \mathbf{x}, \mathbf{y} \rangle | \leq \|\mathbf{x}\| \|\mathbf{y}\|$PROOF:suppose $\mathbf{u}, \mathbf{v} \neq 0$, choose
+$\lambda = \frac{|\langle \mathbf{v}, \mathbf{u} \rangle |}{\langle \mathbf{v}, \mathbf{u} \rangle }$, and $|\lambda| = 1$,
+Thus, $0 \leq \| \frac{\lambda \mathbf{u}}{\|u\|} - \frac{\mathbf{v}}{\|\mathbf{v}\|}\|^2 = $
+$|\lambda|^2 -2 \Re(\langle \mathbf{\frac{\lambda \mathbf{v}}{\mathbf{v}}},
+\frac{\mathbf{u}}{\|\mathbf{u}\|} \rangle ) + 1 = 2 - 2 \frac{\lambda \langle \mathbf{v}, \mathbf{u} \rangle }{\|\mathbf{v}\mathbf{u}\|} \implies |\langle \mathbf{u}, \mathbf{v} \rangle 
+= \lambda \| \langle \mathbf{v}, \mathbf{u} \rangle \| \leq \|\mathbf{u}\| \| \mathbf{v}\|$ 
+Angle: $ \text{cos}(\theta) = \frac{\langle \mathbf{x}, \mathbf{y} \rangle }{\| \mathbf{x}\| \|\mathbf{y}\|}$ 
+Pyth: $\|\mathbf{x}+ \mathbf{y}\|^2 = \|\mathbf{x}\|^2 + \|\mathbf{y}\|^2$
+Proj onto unit: $\text{proj}_\mathbf{u}(\mathbf{x}) = \langle \mathbf{u}, \mathbf{x} \rangle \mathbf{u}$
+THM: $Q$, $Q_1$ orthonormal: (i) $\|Q \mathbf{x}\| = \|\mathbf{x}\| 
+(ii) QQ_1 is orthonormal
+(iii) Q^{-1} = Q^H is orthonormal
+(iv) Q^HA = QQ^H = I
+(v) columns are orthonormal
+(vi) |det(Q)| = 1$
+Gram-Schmidt: Given $(x_1\dots x_n)$ to get orthonormal basis $(q_1 \dots q_n)$ 1) $q_1 = \frac{x}{\|x\|}$ 
+2) $p_1 = \text{proj}_{q_1}(x_2) = \langle \mathbf{q_1}, \mathbf{x_2} \rangle q_1$,
+and $q_2 = \frac{x_2 - p_1}{\|x_2 - p_1\|}$
+Repeat, $p_{n-1} = \langle \mathbf{q_1}, \mathbf{x_n} \rangle q_1 \dots + \langle \mathbf{q_{n-1}}, \mathbf{x_n} \rangle q_{n-1}$, and $ q_n = \frac{x_n - p_{n-1}}{\|x_n - p_{n-1}}$
+QR: $A=QR$ where $Q$ is orthonormal columns of $A$, calculated through Gram-Schmidt.
+Note, $A=QR \implies Q^HA=R$. So calculate $R$.
+HyperPlane: Defined as perpendicular to a particular $v$, thus $proj_Y(x) = x - \langle \mathbf{v}, \mathbf{x} \rangle \mathbf{v}$ and the transformation is given by $I - 2 \frac{vv^H}{v^Hv}$
+NORMS: (i) Positivity $\|x\| \geq 0$ with equality if and only if $x=0$
+(ii) Scale preservation $\|ax\| = |a| \|x\|$
+(iii) Triangle inequality (Follows from Cauchy Schwarz) $\|x+y\| \leq \|x\|+\|y\|$ Every innerproduct has norm $\|x\| = sqrt{\langle \mathbf{x}, \mathbf{x} \rangle }$
+Norms: $\|x\|_p = (\sum |x|^p)^{1/p}$  $\|A\|_F = \sqrt{\text{tr}(A^HA)}$
+Induced Norm on Linear Transformations: $\|T\|_{V,W} = sup_{\|x\|_V=1} \|Tx\|_W$
+THM:If $T \in \mathscr{B}(X,Y), S\in \mathscr{B}(Y,Z)$ then $ ST \in \mathscr{B}(X,Z)$ and $ \|ST\|_{X,Z} \leq \|S\|_{Y,Z}\|T\|_{X,Y}$
+Remark: for $n \geq 1$ we have $\|T^n\| \leq \|T\|^n$. If $\|T\| \leq 1$ then $\|T\|^n$.
+EX: $\|A\|_p = sup_{x \neq 0} \frac{\|Ax\|_p}{\|x\|_p}, 1 \leq p \leq \infty$
+Young's: $ab \leq \frac{a^p}{p} + \frac{b^q}{q}$ if $\frac{1}{p}+ \frac{1}{q} = 1$
+Arithmatic Geotmetric mean: $a^\theta b^{1-\theta} \leq \theta a +(1-\theta)b$ for $0\leq \theta \leq 1$.
+Holder's: if $\frac{1}{p} + \frac{1}{q} = 1$ where $1\leq p \leq \infty$ then, $\sum |xy| \leq (\sum|x|^p)^{1/p}(\sum|y|^q)^{1/q} = \|x\|_p\|y\|_q$
+(Note, $p=q=2$ implies Cauchy Swarz)
+Minkowski: $\|x+y\|_p \leq \|x\|_p + \|y\|_p$
+Finite Dimensional Riesz Thm: Let $L:V \rightarrow \mathbb{F}$, $\exists! y \in V s.t. L(x) = \langle \mathbf{y}, \mathbf{x} \rangle \forall x \in V$, and $\|L\| = \|y\| = \sqrt{\langle \mathbf{y}, \mathbf{y} \rangle}$
+Adjoint: Adjoint of L is a linear transformation s.t. $\langle \mathbf{w}$,$ \mathbf{Lv} \rangle_W = \langle \mathbf{L^*w}, \mathbf{v} \rangle _v$ $ \forall v \in V, w \in W$. 
+THM: Let $L:V\rightarrow W$ be finite, adjoint $L^*$ exists and is unique.
+Proof: Let $L_w:V\rightarrow \mathbb{F}$ be defined by $L_w(v) = \langle \mathbf{w}, \mathbf{L(v)} \rangle _W$. By Riesz, $\exists! u \in V s.t. L_w(v) = \langle \mathbf{u}, \mathbf{v} \rangle_V \forall V$. Let $L^*:W \rightarrow V$ be $L^*(w) = u$. Thus, $\langle \mathbf{w}, \mathbf{L(v)} \rangle_W = \langle \mathbf{L^*(w)}, \mathbf{v} \rangle_V \forall v \in V, w \in W$. Show linearity and uniqueness.
+OrthComplement of $ S \subset V$ is the set $S^\bot = \{y \in V|\langle \mathbf{x}, \mathbf{y} \rangle = 0, \forall x \in S\}$, 
+Note $S^\bot$ is a subset of V. If W is finite dim. subspace of V, then $V = W \oplus W^\bot$. 
+Fund. Subspaces: $\mathscr{R}(L)^\bot = \mathscr{N}(L^*)$ and $\mathscr{N}(L)^\bot = \mathscr{R}(L^*)$
+COR: Let V,W be finite, $L:V \rightarrow W$ $V = \mathscr{N}(L) \oplus \mathscr{R}(L^*)$ and $W = \mathscr{R}(L) \oplus \mathscr{N}(L^*)$.
+Least squares: $\hat{ \mathbf{x}} = (A^HA)^{-1}A^H \mathbf{b}$ is unique minimizer.
+ExcerCh3: For reals, $\langle \mathbf{x}, \mathbf{y} \rangle = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2)$ and $\|x\|^2 +\|y\|^2 = \frac{1}{2}(\|x+y\|^2 + \|x-y\|^2)$
+CH4: Eigenvalues and eigenvectors depend only on the linear transformation and not the choice of basis of it. Let $C_{TS}$ be the transition matrix, $A \in S, B \in T$ s.t. $[x]_T = C[x]_S$ and $B = CAC^{-1}$. Thus, 
+$B[x]_T = C A C^{-1} C[x]_S = C\lambda[x]_S = \lambda C[X]_S = \lambda[X]_T$
+THM: Following are equivalent, (i) $\lambda$ is an eigenvalue (ii) There is a nonzero x such that $(\lambda I -A)x = 0$ (iii) $\Sigma_\lambda(A) \neq \{\mathbf{0}\}$ (iv) $\lambda I -A$ is is singular, thus det = 0.
+Prop: If A, B are similar, that is $A = PBP^{-1}$. They are the same operator, and 
+(i) have the same charcatistic poly, eigenvalues, the eigenbases are isomorphic.
+Invariant: A subspace is invariant if for $L:V \rightarrow V$, $L(W) \subset W$. 
+A is simple if eigenvalues are distinct, semi-simple if eigenbasis spans A. Diagonalizable iff semisimple. $A=PDP^{-1}$. P is eigenvectors, D is eigenvalues. 
+Fibonnaci Numbers, Make the matrix, calculate eigens, note 300th number is
+$v_{301} = Av_{300} = A^{300}v_0 = P^{-1}D^{300}Pv_0$ where $v_0$ is starting vector of sequence, of course, round to nearest integer.
+Power Method: pick vector, muliply by A, normalize, iterate. Implies dominant eigenvector and value if semi-simple.
+Rayleigh quotient does the same thing, but faster. Implies $\lambda$ and eigenvector, which converge to $^*$some$^*$ eigenvalue and vector.
+Orthonormally similar if $B=U^HAU$, U is an orthonormal iff $\\langle \mathbf{Ux}, \mathbf{Uy} \rangle = \langle \mathbf{x}, \mathbf{y} \rangle = x^Hy$.
+Hermitian matricies are linear operators that preserve length and angle on different bases.
+Lem: If A is Hermitian, ortho similar to B, then B is Hermitian.
+Schur's Lemma: Every $nxn$ matrix, A, is orthonormally similar to an upper triangular matrix. Proved by induction.
+Spct Thm I: Every Hermitian matrix A is orthonormally similar to a real diagonal matrix. 
+Proof: By Schur's, A is ortho to an upper triangular, T. Since A is hermitian, so is T, and $T^H = T$ thus all eigenvalues(diagonals) are real.
+Normal Matrix: Spct Thm holds for all Normals. Normal when $A^H = AA^H$.
+Spct Thm II: A matrix A is normal iff it is orthonormally similar to a diagnoal matrix, equivalently, if it has an orthonormal eigenbasis. Proof: by Shur's T is uppertriangular
+Other direction, just multiply out. 
+Positive Definite: Has positive eigen values,there exists a unique lower triangular matrix L, with real and strictly positive diagonal elements such that $M = LL^*$, that's cholesky decomp.
+It is invertible, and it's inverse is positive definite. Sum and product of semi definites are semi definite. $Q^TMQ$ is positive semi definite.
+Determinant is bounded by product of diagonal elements.
+$A = S^HS$, and if A is definite, S is nonsingular.
+SVD: if A is of rank r, $\exists \text{orthonormal} U, V$ and real valued $\Sigma = diag(\sigma_1,\dots,\sigma_r, \dots,0,0,)$ s.t. $A = U\Sigma V^H$ where $\sigma_i$ is positive real valued. $\Sigma$ is unique. To calculate, $\Sigma = \sqrt{\lambda_i} $ of $A^HA$. V is construction of eigenvectors of $A^HA$, with unfilled spots filled by gramschmidt (if eigenbasis doesn't exist). U is determined by $u_i = \frac{1}{\sigma}Av_i$ where $u_i, v_i$ are columns of $U,V$ respectively. Compact form is where we drop all zeros of sigma, and fit U, V accordingly.
+Moore-Penrose: $A^\dagger = V_1 \Sigma^{-1}_1 U_1^H$ of compact, or $V\Sigma^\dagger U^*$ where $\Sigma^\dagger$ is recipricol of non-zeros on diagonal, transpose. 
+Schmidt-Eckart-Young: for A of rank r, and each s<r, $\sigma_{s+1} = inf_{rank(B) =s}\|A-B\|_2$ 
+with minimizer $ B^\diamond = \sum_{i=1}^s \sigma_iu_iv_i^H$ where each $\sigma$ is the singular value of A, with corresponding u,v columns of U,V in the compact form of SVD.
+Scmidt-Eckart-Young-Mirsky: $(\sum_{j=s+1}^r)^{1/2} = inf_{rank(B)=s)}\|A-B\|_F $
+Cor: $A = U\Sigma V^H$ is the SVD where A has rank r >s then for any $mxn \Delta$ such that $A+\Delta$ has rank s we have: $\|\Delta\|_2 \geq \sigma_{s+1}$ and $\|\Delta\|_F \geq (\sum^r_{k=s+1}\sigma_k)^{1/2}$ and equality holds if $\Delta = -\sum^r_{i=s+1} \sigma_i u_iv_i^H$.
+The infimum of $\|\Delta\|$ rank$(I-A\Delta) < m $is $i/\sigma_1$ with minimizer $\Delta^* = \frac{1}{\sigma_1}v_1u_1^H$
+Small gains: if $A \in M_n$, then $I-A\Delta$ is nonsingular, provided that $\|A\|_2\|\Delta\|_2 <1$
+For $A \in M_{mxn}(\mathbb{F})$: (i) $\|A\|_2 = \sigma_1$(largest signular value) (ii) if A is invertible, then $\|A^{-1}\|_2 = \frac{1}{\sigma_n}$ (iii) $\|A^H\|^2_2 = \|A^T\|^2_2 = \|A^HA\|_2 = \|A\|^2_2 $ (iv) if U, V are orthonormal then $\|UAV\|$ (v) $\|UAV\|_2 = \|A\|_F$ (vi) $\|A\|_F = (\sigma_1^2+\dots+\sigma_r^2)^{1/2}$. (vii) $|det(A)| = \Pi \sigma_i$. 
+The SVD gives an orthonormal basis of four fundamental subspaces. first r columns of V are basis of $\mathscr{R}(A^H)$, the last n-r columns of V span $\mathscr{N}(A$, first r columns of U span $\mathscr{R}(A)$ last m-r span $\mathscr{N}(A^H)$. 
+Remark: Let V,W be normed linear spaces, if $L \in \mathscr{B}$ then the induced norm on L satisfies $\|Lx\|_W \leq \|L\|_{V,W}\|x\|_V$.
+
+}
+\end{document}

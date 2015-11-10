@@ -80,18 +80,51 @@ def analyze_simulation():
     pass
 
 # Problems 5-6: define and implement the described functions.
-f = open('gb.txt','r')
-contents = f.readlines()
-wordbank = dict()
-i = 0
-for line in contents:
-     words = line.split()
-     for word in words:
-         if word not in a:
-             wordbank
-     
+def read_file(filename):
+    f = open(filename,'r')
+    contents = f.readlines()
+    wordbank = {}
+    w = open('wordbank.txt', 'w')
+    i = 1
+    for line in contents:
+        words = line.split()
+        for word in words:
+            if word not in wordbank:
+                w.write(str(i)+ ' ')
+                wordbank[word] = i
+                i+=1
+            else:
+                w.write(str(wordbank[word]) + ' ')
+        w.write('\n')
+    inv_word = {v: k for k, v in wordbank.items()} 
+    wordlist = ['$$tart']
+    for i in inv_word:
+        wordlist.append(inv_word[i])
+    wordlist.append('#nd')
+    return inv_word, wordlist
 
-print contents
+
+def count_words(filename):
+    wordbank, wordlist = read_file(filename)
+    length = len(wordlist)
+    markov = np.zeros((length+2,length+2))
+    f = open('wordbank.txt','r')
+    contents = f.readlines()
+    j = 0
+    for line in contents:
+        numbers = line.split()
+        markov[numbers[0],0]+=1.
+        if len(numbers)>1:
+            for i in xrange(len(numbers)-1):
+                markov[numbers[i+1], numbers[i]]+=1.
+            markov[-1,numbers[i+1]]+=1.
+        else:
+            markov[-1,numbers[0]]+=1.
+    markov /= np.sum(markov, axis=0)
+    where_nans = np.isnan(markov)
+    markov[where_nans] = 0
+    return markov
+
 # Problem 7: implement this function.
 def sentences(infile, outfile, num_sentences=1):
     """Generate random sentences using the word list generated in
@@ -106,4 +139,26 @@ def sentences(infile, outfile, num_sentences=1):
     Returns:
         None
     """
-    raise NotImplementedError("Problem 7 incomplete.")
+    wordbank, wordlist = read_file(infile)
+    markov = count_words(infile)
+    song = open(outfile, 'w')
+    for i in xrange(num_sentences):
+        state = 0
+        chain = []
+        while state != len(wordlist)+1:
+            probs = markov[:,state]
+            draw = np.random.multinomial(1,probs)
+            state = np.argmax(draw)
+            chain.append(state)
+        song.write(str(i+1) + ' ' + wordbank[chain[0]])
+        for index in xrange(1,len(chain)-1):
+            if index != len(wordlist)+1:
+                song.write(' '+wordbank[chain[index]])
+        song.write('.\n')
+
+
+
+
+
+
+
