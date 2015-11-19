@@ -1,0 +1,145 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{mathrsfs}  
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins} \usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+\usepackage{amssymb}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{exercise}{Exercise} % Number exercises on their own
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+
+\title{Math Sec 5.1}
+\author{Rex McArthur\\Math 344}
+
+
+\begin{document}
+\maketitle
+\exercise{5.1}\\
+It is sufficent to show in each case, Positive definiteness, symmetry, and the triangle inequality.
+\begin{enumerate}
+    \item Positive Definiteness: $d_1(\textbf{x}, \textbf{y}) \geq 0$ and $d_2(\textbf{x}, \textbf{y}) \geq 0$ thus, the sum of two numbers greater than 0 is greater than 0.
+\\
+Symmetry: $(d_1+d_2)(\textbf{x}, \textbf{y}) = d_1(\textbf{x}, \textbf{y}) + d_2(\textbf{x}, \textbf{y}) = d_1(\textbf{y}, \textbf{x}) + d_2(\textbf{y}, \textbf{x}) = (d_1+d_2)(\textbf{y}, \textbf{x})$\\
+Triangle Inequality: We know that the triangle inequality holds for $d_1$ and $d_2$ respectivly. Thus we can say,
+\begin{align*}
+    (d_1 + d_2)(\textbf{x}, \textbf{y}) &= d_1(\textbf{x}, \textbf{y}) + d_2(\textbf{x}, \textbf{y}) \\
+    & \leq d_1(\textbf{x}, \textbf{z}) + d_1(\textbf{z}, \textbf{y}) + d_2(\textbf{x}, \textbf{z}) + d_2(\textbf{z}, \textbf{y}) \\
+    &= (d_1(\textbf{x}, \textbf{z}) + d_2(\textbf{x}, \textbf{z})) + (d_1(\textbf{z}, \textbf{y}) + d_2(\textbf{z}, \textbf{y})) \\
+    &= (d_1 + d_2)(\textbf{x}, \textbf{z}) + (d_1 + d_2)(\textbf{z}, \textbf{y}) 
+\end{align*}
+    \item This is not a metric. Conterexample, let $d_2 = 5$ and $d_1 = 3$ be our metrics, $d_1 - d_2 = -2$ which violates Postivite definiteness, therfore, it is not a metric.
+    \item WLOG we can say our metric is $d_1$ which exhibits all the properties of a metric, therefore, $min(d_1, d_2)$ is a metric.
+    \item WLOG we can say our metric is $d_1$ which exhibits all the properties of a metric, therefore, $max(d_1, d_2)$ is a metric.
+\end{enumerate}
+
+\exercise{5.2}\\
+The metric could be named thus, because to get to any city, we would have to be routed through Paris, unless the city lies on a direct route between the origin and Paris.\\
+To show it is a metric, consider two cases, \\
+Case 1: $\textbf{x}=\alpha \textbf{y}$ then we use the euclidean metric which we know is a  metric.\\
+Case 2: $\textbf{x} \neq \alpha \textbf{y}$, which is really just the sum of two different metrics, which we proved in the previous exercise is a metric. 
+
+\exercise{5.3}\\
+\begin{enumerate}
+    \item 
+Let $X = \mathbb{R}$ and $d(\textbf{x}, \textbf{y}) = 0$. Positivity and the triangle inequality hold trivially, but here we have that $d(\textbf{x}, \textbf{y}) = 0$ when $\textbf{x} \neq \textbf{y}$.  \\
+    \item
+Let $X = \mathbb{R}$ and $d(\textbf{x} ,\textbf{y}) = |\textbf{x}| \cdot |\textbf{y}|$. We see that $|\textbf{x}| \cdot |\textbf{y}| \geq 0$ and $|\textbf{x}| \cdot |\textbf{y}| = |\textbf{y}| \cdot |\textbf{x}|$. But $|\textbf{x}| \cdot |\textbf{y}| \leq |\textbf{x}| \cdot |\textbf{z}| + |\textbf{z}| \cdot |\textbf{y}|$ does not hold if $\textbf{x} = 1, \textbf{y} = 2, \textbf{z} = 0$. 
+\end{enumerate}
+
+\exercise{5.4}\\
+To show it is a metric, we show positive definite, symmetric, and triangle inequality. 
+\begin{enumerate}
+    \item Positive definite:
+Because $d(\textbf{x}, \textbf{y}) \geq 0$ we know that $\rho (\textbf{x}, \textbf{y}) \geq 0$.\\
+    \item Symmetry: Note,
+\begin{align*}
+    \rho (\textbf{x}, \textbf{y}) &= \frac{d(\textbf{x}, \textbf{y})}{1 + d(\textbf{x}, \textbf{y})} \\
+    &= \frac{d(\textbf{y}, \textbf{x})}{1 + d(\textbf{y}, \textbf{x})} \\
+    &=  \rho (\textbf{y}, \textbf{x})
+\end{align*}
+
+    \item Triangle inequality
+Note, by the triangle inequality on $d$:
+\begin{align*}
+    \frac{d(x,y)}{1+d(x,y)}&\leq \frac{d(x,z)+d(z,y)}{1+d(x,z)+d(z,y)} \\
+    & \leq \frac{d(x,z)}{1+d(x,z)+d(z,y)} + \frac{d(z,y)}{1+d(x,z)+d(z,y)} \\
+    &  \leq \frac{d(x,z)}{1+d(x,z)} + \frac{d(z,y)}{1+d(z,y)}
+\end{align*}
+\end{enumerate}
+Thus, it is a metric.
+
+\exercise{5.5}\\
+Note, by the triangle inequality,
+\begin{align*}
+    d(x,y) & \leq d(x,z)+d(z,y) \\
+    d(x,z)& \geq d(x,y)-d(y,z)\\
+\end{align*}
+Thus, it is sufficent to show that $d(x,z) \geq d(y,z) - d(x,y)$. Note, by the triangle inequality, 
+\begin{align*}
+    d(y,z) \leq d(y,x) + d(x,z) \\
+    d(x,z) \geq d(y,z) - d(x,y) \\
+\end{align*}
+Which is the desired result.
+
+\exercise{5.6}\\
+To show $f:X \rightarrow \mathbb{R}$ is continious, we must show 
+$|f(x)-f(y)| < \epsilon$ if $d(x,y) < \delta$ for $x,y \in X$.
+Suppose $d(x,y) < \delta$, and let $\epsilon = \delta$. Note, 
+\[|f(x) - f(y)| = |d(x,D) - d(D,y) | \leq d(x,y) = \delta\]
+Thus, $ |f(x) - f(y)| < \epsilon \quad \forall x \in X$, and $f$ is continious.
+
+\exercise{5.7}\\
+Note, by setting $\epsilon = \delta$ we know that $f(x) = x$ is continious, and every multivariable polynomial is a composition of sums, products, and scaler
+multiplications of continious single variate functions. Thus, by Prop. 5.1.21, all multi-variable polynomials are continious.
+
+
+
+
+\end{document}
+
