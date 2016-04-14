@@ -1,0 +1,205 @@
+\documentclass[8pt]{extarticle}
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,paperwidth =8.5in, paperheight = 11in,tmargin=0.05in,bmargin=0.05in,lmargin=0.05in,rmargin=0.05in}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{pdfsync}
+\usepackage{verbatim}
+\usepackage{placeins}
+\usepackage{geometry}
+\usepackage{pdflscape}
+\synctex=1
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue,citecolor=red}
+\usepackage{bm}
+\usepackage{anyfontsize}
+\usepackage{dsfont}
+\usepackage{stmaryrd}
+
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}{Definition} % Number definitions on their own
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\renewcommand\theenumi{\roman{enumi}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\begin{document}
+$\mathbf{Conditioning}$How sensative the solution is to changes in input. Nothing to do with the algorithm.
+Realtive Condition number is $k(x) = \sup_{\delta x}(\frac{\|df\|}{\|f(x)\|} \big/ \frac{\|df\|}{\|x\|})$ or $k = \frac{\|Df(x)\|}{\|f(x)\|/\|x\|}$
+Bounds for a matrix in the problem $Ax = b$ where x is perturbed is $k = \|A\|\frac{\|x\|}{\|b\|} \leq \|A\|\|A^{-1}\|$ Equality holds for 2 norm.
+\textbf{DEF Contraction Mapping}: Assume $D$ is a subset of the normed linear space $(X, \| \cdot \| )$. The funcion $f:D \rightarrow D$ is a contraction mapping if there exists $0 \leq k < 1$ such that: $\| f(\textbf{x}) - f(\textbf{y}) \| \leq k \| \textbf{x} - \textbf{y} \|, \quad \forall \textbf{x},\textbf{y} \in D$. 
+\textbf{REM}: Contraction mappings are continuous and Lipschitz continuous with constant $k$. 
+\textbf{THRM - Contraction Mapping Principle}: Assume $D$ is a nonempty closed subset of the Banach space $(X, \| \cdot \| )$. If $f:D \rightarrow D$ is a contraction mapping then there exists a unique fixed point $\overline{\textbf{x}}$ of $f$ in $D$. 
+\textbf{REM}: The error of the method of successive approximations for the $m^{th}$ approximation is at most $\frac{k^m}{1-k} \| \textbf{x}_1 - \textbf{x}_0 \|$.
+\textbf{THRM 7.1.13}: Assume $D$ is a nonempty closed subset of the Banach space $(X, \| \cdot \| )$. If $f:D \rightarrow D$ and $f^n$ is a contraction mapping, then there exists a unique fixed point $\overline{\textbf{x}} \in D$ of $f$. 
+\textbf{DEF Uniform Contraction Mapping}: Assume $D$ is a nonempty subset of the normed linear space $(X, \| \cdot \| )$ and B is some arbitrary set, then the function $f:D \times B \rightarrow D$ is called a unifrom contraction mapping if there exists $0 \leq \lambda < 1$ such that: $\| f(\textbf{x}_2, \textbf{y}) - f(\textbf{x}_1, \textbf{y})  \|_X \leq \lambda \| \textbf{x}_2 - \textbf{x}_1 \|_X, \quad \forall \textbf{x}_1, \textbf{x}_2 \in D,~ \forall \textbf{y} \in B$. 
+\textbf{Uniform Contraction Mapping Principle}: Assume that $(X, \| \cdot \|_X )$ and $(Y, \| \cdot \|_Y )$ are Banach spaces, $U\subset X$ and $V \subset Y$ are open, and the function $f:\overline U \times V \rightarrow \overline U$ is a uniform contraction mapping with constant $ 0 \leq \lambda < 1$. We define a function $g:V \rightarrow \overline U$ that sends each $\textbf{y} \in V$ to to the unique fixed point of the contraction $f(\cdot, \textbf{y})$. If $f \in C^k(\overline U \times V, \overline U)$, where $k$ is a nonnegative integer, then $g \in C^k(V,\overline U)$. 
+\textbf{THM}: Lef $f:[a,b] \rightarrow \mathbb{R}$ be a differentiable function with $f(a) < 0 < f(b)$ and $0 < m \leq f'(x) \leq M$, for all $x \in [a,b]$. Given $x_0 \in [a,b]$, the sequence $(x_s)_{s=0}^{\infty}$ defined by $x_n = x_{n-1} - \frac{f(x_{n-1})}{M}$ with $n\in \mathbb{N}$ converges to the uniqu root $\overline{x} \in [a,b]$. of the equation $f(x) = 0$. In particular, $|\overline{x} - x_n| \leq \left(1-\frac{m}{M}\right)^n \frac{|f(x_0)|}{m}$ for all $n \in \mathbb{N}$.
+\textbf{Newton's Method (Scalar)}: Let $f:[a,b] \rightarrow \mathbb{R}$ be $C^2$. If for some $\overline{x}$, we have $f(\overline{x}) = 0$ and $f'(\overline{x}) \neq 0$, then the iterative mapping $x_n = x_{n-1} -  \frac{f(x_{n-1})}{f'(x_{n-1})}$ with $n \in \mathbb{N}$ converges to $\overline{x}$ quadratically, whenever $x_0$ is suficiently close to $\overline{x}$.
+\textbf{THRM 7.3.12}: Let $(X, \| \cdot \|_X )$ be a Banach space and assume $f: X \rightarrow X$ is $C^1$ on an open neighborhood $U$ of the point $\overline{\textbf{x}}$. If $f(\overline{\textbf{x}}) = \textbf{0}$ and $Df(\overline{x}) \in \mathscr{B}(X)$ has a bounded inverse, then there exists $\delta > 0$ such that $\phi(\textbf{x}) = \textbf{x} - Df(\overline{\textbf{x}}^{-1}f(\textbf{x})$ is a contraction on $\overline{B(\overline{\textbf{x}}, \delta)}$.
+\textbf{Newton's Method (Vector)}: Let $(X, \| \cdot \|_X )$ be a Banach space and assume $f:X \rightarrow X$ is $C^1$ in an open neighborhood $U$ of the point $\overline{\textbf{x}} \in X$. If $f(\overline{\textbf{x}}) = 0$, $Df(\overline{\textbf{x}}) \in \mathscr{B}(X)$ has a bounded inverse, and $Df(\textbf{x})$ is Lipschitz with constant $L$ on $U$, then the iterative map $\textbf{x}_n = \textbf{x}_{n-1} - Df(\textbf{x}_{n-1})^{-1}f(\textbf{x}_{n-1})$ converges quadratically to $\overline{\textbf{x}}$ whenever $\textbf{x}_0$ is suficiently close to $\overline{\textbf{x}}$.
+\textbf{Newton-Kantorovich Thm} Gurantees that we are close enough when $\|f(x_0)\|\|Df(x_0)^{-1}\|^2L\leq 1/2$ Where L is the Lipschitz constant for the map $Df: U \to \mathscr{B}(X)$.
+\textbf{The Implicit Function Theorem}: Assume that $(X, \| \cdot \|_X )$, $(Y, \| \cdot \|_Y )$, and $(Z, \| \cdot \|_Z )$ are Banach spaces, that $U$ and $V$ are open neighborhoods of $\textbf{x}_0 \in X$ and $\textbf{y}_0 \in Y$, respectively, and that $F: U \times V \rightarrow Z$ is a $C^k$ map for some $k \in \mathbb{N}$. If $D_2F(\textbf{x}_0, \textbf{y}_0) \in \mathscr{B}(Y,Z)$ has a bounded inverse, then there exists an open neighborhood $U_0 \times V_0 \subset U\times V$ of $(\textbf{x}_0, \textbf{y}_0)$ and a unique $C^k$ function $f:U_0 \rightarrow V_0$ such that $f(\textbf{x}_0) = \textbf{y}_0$ and $F(\textbf{x}, f(\textbf{x})) = F(\textbf{x}_0, \textbf{y}_0)$ for all $\textbf{x} \in U_0$. Moreover, $f$ satisfies $Df(\textbf{x}) = -D_2F(\textbf{x}, f(\textbf{x}))^{-1}D_1F(\textbf{x}, f(\textbf{x}))$ on $U_0$.
+\textbf{314 Vista} $\frac{\delta y}{\delta x} = - \frac{\delta F/ \delta x}{\delta F / \delta y}$
+\textbf{The Inverse Function}: Assume that  $(X, \| \cdot \|_X )$ and $(Y, \| \cdot \|_Y )$ are Banach spaces, that $U$ and $V$ are open neighborhoods of $\textbf{x}_0 \in X$ and $\textbf{y}_0 \in Y$, respectively, and that $f:U \rightarrow V$ is a $C^k$ map, $k \in \mathbb{N}$, satisfying $f(\textbf{x}_0) = \textbf{y}_0$. If $Df(\textbf{x}_0) \in \mathscr{B}(X;Y)$ has a bounded inverse, then there exist open neighborhoods $U_0$ that is inverse to $f$. That is, $f(g(\textbf{y})) = \textbf{y}$ for all $\textbf{y} \in V_0$ and $g(f(\textbf{x})) = \textbf{x}$ for all $\textbf{x} \in U_0$. Moreover, for all $\textbf{x} \in U_0$, we have $Dg(\textbf{y}) = Df(g(\textbf{y}))^{-1}$. 
+\textbf{INTEGRATION} Measure is defined as: $\lambda(R) = \prod^n_{j=1} (b_j-a_j)$ Define integral to be $\mathscr{I}(s) = \int_{[a,b]} s = \sum x_I \lambda(R_I)$ Note $\mathscr{I}$ is a bounded linear transformation wrt $L^\infty$ and $\|\mathscr{I}\| = \lambda([b-a])$ by using linear extention Thm. we extend it to the closure of step functions in $L^\infty$
+\textbf{Multivariable Banach Integral} Let $(X,|\ \cdot\|)$ be a banach, $\mathscr{I}:  S([a,b];X) \to X$ can be 
+extended uniquely to a bounded linear transformation $ \overline{ \mathscr{I} }: \overline{S([a,b];X)}\to X$, 
+where $\| \mathscr{I}(f) \|\leq \lambda([b-a]) \| f \|_{L^\infty}$ for all 
+$f \in \overline S$. Moreover, $C \subset \overline S \subset L^\infty$
+\textbf{integral prop} for $f,g \in \mathscr{R}([a,b];X)$, (i) $\|\int_{[a,b]} \|_X \leq \lambda([a,b])\sup_{t\in[a,b]} \|f\|_X$ (ii) Let $\|f\|_X$ denote the function $t \to \|f(t) \|_X$ from $[a,b]$ to $\mathbb{R}$. $\|\int_{[a,b]}\|_X \leq \int _{[a,b]} \|f\|_X$ (iii) If $\|f(t)\|_X \leq \|g(t)\|_X$ for every $t \in [a,b]$, then $\int_{[a,b]} \|f\|_X \leq \int_{[a,b]} \|g\|_X $. (iv) For any sequence $(f_k)_{k \in \mathbb{N}} \in \mathscr{R}$ which converges uniformly to f, $\lim_{k\to \infty} \int_{[a,b]} f_k = \int_{[a,b]} \lim_{k\to \infty} f_k = \int_{[a,b]} f$.
+\textbf{Lebesgue} DEF: For any $ f \in \mathscr{R}$, $\|f\|_{L^1} = \int_{[a,b]} |f|$ Fun facts, $\|f\|_{L^1} \leq \lambda([a,b]) \|f\|_{L^\infty}$
+\textbf{Measure Zero} A set $A \subset \mathbb{R}^n$ has measure zero if for any $\epsilon > 0$ there is a collection of n-intervals ${I_k}_{k \in K}$ indexed by a countable set K, such that $A \subset \cup_{k \in K}I_k$ and $\sum_{K \in K} \lambda(I_k) < \epsilon$. Funfacts, subsets of measure zero are measure zero, single points are measure zero, countable unions of measure zeros sets are measure zero. Almost everywhere functions differ on a set of measure zero. Almost everywhere is an equivalence relation. (i) if $f \leq g$ a.e. then $\int _{[a,b]} f \leq \int_{[a,b]} g$. (ii) $|\int_{[a,b]} f | \leq \int_{[a,b]} |f| = \|f\|_{L^1}$ (iii) the max, min and |f| functions are all integrable.
+\textbf{MCT} if $(f_k)_{k \in \mathbb{N}} \subset L^1([a,b];\mathbb{R})$ is almost everywhere monotone increasing, and if there exists an M s.t. $\int_{[a,b]} f_k \leq M$ for all $k \in \mathbb{N}$, then $(f_k)$ is $L^1$ Cauchy, and there exists an $f \in L^1$ such that (i) $ f = \lim_{k \to \infty} f_k$ a.e. and (ii) $ \int_{[a,b]} f = \int_{[a,b]}lim_{k \to \infty} f_k = lim_{k \to \infty} \int_{[a,b]} f_k$. Same conclusion holds for decreasing and the integral is bounded below by M.
+$\liminf_{k \to \infty} x_k = \lim_{k \to \infty}(\inf_{m \geq k}x_m)$
+\textbf{Fatou's} Let $(f_k)$ be a sequence of integrable functions on $[a,b]$ that are almsot everywhere non-negative. If $\liminf_{k \to \infty} \int _{[a,b]} f_k < \infty$ then (i) $(\liminf_{k \to \infty}) \in L^1$ and (ii) $\int_{[a,b]} \liminf_{k \to \infty} f_k \leq \liminf_{k \to \infty} \int _{[a,b]} f_k$.
+\textbf{Dominated convergence} If $(f_k) \subset L^1$ is a sequence of integrable functions that converges a.e. pointwise to f, and if there exists an 
+integrable $g\in L^1$ s.t. $|f_k| \leq g$ a.e. then $f \in L^1$ and $\int_{[a,b]} \lim_{k \to \infty} f_k = \int_{[a,b]} f = \lim_{k \to \infty} \int_{[a,b]} f_k$
+Funfact, if f is in $L^1$ and $\sum^\infty_{k=0}\int_{[a,b]}|f_k| < \infty$ then, $\sum^\infty_{k=0}\int_{[a,b]}f_k = \int_{[a,b]}\sum^\infty_{k=0}f_k$
+\textbf{Fubini} For $f: \mathbb{R}^n \times \mathbb{R}^m \to \mathbb{R}$ if it is integrable on the whole set, then holding x constant, (i) $f_x:Y\to \mathbb{R}$ is a.e. integrable on Y, (ii) $F = \int_Y f_x dy$ is integrable, (iii) integral can be computed as $\int_{X\times Y} f dx dy = \int_X \int_Y f_x dy dx$.
+\textbf{Leibniz} Let $ X = (r,s) \subset \mathbb{R}$ be an open interval, let $T = [a,b] \subset \mathbb{R}$ be a compact interval, and let $f:X \times T \to \mathbb{R}$ be a continous function. If f has continuous partial derivatives $\frac{\delta f(x,t)}{\delta x}$ at each point $(x,t) \in X \times T$, then the function $\phi(x) = \int_a^b f(x,t) dt$ is differentiable at each point $x \in X$ and $\frac{d}{dx}\phi(x) = \int ^b_a \frac{\delta f(x,t)}{\delta x}dt$
+\textbf{COR} If a,b are differentiable and $\phi(x) = \int_{a(x)}^{b(x)} f(x,t) dt$ then, $d/dx \phi(x) = \int^{b(x)}_{a(x)} df(x,t)/dx~dt - a'(x)f(x,a(x)) + b'(x)f(x,b(x))$
+\textbf{Diffeomorphism} Let U and V be open subsets of $\mathbb{R}^n$, we say that $f:U \to V$ is a diffeomorphism if f is a $C^1$ bijection such that $f^{-1}$ is also $C^1$
+\textbf{Change of Variable} $\int_Y f dy = \int _X (f \circ \Psi)|\det(D\Psi)|dx$
+\textbf{Polar} $\Phi: (0, 2\pi) \times (0, \infty) \to \mathbb{R}^2$ by $\Psi(\theta, r) = (r\cos(\theta), r\sin(\theta))$ and  $|\det(D\Psi)| = r$
+\textbf{Spherical} $S: (0,2\pi) \times (0,\pi) \times (0, \infty) \to \mathbb{R}^3$ by $S(\theta, \phi, r) = (r \sin(\phi)\cos(\theta), r \sin(\phi)\sin(\theta), r\cos(\theta))$
+$|\det D\Psi| = r^2 \sin(\phi)$
+\textbf{hyperspherical} $\Phi: (0,\pi) \times \dots \times (0,\pi) \times (0,2\pi) \times (0, \infty) \to \mathbb{R}^n$ and $\det (D\Phi) = r^{n-1}\sin(\phi_1)\sin^2(\phi_2)\dots\sin^{n-2}(\phi_{n-2})$ Thus, $\int_V f = \int_U f \circ \Phi r^{n-1}\sin(\phi_1)\sin^2(\phi_2)\dots\sin^{n-2}(\phi_{n-2})$
+\textbf{Triangle}$\|x+y\| \leq \|x\| + \|y\|$
+
+\textbf{Reverse-Triangle}$ | \|x\| - \|y\| | \leq \|x-y\|$ Tangent Line of Parameterization $L(t)  = t \mathbf{\sigma}'(t_1) + \mathbf{\sigma}(t_1) $ Tangent Vector is dependent on parameterization, but Unit tangent is not. \textbf{Unit Tangent} $\mathbf{T} = \mathbf{\sigma}'(t_1)/\|\mathbf{\sigma}'(t_1)  \|$\textbf{Curve Length} $len(\sigma) = \int^b_a \|\sigma ' (u)\|du$
+
+\textbf{DEF Line Integral}: For $C \subset \mathbb{R}^n$ parameterized by arclength $\gamma: [0,L] \rightarrow C$, parameterization $\bm{\sigma}: [\textbf{a,b}] \rightarrow C$ and a scalar-valued function $f:C \rightarrow \mathbb{R}$, then the line integral of $f$ over $C$ is: $\int_C f~ds = \int_0^L f(\gamma(s))~ds = \int_a^b f(\bm{\sigma}(t)) \| \bm{\sigma}'(t) \| dt$. 
+\textbf{1.13} For a parametried curve $\sigma: [a,b] \to \mathbb{R}^n$, if $\sigma'(t) \neq 0$ Nowhere vanishing, then s(t) has an inverse $\rho: [0,L] \to [a,b]$, where $L = len(\sigma) = s(b)$
+\textbf{1.15} For any $C^1$ parameterized curve with nowhere vanishing derivative. There exists a new parametrization $\gamma:[0,L] \to \mathbb{R}^n~by~\gamma(s) = \sigma o \rho(s)$ which is a parametrization by arclength. $\|\gamma'\| = 1$ for all s.
+\textbf{Line Integral} Given a curve C in $\mathbb{R}^n$ parametrized by arclength $\gamma :[0,L]\to C $ and a scalar valued function $f:C\to \mathbb{R}$, $\int_C ds = \int_0^L f(\gamma(s)) ds$, if not parametrized by arclength. $\int_C ds = \int_a^b f(\sigma(t)) \|\sigma'(t)\|dt$.
+\textbf{Line Integral of Vector Fields} $C \subset \mathbb{R}^n$ with parametrization $\sigma:[a,b] \to C$ and vector valued function $F:C \to \mathbb{R}^n$, $\int_C F d\sigma = \int_C \circ F \mathbb{T}ds = \int_a^bF \circ (\sigma(t))  \sigma'(t)dt$
+Two curves from $U_1$ and $U_2$ to $\mathbb{R}^n$ are $C^k$ equivalent if there exists a bijective $C^k$ map $\phi:U_1 \to U_2$ s.t. (i) $\phi^{-1} $ is also $C^k$
+\textbf{Tangent Space} Given a parametrized m-manifold $\alpha :U \to M \subset \mathbb{R}^n$, and a point $u \in U $ with $\alpha(u) = p$, the derivative $D\alpha(u)$ is a linear map $D\alpha (u): \mathbb{R}^m \to \mathbb{R}^n$. We define the tangentspace $T_pM $ of M at p to be the image of the derivative. $T_pM = \mathscr{R}(D\alpha(u))$. Thus any basis of $\mathbb{R}^m$ can be used to write a basis of $T_pM$ as $D\alpha(u)x_1, \dots , D\alpha(u)x_m$ The tangent space is independent of parametrization and of orientation.
+\textbf{Unit Normal} $N = D\alpha(u)e_1 \times D\alpha(u)e_2/\|D\alpha(u)e_1 \times D\alpha(u)e_2\|$
+\textbf{Cross Product} $a \times b = (a_2b_3 - a_3b_2, a_3b_1 - a_1b_3, a_1b_2 - a_2b_1)$
+\textbf{DEF}: The k-volume of the k-dimensional parallelepiped $P \subset \mathbb{R}^n$ defined by vectors $\textbf{x}_1, \textbf{x}_2, \dots, \textbf{x}_k \in \mathbb{R}^n$ is given by: $\text{vol}_k(P) = \sqrt{\text{det}(L^T L)}$ where $L:\mathbb{R}^k \rightarrow \mathbb{R}^n$ is the linear transformation mapping each $\textbf{e}_i \in \mathbb{R}^k$ to $\textbf{x}_i \in \mathbb{R}^n$. 
+\textbf{DEF 10.3.14}: Given parameterized k-manifold $\bm{\alpha}: U \rightarrow \mathbb{R}^k$, measurable subset $X \subset U$ with $\bm{\alpha}(X) = M$, function $f: M \rightarrow \mathbb{R}$, if $f\sqrt{\text{det}(D \bm{\alpha}^{T} D \bm{\alpha})}$ is integrable on $X$ then we define the integral: $\int_M f dM = \int_X f\sqrt{\text{det}(D \bm{\alpha}^{T} D \bm{\alpha})}$. For the k-dimensional measure of M($\lambda_k(M)$) we just have $f = 1$. 
+\textbf{REM 10.3.17}: For the surface $S$ in $\mathbb{R}^3$, we can use the formula: $\int_S f~dS = \int_U f(\bm{\alpha}) \| D_1(\bm{\alpha}) \times D_2(\bm{\alpha}) \| = \int \int_U f(\bm{\alpha}(u,v)) \| \bm{\alpha}_u \times \bm{\alpha}_v \| dudv$. 
+\textbf{DEF}: Given parameterized surface $\bm{\alpha}: U \rightarrow \mathbb{R}^3$, measurable subset $X \subset U$ with $\bm{\alpha}(X) = S$, function $F: S \rightarrow \mathbb{R}^3$, if $(F\cdot \textbf{M})\sqrt{\text{det}(D \bm{\alpha}^{T} D \bm{\alpha})}$ is integrable on $X$ then we define the integral: $\int_S F dS = \int_s (F \cdot \textbf{N}) dS = \int_X (F\cdot \textbf{M})\sqrt{\text{det}(D \bm{\alpha}^{T} D \bm{\alpha})}$. 
+\textbf{REM 10.3.19}: Combining definitions we also have that: $\int_S F dS = \int_X (F\cdot \textbf{M})\sqrt{\text{det}(D \bm{\alpha}^{T} D \bm{\alpha})} = \int \int_X (F(\bm{\alpha}) \cdot (\bm{\alpha}_u \times \bm{\alpha}_v)) dudv$. 
+\textbf{Green's Theorem} Let $\gamma:[a,b] \to \mathbb{R}^2 $ be a pievewise $C^1$ positively oriented, simple closed curve with an interior in $\mathbb{R}^2$. $\int_\gamma Pdx + Qdy = \int_\Omega \partial Q/ \partial x - \partial P/\partial y$
+\textbf{Stokes}: If $\gamma$ is a curve with interior $\Omega$ and $\bm{\alpha}: U \rightarrow \mathbb{R}^3$ is a $C^1$ surface with $\overline \Omega \subset U$, then let $S = \bm{\alpha}(\overline \Omega)$ with the boundary C (parameterized by $\bm{\alpha}(\gamma) = \bm{\sigma}$). For $F: S \rightarrow \mathbb{R}^3$ with $F = (P,Q,R)$, then the curl of $F$ is defined as: $\text{curl}(F) = \nabla \times F = \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}, \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}, \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)$. 
+\textbf{Differentiation on C} $f'(z_0) = lim_{z \to z_0} f(z)- f(z_0)/(z-z_0)$. f is holomorphic if this limit exists. A function is entire, if holomorphic on all of C. Holomorphic functions are continuous, locally lipschitz. 
+\textbf{11.2.6} Let f be holomorphic on a pathconnected open set U. If $\bar f$ is holomorphic on U or if $|f|$ is constant on U, then f is constant on U.
+\textbf{Connected} Can not be reprsented by two disjoint sets. Simply connected means you can transform curve anywhere else. i.e. no holes.
+\textbf{Inverse Func} If the det. of the derivative is finite, exists, then there is ana inverse. 
+\textbf{Thm: 11.1.8} Suppose f,g are holomorphic on U, then i) $af + bg$ is holomorphic on U, and $(af + bg)' = af' + bg'$ ii) fg is holomorphic on U and $(fg)' = f'g +f g'$ iii) if $g(z) \neq 0$ then f/g is holomorphic and $(f/g)' = f'g - fg'/g^2$ iv) polynomials are entire. 
+\textbf{Generalized Abel Weierstrass} Let ${a_i} \subset Y$ be a sequence. If there exists an $R>0$ and $M \in \mathbb{R}$ such that $\|a_n\|R^n \leq M$ for every $n\in \mathbb{N}$, then for any positive $r<R$ the series $\sum \infty_{k=0} a_k(z-z_0)^k$ and $\sum \infty_{k=0} k a_k(z-z_0)^{k-1}$ both converge uniformly and absolutely on the closed ball $B(z_0,r)$.
+\textbf{Cor}If a series $\sum \infty_{k=0} a_k(z-z_0)^k$ does not converge at some point $z_1$, then the series does not converge at anypoint $z \in \mathbb{C}$ with $|z-z_0|>|z_1-z_0|$. 
+Power Series: $e^z = \sum z^n/n! $ $sin(z) = \sum (-1)^n z^{2n+1}/(2n+1)!$ $cos(z) = \sum (-1)^n z^{2n}/(2n)!$  are entire.
+\textbf{Cauchy-Riemann} Let $U \subset \mathbb{C} $ be an open set, $f:U \to \mathbb{C}$ as $f(x,y) = u(x,y) + iv(x,y)$. If f is holomorphic on U, then it is real differentiable and the partials are $\partial u/ \partial x = \partial v/ \partial y$ and $\partial u /\partial y = - \partial v/ \partial x$. 
+\textbf{ACME Lemma} Let $\gamma : [0,2\pi] \to \mathbb{C}$ be given by $\gamma(\theta) = z_0 + re^{i\theta}$ This is a circle ofradius r centered at $z_0$. Then for $n \in \mathbb{Z}$, $\int_\gamma(z-z_0)^n =  2\pi i$ if n = -1, 0 else. 
+\textbf{THM} For $\Gamma$ mapping from $z_0 \to z_1$, and holomorphic F, $\int_\Gamma F'(z)dz = F(z_0)-F(z_1)$
+\textbf{Cauchy Goursat}Let f be holomorphic on a simply connected U. Then $\int _\Gamma f(z)dz = 0$ for any simple closed contour $\Gamma$ in U.
+The punctured plane is not simply connected.
+\textbf{Cauchy Integral formula} Let f be holomorphic on an open, simply connected domain. Let $\gamma$ be a simple closed contour lying entirely in U, traversed once counterclockwise. For any $z_0$ in the interior of $\gamma$, we have $f(z_0) = 1/2\pi i \oint_\gamma f(z)/(z-z_0) dz$
+\textbf{Gauss mean value} Let f be holomorphic on open U, such that U contains the circle $C = {z\in \mathbb{C}| |z-z_0| = r}$ we have that $f(z_0) = 1/2\pi \int_0^{2\pi} f(z_0 + re^{it})dt$
+\textbf{Riemann's Thm} Let f be continuous on a closed contour $\gamma$. For every postive integer n, $F_n(w) = \oint_\gamma f(z)/(z-w)^ndz$ is holomorphic at all w in the complement of $\gamma$ and its derivative is $F_n'(w) = nF_{n+1}(w)$
+\textbf{Cauchy Differentiation Formula} Let f be holomorphic on an open simply connected U, let $\gamma$ be a simple closed contour lying in U, traversed once counterclockwise. For any w in the interior of $\gamma$ we have that
+$f^{(k)}(w) * 2\pi i /k! =  \int_\gamma f(z)/(z-w)^{k+1}dz$
+\textbf{Liouville's Thm} If f is holomorphic and bounded on all of $\mathbb{C}$, then f is constant. 
+\textbf{Fund Thm of Algebra}. Every non-constant polynomial on $\mathbb{C}$ has at least one root in $\mathbb{C}$. 
+essential singularity is infinite negative exponent terms
+\textbf{Max Modulus Principle} Let f be holomorphic and not constant on an open, path connected set U. The norm $|f(z)|$ never attains its sup on U.
+\textbf{Laurent} $c_n = 1/2\pi i \oint f(w)/(w-z_0)^{n+1}dw$
+\textbf{Residue} Let f be holomorphic on a punctured ball. $\gamma$ be any simple closed contour in $B(z_0,r)\setminus {z_0}$. The number $1/2\pi i \oint f(z) dz$ is called $Res(f,z_0)$
+\textbf{Winding Number} $1/2\pi i \oint _\gamma dz/ (z-z_0)$
+\textbf{Residue Theorem} Let U be simply connected open set, f be holomorphic except a finite number of singularties. Assume $\gamma$ is a closed curve in U and that no $z_i$ lies on $\gamma$. Then $\oint _\gamma f(z)dz = 2\pi i \sum^n Res(f,z_i)I(\gamma,z_i)$
+\textbf{Residue calc.} If g and h are both holomorphic in a neighborhood of $z_0$, and if $g(z_0) \neq 0$, $h(z_0) = 0$, and $h'(z_0) \neq 0$, then $z_0$ is a simple pole and $Res(g(z)/h(z), z_0) = g(z_0)/h'(z_0)$
+\textbf{11.7.9}If f has an isolated singularity at $z_0$ then i) the singularity at $z_0$ is removable if and only if $\lim_{z \to z_0}$ is finite. ii)If $\lim_{z\to z_0} (z-z_0)^k f(z)$ is finite, then the singularity is a pole of order less than or equal to k. iii) lim exists, $Res(f,z_0) = \lim_{z \to z_0} (z-z_0)f(z)$
+$Res(f,z_0) = c{-1}$
+\textbf{Zero and Pole Counting Formula} Let U be a simply connected open subset of $\mathbb{C}$ and let $\gamma$ be a closed contour in U. Let f be meromorphic on U with poles ${w_i}$ and zeros ${z_i}$. None of which are on the contour. Let ${b_i}$ be the respective multiplicities of the poles and ${a_i}$ be the respective multiplicities of the zeros. 
+Then, $\oint f'(z)/f(z) dz = 2\pi i (\sum^m a_k I(\gamma, z_k) - \sum^n b_k I(\gamma,w_k))$
+\textbf{Cor 11.8.3} Let U be simply connected, open subset of $\mathbb{C}$ and let $\gamma$ be a simple closed contour in U. Fix $w \in \mathbb{C}$, and let f be holomorphic on U, with $f(z) \neq w$ for every $z \in \gamma$. If N is the number of solutions of $f(z) = w$ that lie within $\gamma$ then $\oint f'(z)/f(z) - w dz = N$.
+\textbf{Argument Principle} Let U be a simply connected, open subset of $\mathbb{C}$, and let $\gamma$ be a simple closed contour in U. Let f be meromorphic on U with no zeros or poles on the contour $\gamma$, with Z zeros (counted with multiplicity) lying in $\gamma$,
+and with P poles (counted with multiplicity) lying inside of $\gamma$. $I(f \circ \gamma, 0) = Z -P$
+\textbf{Rouche's} Let U be simply connected open subset of $\mathbb{C}$ and let $f$ and $g$ be holomorphic on U. If $\gamma$ is a simple closed contour in U and if $|f(z)| > |f(z)-g(z)|$ for every $z \in \gamma$ then f and g have the same number of zeros in $\gamma$. 
+\textbf{Holomorphic Open Mapping Principle} any non-constant function f which is holomorphic on an open set U maps U to an open subset of $\mathbb{C}$. That is, $f(U) = \{w\in \mathbb{C}|\exists z \in U, f(z) = w\}$ is open in $\mathbb{C}$
+\textbf{Euler's} $e^{x+iy} = e^x (cos(y) + i sin(y))$
+$cos(x) = 1/2 * (e^{-ix} + e^{ix})$ and $sin(x) = i/2 * (e^{-ix} + e^{ix})$
+
+\textbf{Spectral Calculus}: 
+\textbf{Projections} Something is a projection if $P^2 = P$, it can be expressed as [[I,0],[0,0]] in block form for some basis.
+\textbf{Rmk 12.1.2} I-P is a projection if P is a projection.
+\textbf{L 12.1.3} If P is a Projection (i): Any $y \neq 0 \in \mathscr{R}(P)$ iff $Py = y$. (ii) $\mathscr{N}(P) = \mathscr{R}(I-P)$
+\textbf{Thm 12.1.4} If P is a projcetion on the vector space V, then $V = \mathscr{R}(P) \oplus \mathscr{N}(P)$
+\textbf{THM 12.1.6} If $W_1, W_2$ are complementary subspaces s.t. $V = W_1 \oplus W_2$, then $\exists !~P~s.t.~\mathscr{R}(P) = W_1$ and $\mathscr{N}(P) = W_2$. We say P is the projection onto $W_1$ along $W_2$.
+\textbf{THM 12.1.11} A subspace W of V is L-invariant iff for P onto W we have LP=PLP
+\textbf{EigenProjections} Let A be semisimple $\lambda_i$ eigenvalues and $r_i$ eigenvectors. Let S be the matrix 
+(i):$l_ir_i = \delta_{ij}$ Kroniker delta
+(ii):Operators $P_i$ are rank one projections
+(iii):$P_iP_j = \delta_{ij}P_i$
+(iv):$P_iA = AP_i = \lambda_iP_i$
+(v):$\sum P_i = I$
+(vi): $A = \sum \lambda_i P_i$
+\textbf{Generalized EV} \textbf{Index} The index of a matrix, is the smallest non-negative integer s.t. $\mathscr{N}(B^k) = \mathscr{N}(B^{k+1}$. This is $ind(B)$.
+If B is invertible $ind(B) = 0$
+\textbf{Thm 12.2.5} If $B \in M_n(\mathbb{F})$, then for all $k \geq ind(B)$, we have $\mathscr{N}(B^k) \cap \mathscr{R}(B^k) = \{0\}$, and $\mathbb{F}^n = \mathscr{N}(B^k) \oplus \mathscr{R}(B^k)$
+\textbf{Def} If $A \in M_n$ with eigenvalue $\lambda$, generalized eigenspace is $\mathscr{E}_\lambda = \mathscr{N}( (\lambda I -A)^k)$ where $k = ind(\lambda I-A)$
+\textbf{12.2.11} $dim(\mathscr{E}_\lambda)$ is equal to the algebraic multiplicity, $m_\lambda$ of $\lambda$.
+\textbf{12.2.12} $\mathbb{F}^n$ is just the direct sum of all the generalized eigenspaces of $A \in M_n$
+\textbf{Def 12.3.1} Let X be a banach space and $A \in \mathscr{B}(X)$ be a bounded linear operator on X. Resolvent is the set of all z's s.t. $R(A,z) = (zI-A)^{-1}$ exists. It is the complement of the spectrum
+\textbf{Lemma} Hilbert's $R(z_2) -R(z_1) = (z_1-z_2)R(z_2)R(z_1)$, $R(z,A_2) - R(z,A_1) = R(z,A_1)(A_2-A_1)R(z,A_2)$, $R(z)A = AR(z)$, $R(z_1)R(z_2) = R(z_2)R(z_1)$
+\textbf{Thm 12.3.6} The set $\rho(A)$ and is open and $R(z)$ is holomorphic on $\rho(A)$ with the following convergent power series at $z_0 \in \rho(A)$ for $\|z - z_0\| \leq \|R(z_0)\|^{-1}$ (where equality holds if submultplivitive property holds):
+$R(z) = \sum^\infty (-1)^k(z-z_0)^kR^{k+1}(z_0)$
+Derivative of resolvent is:
+$d^k/dz^k R(z) = k! (-1)^kR^{k+1}(z) = k!(-1)^k(zI-A)^{-(k+1)}$
+\textbf{Thm 12.3.8} if $|z| > \|A\|$, then R(z) exists and is given by: $R(z) = \sum A^k/(z^{k+1})$
+\textbf{Spectral Radius} $r(A) = \lim_{k\to \infty} \|A^k\|^{1/k}$ and is the sup eigenvalue.
+\textbf{EigenProjection} $P_\lambda = Res_\lambda R(z) = 1/(2\pi i) \oint_\Gamma R(z)dz$ where integration is component wise
+\textbf{Spectral Resolution Forumla} Suppose $f(z)$ has a powerseries at $z=0$ with radius $ b>r(A)$, then for a curve containing the $\sigma(A)$, we have, $f(A) = 1/(2\pi i) \oint_\Gamma f(z)R(z)dz$
+\textbf{Caley-Hamilton} if p(z) is a charcteristic polynomial of A, $p(z) = det(zI-A)$, then $p(A)=0$.
+There is an operator in the summation of the powerseries, $A_k$ which is going to be really important. 
+$A_k = 1/(2 \pi i)\oint_\Gamma (z-\lambda)^{-k-1}R(z)dz$. Not sure why we care...
+\textbf{L 12.5.4} Define $D_\lambda = A_{-2}$ and $S_\lambda = A_0$, the following hold, 
+i) for $n \geq 2$, $A_{-n} = D_\lambda^{n-1}$ ii) for $n \geq 0$, $A_n = (-1)^nS_\lambda^{n+1}$
+iii) Operator P commutes with D and S
+\textbf{Spectral Decomposition setup} For any isolated $\lambda \in \sigma(B)$, we have $BP_\lambda = \lambda P_\lambda + D_\lambda \implies D_\lambda = (B-\lambda I)P_\lambda$, and $r(D_\lambda) = 0$
+\textbf{Spectral Decomp Thm} For each $\lambda \in \sigma(B)$, let $P_\lambda,~D_\lambda$ be the spectralprojection and corresponding eigennilpotent of order $m_\lambda$. $R(z) = \sum_{\lambda \in \sigma(B)} (P_\lambda/z-\lambda + \sum_{k=1}^{m_\lambda-1} D_\lambda^k/(z-\lambda)^{k+1})$ and 
+$B = \sum _{\lambda \in \sigma(B)} \lambda P_\lambda + D_\lambda$
+\textbf{Corr 2.6.11} Let f(z) be holomorphic in an open, simply connected set containint $\sigma(A)$. For each $\lambda \in \sigma(A)$ let $f(z) = f(\lambda) + \sum a_{n,\lambda}(z-\lambda)^n$ be the taylor series reprsentation of f near $\lambda$. Then $f(A) = \sum+{\lambda \in \sigma(A)} (f(\lambda)P_\lambda + \sum _{k=1}^{m_\lambda-1}a_{k,\lambda}D^k_\lambda)$
+\textbf{Spectral mapping Theorem} Let A be a linear operator on V. If f(z) is holomorphic in an open, simply connected set containing $\sigma(A)$, then $\sigma(f(A))=f(\sigma(A))$. Moreover, if x is an eigenvector, then x is an eigenvector of f(A) corresponding to $f(\lambda)$
+
+\end{document}
